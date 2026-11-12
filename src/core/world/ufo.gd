@@ -5,7 +5,3 @@ extends RefCounted
 static func tick(state: GameState, rng: Rng, defs: Defs) -> Array[Dictionary]:
 	push_error("not implemented: Ufo.tick")  # WP-13
 	return []
-
-## Seeds state.ufos from Defs.json("world").ufos at new game.
-static func init_state(state: GameState, defs: Defs) -> void:
-	push_error("not implemented: Ufo.init_state")  # WP-13

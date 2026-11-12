@@ -18,14 +18,18 @@ those are `Content.defs` and `Game.rng`. In tests, build `Defs` from `tests/fixt
 `ContentLoader.load_root("res://tests/fixtures/data")`, or by hand with `Defs.add()`.
 
 **Tests for core logic use the fixtures, never `data/`**, so content changes cannot break them.
-Fixture ids start with `fx_`.
+Fixture ids start with `fx_`. A package that needs more fixtures adds new files only, with its own
+prefix: `fxs_` and `strings/story.csv` (state/rules/story), `fxc_` and `strings/combat.csv` (combat),
+`fxw_` and `strings/world.csv` (world). Never edit the shared `fx_` files. Tests that need the
+`Content`/`Game` autoloads on fixtures call `Content.reload("res://tests/fixtures/data")` in
+`before_all` and `Content.reload("res://data")` in `after_all`.
 
 ## 2. Ids, keys and naming
 
 - Ids are `snake_case`, unique per kind. Characters recruited from NPCs use the NPC id. The hero's id is `hero`, its `name_key` is `hero_name`.
 - Every player-facing string is a key in a `<root>/strings/*.csv` file (`keys,en` header). Files are split by owner: `en.csv` (base, WP-00), `ui.csv` (WP-16), `numbers.csv` (WP-17), `writing.csv` (WP-18), `views.csv` (Wave 2 views). Keys must be unique across files. Fields ending in `_key`, plus `speaker`, are string keys.
 - Asset ids: character and enemy sprites use the def's `sprite` (a `frames` entry), tiles `tile_<name>`, ability and item icons `icon_<name>`, portraits `portrait_<name>`, world markers `marker_<name>`.
-- Audio ids: music tracks `sarmizegetusa`, `saucer`; layers `explore`, `combat`, `lobizi`; stingers and sfx by plain name (`hit`, `beam`).
+- Audio ids: music tracks `sarmizegetusa`, `saucer`; layers `explore`, `combat`, `lobizi`; stingers and sfx by plain name (`hit`, `beam`). Audio files live by convention, not in the manifest: `assets/audio/music/<track>_<layer>.ogg`, `assets/audio/stingers/<id>.ogg`, `assets/audio/sfx/<id>.ogg`.
 
 ## 3. Data
 
@@ -49,8 +53,8 @@ Cells are `[x, y]`, origin top-left. Units of size 2 are anchored at their top-l
 ## 5. New game (`Game.new_game(seed, hero_class)`)
 
 `food = 12`, `gold = 24`, `day = 1`, `hour = 8`, party = `[hero]`, `world_pos` = the `start`
-location's cell, fog revealed within radius 2 of it, `discovered = [start]`, UFOs seeded from
-`world.ufos` at their first route cell in state `patrol`, `mode = &"location"`,
+location's cell, fog revealed within radius 2 of it, `discovered = [start]`, UFOs seeded by `Game.new_game` itself from
+`world.ufos` as `{id, pos: route[0], state: "patrol", route_i: 0}`, `mode = &"location"`,
 `location_id` = start, `location_cell` = its `entry_cell`. `Game.rng = Rng.new(seed)`,
 `state.seed = seed`. Before saving, `state.rng_state = Game.rng.get_state()`; after loading,
 `Game.rng.set_state(state.rng_state)`.

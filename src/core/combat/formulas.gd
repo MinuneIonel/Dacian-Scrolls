@@ -24,8 +24,7 @@ static func damage(base: int, stat: int, scale: float, armor: int) -> int:
 
 ## XP needed to go from `level` to level + 1: XP_PER_LEVEL * level.
 static func xp_to_next(level: int) -> int:
-	push_error("not implemented: Formulas.xp_to_next")  # WP-12
-	return 0
+	return XP_PER_LEVEL * maxi(1, level)
 
 ## Initiative: agility + d6.
 static func initiative(agility: int, rng: Rng) -> int:
