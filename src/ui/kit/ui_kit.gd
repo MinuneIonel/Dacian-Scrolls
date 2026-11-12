@@ -219,8 +219,8 @@ static func _panel_style() -> StyleBox:
 	if Engine.get_main_loop() != null and Assets.has_tex(&"ui_panel"):
 		var st := StyleBoxTexture.new()
 		st.texture = Assets.tex(&"ui_panel")
-		st.set_texture_margin_all(6)
-		st.set_content_margin_all(8)
+		st.set_texture_margin_all(12)
+		st.set_content_margin_all(12)
 		return st
 	var s := _box(UMBER_DARK, BRONZE, 1)
 	s.set_content_margin_all(8)

@@ -27,7 +27,7 @@ prefix: `fxs_` and `strings/story.csv` (state/rules/story), `fxc_` and `strings/
 ## 2. Ids, keys and naming
 
 - Ids are `snake_case`, unique per kind. Characters recruited from NPCs use the NPC id. The hero's id is `hero`, its `name_key` is `hero_name`.
-- Every player-facing string is a key in a `<root>/strings/*.csv` file (`keys,en` header). Files are split by owner: `en.csv` (base, WP-00), `ui.csv` (WP-16), `numbers.csv` (WP-17), `writing.csv` (WP-18), `views.csv` (Wave 2 views). Keys must be unique across files. Fields ending in `_key`, plus `speaker`, are string keys.
+- Every player-facing string is a key in a `<root>/strings/*.csv` file (`keys,en` header). Files are split by owner: `en.csv` (base, WP-00), `ui.csv` (WP-16), `numbers.csv` (WP-17), `writing.csv` (WP-18), and one per Wave 2 view: `view_combat.csv`, `view_location.csv`, `view_world.csv`, `view_screens.csv`. Keys must be unique across files. Fields ending in `_key`, plus `speaker`, are string keys.
 - Asset ids: character and enemy sprites use the def's `sprite` (a `frames` entry), tiles `tile_<name>`, ability and item icons `icon_<name>`, portraits `portrait_<name>`, world markers `marker_<name>`.
 - Audio ids: music tracks `sarmizegetusa`, `saucer`; layers `explore`, `combat`, `lobizi`; stingers and sfx by plain name (`hit`, `beam`). Audio files live by convention, not in the manifest: `assets/audio/music/<track>_<layer>.ogg`, `assets/audio/stingers/<id>.ogg`, `assets/audio/sfx/<id>.ogg`.
 
@@ -196,3 +196,12 @@ Data uses that flag to gate rewards that need a won fight.
 - `Audio` never errors on unknown ids.
 - `Settings.gore`: 0 Off, 1 Normal, 2 Bloody Mess. Presentation only.
 - Base resolution 640x360, integer scaling, nearest filtering. Tiles are 64x32 diamonds: `cell_to_world(c) = Vector2((c.x - c.y) * 32, (c.x + c.y) * 16)`.
+
+## 11. Shared view helpers (orchestrator-owned, frozen)
+
+- `Iso` (`src/ui/iso/iso.gd`): `cell_to_world`, `footprint_center(cell, n)`, `world_to_cell`, `facing(a, b)` ("se" "sw" "ne" "nw"), `depth`.
+- `MapBuilder.build(map_id, defs) -> Node2D` with children `Ground` (flat tiles, z -10) and `Sorted` (y-sorted tall tiles: put unit sprites here too) and metadata `grid`, `size`, `map_id`. Tiles without art draw as coloured diamonds or blocks.
+- `UnitSprite.new(sprite_id, footprint)`: `place(cell)`, `face(dir)`, `play(anim)`, `await play_once(anim)`. Handles manifest anchors, SE/NE rows and flips.
+- Preview any map: `tools/shots.sh res://tools/map_preview.tscn out.png 10 1280x720 --args='{"map":"sarmizegetusa"}'`.
+- Views never edit `project.godot`: create input actions at runtime in your own code if you need them.
+- Mode hand-offs: location or world map to combat: `Router.go(&"combat", {encounter_id, return_mode, return_args})`. The combat view applies `Encounters.apply_battle_result`, broadcasts the events, then `Router.go(return_mode, return_args)`. World map to a location: `Router.go(&"location", {location_id})` (cell defaults to the location's `entry_cell`). Location exits with `to.mode == "worldmap"`: `Router.go(&"worldmap")`.
