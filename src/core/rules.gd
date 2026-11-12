@@ -26,3 +26,34 @@ static func check(conds: Array, state: GameState, defs: Defs) -> bool:
 static func run(effects: Array, state: GameState, rng: Rng, defs: Defs) -> Array[Dictionary]:
 	push_error("not implemented: Rules.run")  # WP-11
 	return []
+
+## Reveals every cell within Chebyshev `radius` of `center` that lies inside world.size.
+## Returns only the newly revealed cells. Used by ["discover"] and Game.new_game.
+static func reveal_around(state: GameState, center: Vector2i, radius: int, defs: Defs) -> Array[Vector2i]:
+	var out: Array[Vector2i] = []
+	var world: Variant = defs.json("world")
+	var size := Vector2i(1 << 20, 1 << 20)
+	if world is Dictionary and world.get("size") is Array and world.size.size() == 2:
+		size = Vector2i(int(world.size[0]), int(world.size[1]))
+	for y in range(center.y - radius, center.y + radius + 1):
+		for x in range(center.x - radius, center.x + radius + 1):
+			if x < 0 or y < 0 or x >= size.x or y >= size.y: continue
+			var k: String = GameState.cell_key(Vector2i(x, y))
+			if state.revealed.has(k): continue
+			state.revealed[k] = true
+			out.append(Vector2i(x, y))
+	return out
+
+## The world.json location with that id, or {}.
+static func location(id: StringName, defs: Defs) -> Dictionary:
+	var world: Variant = defs.json("world")
+	if not (world is Dictionary): return {}
+	for l in world.get("locations", []):
+		if l is Dictionary and StringName(str(l.get("id", ""))) == id: return l
+	return {}
+
+## [x, y] to a cell; anything else is (0, 0).
+static func to_cell(v: Variant) -> Vector2i:
+	if v is Vector2i: return v
+	if v is Array and v.size() == 2: return Vector2i(int(v[0]), int(v[1]))
+	return Vector2i.ZERO
