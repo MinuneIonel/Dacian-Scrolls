@@ -1,0 +1,5 @@
+[
+ {"id": "knight", "type": "frames", "gen": "knight", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/knight.png"},
+ {"id": "grazi_thrall", "type": "frames", "gen": "grazi_thrall", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/grazi_thrall.png"},
+ {"id": "giant_legs", "type": "frames", "gen": "giant_legs", "frame_size": [128, 192], "anchor": [64, 160], "footprint": [2, 2], "out": "assets/sprites/giant_legs.png"}
+]
