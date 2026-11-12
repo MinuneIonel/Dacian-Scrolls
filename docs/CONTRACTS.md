@@ -23,7 +23,7 @@ Fixture ids start with `fx_`.
 ## 2. Ids, keys and naming
 
 - Ids are `snake_case`, unique per kind. Characters recruited from NPCs use the NPC id. The hero's id is `hero`, its `name_key` is `hero_name`.
-- Every player-facing string is a key in `<root>/strings/en.csv` (`keys,en` header). Fields ending in `_key`, plus `speaker`, are string keys.
+- Every player-facing string is a key in a `<root>/strings/*.csv` file (`keys,en` header). Files are split by owner: `en.csv` (base, WP-00), `ui.csv` (WP-16), `numbers.csv` (WP-17), `writing.csv` (WP-18), `views.csv` (Wave 2 views). Keys must be unique across files. Fields ending in `_key`, plus `speaker`, are string keys.
 - Asset ids: character and enemy sprites use the def's `sprite` (a `frames` entry), tiles `tile_<name>`, ability and item icons `icon_<name>`, portraits `portrait_<name>`, world markers `marker_<name>`.
 - Audio ids: music tracks `sarmizegetusa`, `saucer`; layers `explore`, `combat`, `lobizi`; stingers and sfx by plain name (`hit`, `beam`).
 

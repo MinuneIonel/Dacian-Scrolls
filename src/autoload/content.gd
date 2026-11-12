@@ -8,14 +8,25 @@ var defs: Defs
 func _ready() -> void:
 	reload(DATA_ROOT)
 
-## Replaces all content, e.g. with tests/fixtures/data. Also loads <root>/strings/en.csv.
+var _translations: Array[Translation] = []
+
+## Replaces all content, e.g. with tests/fixtures/data. Also loads every <root>/strings/*.csv
+## (each file has a "keys,en" header; files are split by owner to avoid merge conflicts).
 func reload(root: String) -> void:
 	defs = ContentLoader.load_root(root)
-	var csv: String = root.path_join("strings/en.csv")
-	if FileAccess.file_exists(csv):
-		var t: Translation = ContentLoader.load_strings(csv)
+	for t in _translations: TranslationServer.remove_translation(t)
+	_translations.clear()
+	var dir: String = root.path_join("strings")
+	var da := DirAccess.open(dir)
+	if da == null: return
+	var files: PackedStringArray = da.get_files()
+	files.sort()
+	for f in files:
+		if not f.ends_with(".csv"): continue
+		var t: Translation = ContentLoader.load_strings(dir.path_join(f))
 		if t != null:
 			TranslationServer.add_translation(t)
+			_translations.append(t)
 			TranslationServer.set_locale(t.locale)
 
 func get_def(kind: StringName, id: StringName) -> Dictionary:

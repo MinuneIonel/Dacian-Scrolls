@@ -98,11 +98,16 @@ def load_root(root, rep):
 
 
 def load_strings(root, rep):
-    path = os.path.join(root, "strings", "en.csv")
     keys = {}
-    if not os.path.exists(path):
-        rep.err(os.path.relpath(path, ROOT), "missing string table")
-        return keys
+    paths = sorted(glob.glob(os.path.join(root, "strings", "*.csv")))
+    if not paths:
+        rep.err(os.path.relpath(root, ROOT), "no strings/*.csv")
+    for path in paths:
+        load_string_file(path, keys, rep)
+    return keys
+
+
+def load_string_file(path, keys, rep):
     with open(path, encoding="utf-8", newline="") as f:
         for i, row in enumerate(csv.reader(f)):
             if i == 0 or not row or not row[0]:
@@ -112,7 +117,6 @@ def load_strings(root, rep):
             if len(row) < 2 or row[1].strip() == "":
                 rep.err("%s:%d" % (os.path.relpath(path, ROOT), i + 1), "empty text for '%s'" % row[0])
             keys[row[0]] = row[1] if len(row) > 1 else ""
-    return keys
 
 
 class Checker:
@@ -130,7 +134,7 @@ class Checker:
 
     def key(self, where, k):
         if isinstance(k, str) and k not in self.strings:
-            self.rep.err(where, "string key '%s' not in strings/en.csv" % k)
+            self.rep.err(where, "string key '%s' not in strings/*.csv" % k)
 
     def sprite(self, where, id_, section="textures"):
         m = self.manifest

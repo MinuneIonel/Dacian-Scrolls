@@ -40,7 +40,7 @@ Never point core tests at `data/`.
   `randi()`/`randf()`. Randomness only from an `Rng` argument. Lint test enforces it.
 - Views never decide outcomes. They send actions to core and animate the returned events.
 - Static types on every function signature. No C#, no plugins.
-- No player-facing string literals in code: `tr("key")`, keys in `data/strings/en.csv`.
+- No player-facing string literals in code: `tr("key")`, keys in `data/strings/<your file>.csv` (see CONTRACTS section 2).
 - XP never comes from kills. Every encounter keeps `fight` and `flee`. Max 4 equipped abilities.
 - Gore (`Settings.gore` 0/1/2) is presentation only, never changes results.
 - Tone: the world takes itself seriously, the narrator Fanfi does not. Deadpan and self-aware,
