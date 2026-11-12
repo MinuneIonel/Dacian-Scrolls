@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://0fnekv8ebuf8"
+path="res://.godot/imported/dacian_title.fnt-363f25f31a8f0a446d04658e901f5647.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/dacian_title.fnt"
+dest_files=["res://.godot/imported/dacian_title.fnt-363f25f31a8f0a446d04658e901f5647.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
