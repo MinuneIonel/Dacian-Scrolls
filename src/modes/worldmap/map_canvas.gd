@@ -3,8 +3,8 @@
 extends Node2D
 
 const CELL: int = 16
-const ROUTE := Color("963131")       # palette red1: a hand-inked route
-const ROUTE_HI := Color("efd391")    # palette straw
+const ROUTE := Color("c40e2c")       # palette blood: a hand-inked route
+const ROUTE_HI := Color("f4efe2")    # palette white
 const PLATE := Color(0.118, 0.086, 0.067, 0.82)
 ## Flat colours when the generated map texture is missing.
 const FALLBACK: Dictionary = {
@@ -61,14 +61,17 @@ func _draw_route(st: GameState) -> void:
 		var t: float = carry
 		while t < seg:
 			var q: Vector2 = prev.lerp(p, t / seg).floor()
-			draw_rect(Rect2(q - Vector2(1, 1), Vector2(3, 3)), ROUTE_HI)
-			draw_rect(Rect2(q - Vector2(0, 0), Vector2(2, 2)), ROUTE)
-			t += 5.0
+			draw_rect(Rect2(q - Vector2(1, 1), Vector2(4, 4)), ROUTE_HI)
+			draw_rect(Rect2(q, Vector2(2, 2)), ROUTE)
+			t += 6.0
 		carry = t - seg
 		prev = p
 	# An X marks the destination.
 	var d: Vector2 = _center(route[-1]).floor()
-	for k in range(-3, 4):
+	for k in range(-4, 5):
+		draw_rect(Rect2(d + Vector2(k - 1, k - 1), Vector2(4, 4)), ROUTE_HI)
+		draw_rect(Rect2(d + Vector2(k - 1, -k - 1), Vector2(4, 4)), ROUTE_HI)
+	for k in range(-4, 5):
 		draw_rect(Rect2(d + Vector2(k, k), Vector2(2, 2)), ROUTE)
 		draw_rect(Rect2(d + Vector2(k, -k), Vector2(2, 2)), ROUTE)
 

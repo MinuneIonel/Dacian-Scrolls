@@ -9,7 +9,7 @@ wm_scroll,Scroll
 wm_cost,"%d h, %d food"
 wm_cost_hungry,"%d h, %d food (you have %d)"
 wm_click_again,Click again to go.
-wm_encounter_title,Something on the road
+wm_encounter_title,Company
 wm_option_chance,%s (%d%%)
 wm_roll,"%s roll: %d against %d. %s"
 wm_roll_pass,It works.

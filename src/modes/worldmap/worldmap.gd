@@ -1,7 +1,8 @@
 ## World map mode: Fallout-style travel. Click a cell to preview the route (hours, food), click it
 ## again to go. Each Travel.step is animated, broadcast with Bus.emit_events, and the journey
 ## stops on encounter, abducted, arrived or discovered. Never decides outcomes itself.
-## Router.args: {} normally; debug: {debug_party: true, debug_reveal_all: true, debug_encounter: id}.
+## Router.args: {} normally; debug: {debug_party, debug_reveal_all: true, debug_encounter: id,
+## debug_preview: [x, y]} (screenshots).
 extends Control
 
 const MapCanvas := preload("res://src/modes/worldmap/map_canvas.gd")
@@ -79,6 +80,8 @@ func _ready() -> void:
 	refresh_hud()
 	Audio.play_music(&"sarmizegetusa")
 	_update_music()
+	var prev: Variant = args.get("debug_preview")
+	if prev is Array and prev.size() == 2: click_cell(Vector2i(int(prev[0]), int(prev[1])))
 	var dbg: String = str(args.get("debug_encounter", ""))
 	if dbg != "": open_encounter(StringName(dbg))
 
