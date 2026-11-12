@@ -104,6 +104,7 @@ Used by dialogue (`do`, choice `if`/`do`), encounter options (`if`, `pass`, `fai
 | `["xp", n]` | to every party member [`xp_gained`, `level_up`] |
 | `["recruit", npc_id]` | see section 4 [`recruited` or `toast`] |
 | `["heal_party"]` | full HP, mana, charge for everyone [`healed_party`] |
+| `["restore_charge", n]` | +n charge for everyone, capped [`charge_restored{amount}`] |
 | `["battle", encounter_id]` / `["shop", shop_id]` | requests only; the view acts [`battle_requested`, `shop_requested`] |
 | `["discover", location]` | adds to `discovered` and reveals radius 2 around it [`discovered`, `revealed`] |
 | `["teleport", location]` | sets `world_pos` [`teleported`] |
@@ -185,7 +186,8 @@ defeated UFO is `gone`.
 `Encounters.choose` runs `pass` or `fail` (after a roll when the option has one). An option that
 ends without a `battle` effect and is not `flee` resolves the encounter and grants its `xp`.
 `Encounters.apply_battle_result(encounter_id, result, state, rng, defs)` applies a finished
-battle: party HP, loot to inventory, XP on a win.
+battle: party HP, loot to inventory, and on a win flag `won_<encounter_id>` = true and the XP.
+Data uses that flag to gate rewards that need a won fight.
 
 ## 10. Views and autoloads
 

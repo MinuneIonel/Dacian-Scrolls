@@ -39,7 +39,8 @@ static func choose(encounter_id: StringName, option_id: String, state: GameState
 		out.append_array(Rules.grant_xp(state, int(enc.get("xp", 0)), defs))
 	return out
 
-## Applies a finished Battle.result(): party HP/mana/charge, loot, and the encounter XP on a win.
+## Applies a finished Battle.result(): party HP/mana/charge, loot, and on a win flag
+## won_<encounter_id> = true plus the encounter XP.
 ## On a win (and a successful flee) downed members return at 1 HP. On a win the UFO with this
 ## encounter on the party's cell is gone; on any other outcome it goes back to patrol.
 static func apply_battle_result(encounter_id: StringName, result: Dictionary, state: GameState, rng: Rng, defs: Defs) -> Array[Dictionary]:
@@ -67,6 +68,7 @@ static func apply_battle_result(encounter_id: StringName, result: Dictionary, st
 		u["state"] = "gone" if won else "patrol"
 		out.append({"type": "ufo_moved", "id": u.get("id", &""), "pos": u.pos, "state": u.state})
 	if won:
+		out.append_array(Rules.run([["set_flag", "won_" + str(encounter_id), true]], state, rng, defs))
 		out.append_array(Rules.grant_xp(state, int(defs.get_def(&"encounter", encounter_id).get("xp", 0)), defs))
 	return out
 

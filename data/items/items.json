@@ -104,7 +104,7 @@
   "desc_key": "item_power_cell_desc",
   "kind": "consumable",
   "price": 36,
-  "mods": {"charge": 6},
+  "use_effects": [["restore_charge", 6]],
   "icon": "icon_power_cell"
  },
  {

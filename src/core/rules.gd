@@ -12,7 +12,7 @@ const CONDITIONS: Dictionary = {
 ## Effect name -> number of arguments after the name.
 const EFFECTS: Dictionary = {
 	"set_flag": 2, "give_item": 2, "take_item": 2, "gold": 1, "food": 1, "quest": 2,
-	"page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "battle": 1, "shop": 1,
+	"page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "restore_charge": 1, "battle": 1, "shop": 1,
 	"discover": 1, "teleport": 1, "narrate": 1, "roll": 4,
 }
 const OPS: Array[String] = ["==", "!=", ">=", "<=", ">", "<"]
@@ -173,6 +173,10 @@ static func _effect(e: Variant, state: GameState, rng: Rng, defs: Defs) -> Array
 			for m in state.party:
 				m.hp = m.max_hp; m.mana = m.max_mana; m.charge = m.max_charge
 			out.append({"type": "healed_party"})
+		"restore_charge":
+			for m in state.party:
+				m.charge = mini(m.max_charge, m.charge + int(e[1]))
+			out.append({"type": "charge_restored", "amount": int(e[1])})
 		"battle":
 			out.append({"type": "battle_requested", "encounter": StringName(str(e[1]))})
 		"shop":

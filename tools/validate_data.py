@@ -29,7 +29,7 @@ SINGLETONS = ["world", "fanfi", "tiles"]
 CONDITIONS = {"flag": 3, "quest": 3, "has_item": 2, "gold": 2, "class": 1, "in_party": 1,
               "has_page": 1, "stat": 3, "night": 0, "not": 1, "any": 1}
 EFFECTS = {"set_flag": 2, "give_item": 2, "take_item": 2, "gold": 1, "food": 1, "quest": 2,
-           "page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "battle": 1, "shop": 1,
+           "page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "restore_charge": 1, "battle": 1, "shop": 1,
            "discover": 1, "teleport": 1, "narrate": 1, "roll": 4}
 OPS = {"==", "!=", ">=", "<=", ">", "<"}
 STATS = {"might", "agility", "wits", "spirit"}
