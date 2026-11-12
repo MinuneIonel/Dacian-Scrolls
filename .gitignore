@@ -5,3 +5,7 @@
 /build/
 /shots/
 __pycache__/
+.godot-bin
+# Godot auto-imports CSVs as translations; we load the CSVs ourselves.
+*.translation
+*.csv.import
