@@ -130,7 +130,7 @@ def humanoid(g, facing, p):
 
     # arms
     nsh = (sx + 4 * near, sy + 1)
-    hand = (nsh[0] + p["wa"][0] * (1 if se else 1) + (0 if se else 4), nsh[1] + p["wa"][1])
+    hand = (min(27, max(4, nsh[0] + p["wa"][0] + (0 if se else 3))), nsh[1] + p["wa"][1])
     elbow = ((nsh[0] + hand[0]) / 2 + near * 1.5, (nsh[1] + hand[1]) / 2)
     near_arm = [path([nsh, elbow], 1.4, sleeve, edge=E),
                 path([elbow, hand], 1.3, g["forearm"], edge=E),
@@ -159,7 +159,7 @@ def humanoid(g, facing, p):
 def lying_xf(facing):
     if facing == "se":   # fell back toward north-west: head upper-left
         return R.Affine(pivot=(16, GROUND), m=((0.72, 0.66), (-0.36, 0.30)), o=(25, 42))
-    return R.Affine(pivot=(16, GROUND), m=((0.72, 0.66), (-0.36, -0.29)), o=(28, 33))
+    return R.Affine(pivot=(16, GROUND), m=((0.72, 0.66), (0.36, -0.29)), o=(28, 33))
 
 
 def human_frames(g):

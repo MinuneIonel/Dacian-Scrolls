@@ -37,7 +37,7 @@ def _base(seed, levels, cuts, f1=6, f2=3, amp2=0.5):
 
 def tile_grass(spec):
     rnd = K.rng(spec["seed"])
-    t, d = _base(spec["seed"], [I["green1"], I["green2"], I["green3"]], [0.16, 0.66], f1=8, f2=6, amp2=0.8)
+    t, d = _base(spec["seed"], [I["green1"], I["green2"], I["green3"]], [0.12, 0.74], f1=8, f2=8, amp2=1.0)
 
     def tuft(r):
         # a blade pair: light tip upper-left, shadow root below right
