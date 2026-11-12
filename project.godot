@@ -17,6 +17,7 @@ Assets="*res://src/autoload/assets.gd"
 Audio="*res://src/autoload/audio.gd"
 Game="*res://src/autoload/game.gd"
 Router="*res://src/autoload/router.gd"
+Hud="*res://src/ui/hud_overlay.gd"
 
 [display]
 

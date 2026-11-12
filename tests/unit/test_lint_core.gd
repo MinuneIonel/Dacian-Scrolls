@@ -1,7 +1,7 @@
 ## src/core must stay pure: no scene tree, no autoloads, no global randomness, no clock, no files.
 extends TestCase
 
-const AUTOLOADS: Array[String] = ["Game", "Bus", "Content", "Assets", "Audio", "Router", "Settings"]
+const AUTOLOADS: Array[String] = ["Game", "Bus", "Content", "Assets", "Audio", "Router", "Settings", "Hud"]
 
 func _core_files(dir: String, out: Array[String]) -> void:
 	var da := DirAccess.open(dir)
