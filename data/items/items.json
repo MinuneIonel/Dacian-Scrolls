@@ -132,6 +132,33 @@
   "icon": "icon_med_gel_canister"
  },
  {
+  "id": "surgeon_logbook",
+  "name_key": "item_surgeon_logbook",
+  "desc_key": "item_surgeon_logbook_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_surgeon_log"]],
+  "icon": "icon_surgeon_logbook"
+ },
+ {
+  "id": "oglinda_shard",
+  "name_key": "item_oglinda_shard",
+  "desc_key": "item_oglinda_shard_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_oglinda"]],
+  "icon": "icon_oglinda_shard"
+ },
+ {
+  "id": "deserters_diary",
+  "name_key": "item_deserters_diary",
+  "desc_key": "item_deserters_diary_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_deserters"]],
+  "icon": "icon_deserters_diary"
+ },
+ {
   "id": "strigoi_taxes",
   "name_key": "item_strigoi_taxes",
   "desc_key": "item_strigoi_taxes_desc",

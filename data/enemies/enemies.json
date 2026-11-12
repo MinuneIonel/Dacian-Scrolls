@@ -27,7 +27,7 @@
   "machine": false,
   "gib": true,
   "sprite": "roman_deserter",
-  "loot": [{"item": "healing_herbs", "chance": 0.3}]
+  "loot": [{"item": "healing_herbs", "chance": 0.3}, {"item": "deserters_diary", "chance": 0.34}]
  },
  {
   "id": "grazi_thrall",
@@ -111,6 +111,8 @@
   "loot": [
            {"item": "lobizi_scalpel", "chance": 1.0},
            {"item": "gravity_coil", "chance": 1.0},
+           {"item": "surgeon_logbook", "chance": 1.0},
+           {"item": "oglinda_shard", "chance": 1.0},
            {"item": "power_cell", "chance": 1.0}
           ]
  }

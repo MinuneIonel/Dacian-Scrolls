@@ -37,6 +37,42 @@
             "#####..#########################"],
  "entities": [
               {
+               "id": "ambush_wolves",
+               "kind": "trigger",
+               "cell": [12, 17],
+               "once": true,
+               "if": [],
+               "effects": [["narrate", "dlg_cave_wolves_narr"], ["battle", "cave_wolves"]]
+              },
+              {
+               "id": "graves_open",
+               "kind": "trigger",
+               "cell": [20, 8],
+               "once": true,
+               "if": [],
+               "effects": [["narrate", "dlg_cave_graves_narr"], ["battle", "cave_restless"]]
+              },
+              {
+               "id": "duras",
+               "kind": "npc",
+               "cell": [26, 4],
+               "npc": "duras",
+               "if": [["flag", "duras_fought", "==", false]]
+              },
+              {
+               "id": "duras_coffin",
+               "kind": "container",
+               "cell": [26, 2],
+               "once": true,
+               "if": [["flag", "duras_fought", "==", true]],
+               "effects": [
+                           ["give_item", "strigoi_taxes", 1],
+                           ["page", "page_strigoi"],
+                           ["quest", "dead_dont_pay_taxes", 50]
+                          ],
+               "sprite": "prop_tax_purse"
+              },
+              {
                "id": "crypt_crate",
                "kind": "container",
                "cell": [29, 4],

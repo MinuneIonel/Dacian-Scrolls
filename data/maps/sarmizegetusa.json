@@ -70,6 +70,31 @@
             "M~..*........O.....==..................M",
             "MMMMMMMMMMMMMMMMMMM==MMMMMMMMMMMMMMMMMMM"],
  "entities": [
+              {"id": "vezina", "kind": "npc", "cell": [8, 6], "npc": "vezina"},
+              {"id": "dida", "kind": "npc", "cell": [23, 19], "npc": "dida"},
+              {"id": "zia", "kind": "npc", "cell": [6, 26], "npc": "zia"},
+              {"id": "mucapor", "kind": "npc", "cell": [16, 19], "npc": "mucapor"},
+              {"id": "tsinna", "kind": "npc", "cell": [27, 28], "npc": "tsinna"},
+              {"id": "rholes", "kind": "npc", "cell": [22, 37], "npc": "rholes"},
+              {"id": "bitus", "kind": "npc", "cell": [17, 21], "npc": "bitus"},
+              {
+               "id": "sun_disc_page",
+               "kind": "container",
+               "cell": [31, 8],
+               "once": true,
+               "if": [],
+               "effects": [["page", "page_calendar"]],
+               "sprite": "prop_scroll"
+              },
+              {
+               "id": "old_well",
+               "kind": "container",
+               "cell": [14, 38],
+               "once": true,
+               "if": [],
+               "effects": [["page", "page_sargetia"], ["gold", 12]],
+               "sprite": "prop_bucket"
+              },
               {
                "id": "temple_offering_box",
                "kind": "container",

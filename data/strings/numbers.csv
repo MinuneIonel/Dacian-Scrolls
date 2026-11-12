@@ -83,6 +83,12 @@ item_gravity_coil,Gravity Coil
 item_gravity_coil_desc,Salvage. It wants to float. Keep it in a bag with a rock on top.
 item_med_gel_canister,Med-Gel Canister
 item_med_gel_canister_desc,Salvage. Glowing green paste in a glass tube. Labelled in a language that is mostly numbers in base 12.
+item_surgeon_logbook,Surgeon's Logbook
+item_surgeon_logbook_desc,A giant's notebook full of tiny drawings of you. Read it to add its page to the scroll.
+item_oglinda_shard,Oglinda Shard
+item_oglinda_shard_desc,A sliver of the mirror that links the Lobizi to the spirits above. Look into it to add its page to the scroll.
+item_deserters_diary,Deserter's Diary
+item_deserters_diary_desc,A wax tablet of complaints about Trajan. Read it to add its page to the scroll.
 item_strigoi_taxes,Strigoi Tax Purse
 item_strigoi_taxes_desc,Back taxes from a man who has been dead for a while. Coins slightly damp.
 item_lobizi_parcel,Lobizi Parcel

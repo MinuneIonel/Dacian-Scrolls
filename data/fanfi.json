@@ -1,0 +1,48 @@
+{
+ "new_game": [
+              {
+               "if": [],
+               "once": true,
+               "lines": ["fanfi_new_game_1", "fanfi_new_game_2", "fanfi_new_game_3"]
+              }
+             ],
+ "abducted": [
+              {"if": [], "once": true, "lines": ["fanfi_abducted_1"]},
+              {"if": [], "once": false, "lines": ["fanfi_abducted_2"]}
+             ],
+ "died": [
+          {"if": [], "once": true, "lines": ["fanfi_died_1"]},
+          {"if": [], "once": true, "lines": ["fanfi_died_2"]}
+         ],
+ "page_found": [
+                {"if": [], "once": true, "lines": ["fanfi_page_found_1"]},
+                {"if": [], "once": false, "lines": ["fanfi_page_found_2"]}
+               ],
+ "level_up": [
+              {"if": [], "once": true, "lines": ["fanfi_level_up_1"]},
+              {"if": [], "once": false, "lines": ["fanfi_level_up_2"]}
+             ],
+ "saved": [
+           {"if": [], "once": true, "lines": ["fanfi_saved_1"]},
+           {"if": [], "once": false, "lines": ["fanfi_saved_2"]}
+          ],
+ "starved": [{"if": [], "once": false, "lines": ["fanfi_starved_1"]}],
+ "fled_battle": [{"if": [], "once": false, "lines": ["fanfi_fled_battle_1"]}],
+ "quest_changed": [
+                   {
+                    "if": [["quest", "dead_dont_pay_taxes", "==", 100]],
+                    "once": true,
+                    "lines": ["fanfi_quest_changed_taxes"]
+                   },
+                   {
+                    "if": [["quest", "delivery_in_188_hours", "==", 100]],
+                    "once": true,
+                    "lines": ["fanfi_quest_changed_delivery"]
+                   },
+                   {"if": [], "once": true, "lines": ["fanfi_quest_changed_1"]}
+                  ],
+ "recruited": [
+               {"if": [["in_party", "vezina"]], "once": true, "lines": ["fanfi_recruited_vezina"]},
+               {"if": [], "once": false, "lines": ["fanfi_recruited_1"]}
+              ]
+}

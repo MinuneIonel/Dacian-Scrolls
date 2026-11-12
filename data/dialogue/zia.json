@@ -1,0 +1,134 @@
+{
+ "id": "zia",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_zia",
+                     "text_key": "dlg_zia_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_zia_hello_c0",
+                                  "if": [["gold", ">=", 12]],
+                                  "do": [["gold", -12], ["food", 4]],
+                                  "goto": "meal"
+                                 },
+                                 {
+                                  "text_key": "dlg_zia_hello_c1",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "rumours"
+                                 },
+                                 {
+                                  "text_key": "dlg_zia_hello_c2",
+                                  "if": [["gold", ">=", 12], ["not", ["has_page", "page_tavern"]]],
+                                  "do": [["gold", -12], ["page", "page_tavern"]],
+                                  "goto": "story"
+                                 },
+                                 {"text_key": "dlg_zia_hello_c3", "if": [], "do": [], "goto": "end"}
+                                ]
+                    },
+           "meal": {
+                    "speaker": "npc_zia",
+                    "text_key": "dlg_zia_meal",
+                    "choices": [
+                                {"text_key": "dlg_zia_meal_c0", "if": [], "do": [], "goto": "hello"}
+                               ]
+                   },
+           "rumours": {
+                       "speaker": "npc_zia",
+                       "text_key": "dlg_zia_rumours",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_zia_rumours_c0",
+                                    "if": [],
+                                    "do": [["discover", "strigoi_cave"]],
+                                    "goto": "rumour_cave"
+                                   },
+                                   {
+                                    "text_key": "dlg_zia_rumours_c1",
+                                    "if": [],
+                                    "do": [["discover", "crash_site"]],
+                                    "goto": "rumour_crash"
+                                   },
+                                   {
+                                    "text_key": "dlg_zia_rumours_c2",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "rumour_road"
+                                   },
+                                   {
+                                    "text_key": "dlg_zia_rumours_c3",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "hello"
+                                   }
+                                  ]
+                      },
+           "rumour_cave": {
+                           "speaker": "npc_zia",
+                           "text_key": "dlg_zia_rumour_cave",
+                           "choices": [
+                                       {
+                                        "text_key": "dlg_zia_rumour_cave_c0",
+                                        "if": [],
+                                        "do": [],
+                                        "goto": "rumours"
+                                       },
+                                       {
+                                        "text_key": "dlg_zia_rumour_cave_c1",
+                                        "if": [],
+                                        "do": [],
+                                        "goto": "hello"
+                                       }
+                                      ]
+                          },
+           "rumour_crash": {
+                            "speaker": "npc_zia",
+                            "text_key": "dlg_zia_rumour_crash",
+                            "choices": [
+                                        {
+                                         "text_key": "dlg_zia_rumour_crash_c0",
+                                         "if": [],
+                                         "do": [],
+                                         "goto": "rumours"
+                                        },
+                                        {
+                                         "text_key": "dlg_zia_rumour_crash_c1",
+                                         "if": [],
+                                         "do": [],
+                                         "goto": "hello"
+                                        }
+                                       ]
+                           },
+           "rumour_road": {
+                           "speaker": "npc_zia",
+                           "text_key": "dlg_zia_rumour_road",
+                           "choices": [
+                                       {
+                                        "text_key": "dlg_zia_rumour_road_c0",
+                                        "if": [],
+                                        "do": [],
+                                        "goto": "rumours"
+                                       },
+                                       {
+                                        "text_key": "dlg_zia_rumour_road_c1",
+                                        "if": [],
+                                        "do": [],
+                                        "goto": "hello"
+                                       }
+                                      ]
+                          },
+           "story": {
+                     "speaker": "npc_zia",
+                     "text_key": "dlg_zia_story",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_zia_story_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "hello"
+                                 }
+                                ]
+                    }
+          }
+}
