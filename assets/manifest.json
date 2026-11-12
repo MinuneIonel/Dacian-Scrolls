@@ -1,1 +1,236 @@
-{"textures":{},"frames":{},"audio":{}}
+{
+ "audio": {},
+ "frames": {
+  "giant_legs": {
+   "anchor": [
+    64,
+    160
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "footprint": [
+    2,
+    2
+   ],
+   "frame_size": [
+    128,
+    192
+   ],
+   "sheet": "res://assets/sprites/giant_legs.png"
+  },
+  "grazi_thrall": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/grazi_thrall.png"
+  },
+  "knight": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/knight.png"
+  }
+ },
+ "textures": {
+  "tile_forest_floor": "res://assets/tiles/tile_forest_floor.png",
+  "tile_grass": "res://assets/tiles/tile_grass.png",
+  "tile_road": "res://assets/tiles/tile_road.png",
+  "tile_stone": "res://assets/tiles/tile_stone.png",
+  "tile_wall": "res://assets/tiles/tile_wall.png",
+  "ui_panel": "res://assets/ui/ui_panel.png"
+ }
+}
