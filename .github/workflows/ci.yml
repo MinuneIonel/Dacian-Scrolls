@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install jsonschema==4.23.0 Pillow==11.0.0 numpy==2.1.3
+      - name: Validate data
+        run: python3 tools/validate_data.py && python3 tools/test_validate_data.py
+      - name: Cache Godot
+        uses: actions/cache@v4
+        with:
+          path: .godot-bin
+          key: godot-4.5.1-stable-linux
+      - run: tools/get_godot.sh
+      - name: Unit and integration tests
+        run: tools/test.sh
+      - name: Bot tests
+        run: if ls tests/bot/test_*.gd >/dev/null 2>&1; then tools/test.sh tests/bot; fi

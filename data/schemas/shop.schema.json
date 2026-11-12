@@ -1,0 +1,47 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "shop",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "stock": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "item": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "count": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "item",
+     "count"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "stock"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

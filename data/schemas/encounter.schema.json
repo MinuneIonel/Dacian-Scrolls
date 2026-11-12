@@ -1,0 +1,178 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "encounter",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "intro_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "map": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "xp": {
+   "type": "integer"
+  },
+  "party_spawn": {
+   "type": "array",
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "integer"
+    },
+    "minItems": 2,
+    "maxItems": 2
+   },
+   "minItems": 4
+  },
+  "enemies": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "enemy": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "cell": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     }
+    },
+    "required": [
+     "enemy",
+     "cell"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  },
+  "rules": {
+   "type": "object",
+   "properties": {
+    "magic_disabled": {
+     "type": "boolean"
+    },
+    "gravity": {
+     "enum": [
+      "normal",
+      "floaty"
+     ]
+    },
+    "turn_limit": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "magic_disabled",
+    "gravity",
+    "turn_limit"
+   ],
+   "patternProperties": {
+    "^_": {}
+   },
+   "additionalProperties": false
+  },
+  "options": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "enum": [
+       "fight",
+       "talk",
+       "sneak",
+       "bribe",
+       "flee",
+       "trade",
+       "help"
+      ]
+     },
+     "label_key": {
+      "type": "string",
+      "minLength": 1
+     },
+     "if": {
+      "type": "array"
+     },
+     "roll": {
+      "oneOf": [
+       {
+        "type": "null"
+       },
+       {
+        "type": "object",
+        "properties": {
+         "stat": {
+          "enum": [
+           "might",
+           "agility",
+           "wits",
+           "spirit"
+          ]
+         },
+         "dc": {
+          "type": "integer"
+         }
+        },
+        "required": [
+         "stat",
+         "dc"
+        ],
+        "patternProperties": {
+         "^_": {}
+        },
+        "additionalProperties": false
+       }
+      ]
+     },
+     "pass": {
+      "type": "array"
+     },
+     "fail": {
+      "type": "array"
+     }
+    },
+    "required": [
+     "id",
+     "label_key",
+     "if",
+     "roll",
+     "pass",
+     "fail"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   },
+   "minItems": 2
+  }
+ },
+ "required": [
+  "id",
+  "intro_key",
+  "map",
+  "xp",
+  "party_spawn",
+  "enemies",
+  "rules",
+  "options"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

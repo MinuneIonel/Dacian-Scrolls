@@ -1,0 +1,38 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "quest",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "stages": {
+   "type": "object",
+   "propertyNames": {
+    "pattern": "^[0-9]+$"
+   },
+   "additionalProperties": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "xp_on_done": {
+   "type": "integer"
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "stages",
+  "xp_on_done"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

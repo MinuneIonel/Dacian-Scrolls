@@ -1,0 +1,10 @@
+{"id": "fx_arena", "kind": "arena", "name_key": "fx_map_arena",
+ "legend": {".": "grass", "#": "wall", "c": "crate", "~": "water"},
+ "ground": ["########",
+            "#......#",
+            "#..c...#",
+            "#......#",
+            "#...~..#",
+            "#......#",
+            "########"],
+ "entities": []}

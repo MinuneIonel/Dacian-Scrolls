@@ -1,0 +1,92 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "class",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "desc_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "base_stats": {
+   "type": "object",
+   "properties": {
+    "might": {
+     "type": "integer"
+    },
+    "agility": {
+     "type": "integer"
+    },
+    "wits": {
+     "type": "integer"
+    },
+    "spirit": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "might",
+    "agility",
+    "wits",
+    "spirit"
+   ],
+   "additionalProperties": false
+  },
+  "base_hp": {
+   "type": "integer"
+  },
+  "hp_per_level": {
+   "type": "integer"
+  },
+  "base_mana": {
+   "type": "integer"
+  },
+  "base_charge": {
+   "type": "integer"
+  },
+  "basic_attack": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "abilities": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "pattern": "^[a-z0-9_]+$"
+   },
+   "minItems": 1
+  },
+  "sprite": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "portrait": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "desc_key",
+  "base_stats",
+  "base_hp",
+  "hp_per_level",
+  "base_mana",
+  "base_charge",
+  "basic_attack",
+  "abilities",
+  "sprite"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

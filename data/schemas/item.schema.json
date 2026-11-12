@@ -1,0 +1,63 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "item",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "desc_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "kind": {
+   "enum": [
+    "weapon",
+    "armor",
+    "trinket",
+    "consumable",
+    "quest",
+    "salvage"
+   ]
+  },
+  "price": {
+   "type": "integer",
+   "minimum": 0,
+   "multipleOf": 12
+  },
+  "mods": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "integer"
+   }
+  },
+  "use_effects": {
+   "type": "array"
+  },
+  "use_ability": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "icon": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "desc_key",
+  "kind",
+  "price",
+  "icon"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

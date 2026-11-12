@@ -1,0 +1,315 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "ability",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "desc_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "source": {
+   "enum": [
+    "steel",
+    "magic",
+    "tech"
+   ]
+  },
+  "ap": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "cost": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "range": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "area": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "target": {
+   "enum": [
+    "enemy",
+    "ally",
+    "cell",
+    "corpse",
+    "machine",
+    "self"
+   ]
+  },
+  "icon": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "sfx": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "effects": {
+   "type": "array",
+   "items": {
+    "oneOf": [
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "damage"
+       },
+       "base": {
+        "type": "integer"
+       },
+       "stat": {
+        "enum": [
+         "might",
+         "agility",
+         "wits",
+         "spirit"
+        ]
+       },
+       "scale": {
+        "type": "number"
+       },
+       "ignore_armor": {
+        "type": "boolean"
+       }
+      },
+      "required": [
+       "kind",
+       "base",
+       "stat",
+       "scale"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "heal"
+       },
+       "base": {
+        "type": "integer"
+       },
+       "stat": {
+        "enum": [
+         "might",
+         "agility",
+         "wits",
+         "spirit"
+        ]
+       },
+       "scale": {
+        "type": "number"
+       }
+      },
+      "required": [
+       "kind",
+       "base",
+       "stat",
+       "scale"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "shield"
+       },
+       "amount": {
+        "type": "integer"
+       },
+       "turns": {
+        "type": "integer"
+       }
+      },
+      "required": [
+       "kind",
+       "amount",
+       "turns"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "taunt"
+       },
+       "turns": {
+        "type": "integer"
+       }
+      },
+      "required": [
+       "kind",
+       "turns"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "status"
+       },
+       "status": {
+        "enum": [
+         "slowed",
+         "stunned",
+         "bleeding",
+         "chilled",
+         "regen",
+         "charmed"
+        ]
+       },
+       "turns": {
+        "type": "integer"
+       },
+       "value": {
+        "type": "integer"
+       }
+      },
+      "required": [
+       "kind",
+       "status",
+       "turns"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "summon"
+       },
+       "from": {
+        "enum": [
+         "corpse",
+         "machine",
+         "spawn"
+        ]
+       },
+       "enemy": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+       }
+      },
+      "required": [
+       "kind",
+       "from"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "cleanse"
+       }
+      },
+      "required": [
+       "kind"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "push"
+       },
+       "cells": {
+        "type": "integer"
+       }
+      },
+      "required": [
+       "kind",
+       "cells"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     },
+     {
+      "type": "object",
+      "properties": {
+       "kind": {
+        "const": "hazard"
+       },
+       "hazard": {
+        "enum": [
+         "gravity_zone",
+         "specimen_tank",
+         "acid"
+        ]
+       },
+       "turns": {
+        "type": "integer"
+       }
+      },
+      "required": [
+       "kind",
+       "hazard",
+       "turns"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     }
+    ]
+   },
+   "minItems": 1
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "desc_key",
+  "source",
+  "ap",
+  "cost",
+  "range",
+  "area",
+  "target",
+  "icon",
+  "effects"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}
