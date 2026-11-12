@@ -1,0 +1,14 @@
+{
+ "id": "necromancer",
+ "name_key": "class_necromancer",
+ "desc_key": "class_necromancer_desc",
+ "base_stats": {"might": 2, "agility": 4, "wits": 6, "spirit": 5},
+ "base_hp": 22,
+ "hp_per_level": 4,
+ "base_mana": 12,
+ "base_charge": 6,
+ "basic_attack": "bone_dart",
+ "abilities": ["bone_dart", "bone_chill", "raise_strigoi", "reanimate_drone"],
+ "sprite": "necromancer",
+ "portrait": "portrait_necromancer"
+}

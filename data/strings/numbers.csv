@@ -1,0 +1,97 @@
+keys,en
+ability_falx_strike,Falx Strike
+ability_falx_strike_desc,A two-handed swing of the Dacian falx. Rome redesigned its helmets because of this.
+ability_falx_sweep,Falx Sweep
+ability_falx_sweep_desc,"A wide arc that hits every enemy standing next to you. Personal space, enforced."
+ability_dracos_ward,Draco's Ward
+ability_dracos_ward_desc,Raise the wolf-headed Draco banner. It howls. Enemies within 3 cells must attack you; allies nearby get a shield.
+ability_plasma_falx,Plasma Falx
+ability_plasma_falx_desc,Salvaged Lobizi tech duct-taped to an iron blade. Heavy hit that ignores armour.
+ability_bone_dart,Bone Dart
+ability_bone_dart_desc,"Flick a sharpened knucklebone. Not yours, hopefully."
+ability_bone_chill,Bone Chill
+ability_bone_chill_desc,A ranged curse that freezes the marrow. The target loses 3 AP on its next turn.
+ability_raise_strigoi,Raise Strigoi
+ability_raise_strigoi_desc,Call a fallen body back up as a strigoi that fights for you until the battle ends. It does not get paid.
+ability_reanimate_drone,Reanimate Drone
+ability_reanimate_drone_desc,Jam a knucklebone into a dead Lobizi machine until it agrees to be a turret. Works where magic does not.
+ability_staff_smack,Staff Smack
+ability_staff_smack_desc,Zalmoxis teaches peace. Zalmoxis is not here right now.
+ability_blessing_of_zalmoxis,Blessing of Zalmoxis
+ability_blessing_of_zalmoxis_desc,"Heal one ally and wash away bleeding, chill and other bad decisions."
+ability_med_gel_field,Med-Gel Field
+ability_med_gel_field_desc,Spray glowing Lobizi med-gel over an area. Heals a little now and a little more for 2 turns. Smells of mint and ozone.
+ability_herb_poultice,Herb Poultice
+ability_herb_poultice_desc,Slap healing herbs on an ally. Restores 10 HP.
+ability_wolf_bite,Bite
+ability_wolf_bite_desc,Teeth. Many of them.
+ability_gladius_stab,Gladius Stab
+ability_gladius_stab_desc,Standard-issue Roman violence.
+ability_pilum_throw,Pilum Throw
+ability_pilum_throw_desc,A javelin designed to bend so you cannot throw it back. Rude.
+ability_thrall_spear,Thrall Spear
+ability_thrall_spear_desc,A long Lobizi-issue spear. Reaches two cells.
+ability_strigoi_claw,Strigoi Claw
+ability_strigoi_claw_desc,Grave-dirt fingernails. Causes bleeding.
+ability_bancul_bite,Feral Bite
+ability_bancul_bite_desc,"Bites everything nearby and drinks the blood, healing itself and its friends."
+ability_probe_zap,Probe Zap
+ability_probe_zap_desc,"A cattle probe, recalibrated for Dacians. Slows the target."
+ability_surgeon_scalpel,Scalpel
+ability_surgeon_scalpel_desc,A scalpel the length of a canoe. Reaches two cells.
+ability_surgeon_specimen_tank,Specimen Tank
+ability_surgeon_specimen_tank_desc,Drops a specimen tank on a cell. It blocks movement and gives cover. The tank is labelled 'DACIAN (SMALL)'.
+ability_surgeon_gravity_well,Gravity Well
+ability_surgeon_gravity_well_desc,Switches gravity off around a cell for 3 turns. Units there float and drift.
+ability_surgeon_anesthetic,Anaesthetic Puff
+ability_surgeon_anesthetic_desc,A cloud of sleepy gas that shoves everyone nearby 2 cells back and slows them.
+ability_surgeon_call_drone,Page a Drone
+ability_surgeon_call_drone_desc,"Summons a probe drone. The drone arrives in under 188 hours, for once."
+class_knight,Knight
+class_knight_desc,A tarabostes: armoured Dacian noble with shield and falx. Protects the party by standing where the pain is.
+class_necromancer,Necromancer
+class_necromancer_desc,A strigoi-caller. Every enemy that falls is a resource. HR has concerns.
+class_healer,Healer
+class_healer_desc,"A priest of Zalmoxis, god of the afterlife, who would prefer you postpone it."
+item_iron_falx,Iron Falx
+item_iron_falx_desc,A curved two-handed blade. Legionaries started wearing arm guards because of it. +3 damage.
+item_sica,Sica
+item_sica_desc,"The curved Dacian dagger. Romans called anyone who carried one a sicarius, which is rich coming from Rome. +2 damage."
+item_oak_staff,Oak Staff
+item_oak_staff_desc,"Cut from a tree near the temple. The tree has forgiven no one. +1 damage, +1 spirit."
+item_wolf_pelt,Wolf Pelt
+item_wolf_pelt_desc,"Warm, smelly, and a clear message to other wolves. +1 armour."
+item_scale_mail,Scale Mail
+item_scale_mail_desc,Bronze scales on leather. Clinks when you sneak. +2 armour.
+item_roman_lorica,Roman Lorica
+item_roman_lorica_desc,"Segmented plate. The previous owner has retired from Rome. +3 armour, -1 agility."
+item_decoy_charm,Decoy Charm
+item_decoy_charm_desc,A clay figurine of a very tall cow. Use it on the world map and the next UFO that spots you chases the cow instead.
+item_draco_pennant,Draco Pennant
+item_draco_pennant_desc,A pocket-sized wolf-headed banner. Howls faintly in a breeze. +1 might.
+item_zalmoxis_amulet,Amulet of Zalmoxis
+item_zalmoxis_amulet_desc,Carved with the god's sign. Smells faintly of incense and certainty. +1 spirit.
+item_bread,Bread
+item_bread_desc,A round Dacian loaf. Feeds the party: +3 food.
+item_healing_herbs,Healing Herbs
+item_healing_herbs_desc,"Mountain herbs, picked by someone who knew which ones. In battle, heals an ally for 10 HP."
+item_power_cell,Power Cell
+item_power_cell_desc,A humming Lobizi battery. Restores 6 charge to one party member.
+item_lobizi_scalpel,Lobizi Scalpel
+item_lobizi_scalpel_desc,Salvage. A surgical blade the length of a canoe. Worth a fortune to the right blacksmith.
+item_gravity_coil,Gravity Coil
+item_gravity_coil_desc,Salvage. It wants to float. Keep it in a bag with a rock on top.
+item_med_gel_canister,Med-Gel Canister
+item_med_gel_canister_desc,Salvage. Glowing green paste in a glass tube. Labelled in a language that is mostly numbers in base 12.
+item_strigoi_taxes,Strigoi Tax Purse
+item_strigoi_taxes_desc,Back taxes from a man who has been dead for a while. Coins slightly damp.
+item_lobizi_parcel,Lobizi Parcel
+item_lobizi_parcel_desc,"A box the size of a hut, stamped 'FRAGILE' in base 12. Ordered 188 hours ago. Delivered never."
+enemy_wolf,Wolf
+enemy_roman_deserter,Roman Deserter
+enemy_grazi_thrall,Grazi Thrall
+enemy_strigoi,Strigoi
+enemy_bancul_recruit,Bancul Recruit
+enemy_probe_drone,Probe Drone
+enemy_lobizi_surgeon,Lobizi Surgeon
+shop_trader_shop,Dida's Stall
