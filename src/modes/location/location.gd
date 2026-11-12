@@ -2,7 +2,7 @@
 ## triggers and exits. Reads Router.args {location_id, cell?}; location_id is a world location id
 ## (its map and entry_cell come from world.json) or directly a map id.
 ## Debug args (screenshots): debug_party (start a new game with a knight and Vezina),
-## debug_talk (npc entity id: open its dialogue at once).
+## debug_talk (npc entity id: open its dialogue at once), debug_pause (open the pause menu).
 ## The view never decides outcomes: containers, triggers and dialogue run Rules / DialogueRunner
 ## and it acts on the returned events.
 extends Node2D
@@ -100,6 +100,7 @@ func _ready() -> void:
 	Audio.set_layer(&"explore", true)
 	Audio.set_layer(&"combat", false)
 	Audio.set_layer(&"lobizi", false)
+	if a.get("debug_pause", false): open_pause()
 	if a.has("debug_talk"):
 		var id: String = str(a.debug_talk)
 		if entities.has(id):
