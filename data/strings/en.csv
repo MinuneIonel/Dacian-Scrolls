@@ -9,3 +9,5 @@ party_full,"Your party is full. Four is a crowd, five is a cult."
 save_corrupt,That save is damaged beyond reading.
 save_too_new,That save comes from a newer version of the game.
 zalmoxis_cant_hear_you,Zalmoxis cannot hear you up here.
+hero_name,You
+save_missing,There is no save in that slot. Mirg did not write one.
