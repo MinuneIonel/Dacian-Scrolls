@@ -67,3 +67,25 @@ func events_of(ev: Array, type: String) -> Array[Dictionary]:
 	for e in ev:
 		if e.type == type: out.append(e)
 	return out
+
+## The battle used by the last first_hit() call.
+var hb: Battle
+
+## Builds battles with build.call(seed) for seeds 1.. until `action` lands with no miss and no
+## crit; returns its events (and leaves the battle in hb). Fails the test if no seed works.
+func first_hit(build: Callable, action: Dictionary, allow_crit: bool = false) -> Array[Dictionary]:
+	for s in range(1, 60):
+		var b: Battle = build.call(s)
+		var ev: Array[Dictionary] = b.apply(action)
+		if count_events(ev, "illegal") > 0:
+			fail("illegal: %s" % str(ev))
+			return ev
+		if count_events(ev, "missed") > 0: continue
+		var crit: bool = false
+		for e in ev:
+			if e.type == "damaged" and e.crit: crit = true
+		if crit and not allow_crit: continue
+		hb = b
+		return ev
+	fail("no seed hit")
+	return []
