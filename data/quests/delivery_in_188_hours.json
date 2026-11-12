@@ -1,0 +1,11 @@
+{
+ "id": "delivery_in_188_hours",
+ "name_key": "quest_delivery_in_188_hours",
+ "stages": {
+            "10": "quest_delivery_in_188_hours_10",
+            "30": "quest_delivery_in_188_hours_30",
+            "60": "quest_delivery_in_188_hours_60",
+            "100": "quest_delivery_in_188_hours_100"
+           },
+ "xp_on_done": 180
+}

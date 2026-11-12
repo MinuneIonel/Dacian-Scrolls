@@ -1,0 +1,62 @@
+{
+ "id": "bancul_patrol",
+ "intro_key": "enc_bancul_patrol",
+ "map": "arena_mountain",
+ "xp": 48,
+ "party_spawn": [[1, 3], [1, 5], [2, 4], [2, 6]],
+ "enemies": [{"enemy": "bancul_recruit", "cell": [8, 4]}, {"enemy": "grazi_thrall", "cell": [9, 7]}],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "bancul_patrol"]],
+              "fail": []
+             },
+             {
+              "id": "sneak",
+              "label_key": "enc_bancul_patrol_opt_sneak",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 13},
+              "pass": [["narrate", "enc_bancul_patrol_sneak_pass"]],
+              "fail": [["narrate", "enc_bancul_patrol_sneak_fail"], ["battle", "bancul_patrol"]]
+             },
+             {
+              "id": "bribe",
+              "label_key": "enc_bancul_patrol_opt_bribe",
+              "if": [["has_item", "bread", 2]],
+              "roll": null,
+              "pass": [["narrate", "enc_bancul_patrol_bribe_pass"], ["take_item", "bread", 2]],
+              "fail": []
+             },
+             {
+              "id": "talk",
+              "label_key": "enc_bancul_patrol_opt_talk",
+              "if": [],
+              "roll": {"stat": "spirit", "dc": 14},
+              "pass": [["narrate", "enc_bancul_patrol_talk_pass"]],
+              "fail": [["narrate", "enc_bancul_patrol_talk_fail"], ["battle", "bancul_patrol"]]
+             },
+             {
+              "id": "help",
+              "label_key": "enc_bancul_patrol_opt_help",
+              "if": [["flag", "strigoi_ally", "==", true]],
+              "roll": null,
+              "pass": [
+                       ["narrate", "enc_bancul_patrol_help_pass"],
+                       ["set_flag", "strigoi_ally", false]
+                      ],
+              "fail": []
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 12},
+              "pass": [],
+              "fail": [["battle", "bancul_patrol"]]
+             }
+            ]
+}

@@ -1,0 +1,56 @@
+{
+ "id": "bitus",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_bitus",
+                     "text_key": "dlg_bitus_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_bitus_hello_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "made_up"
+                                 },
+                                 {
+                                  "text_key": "dlg_bitus_hello_c1",
+                                  "if": [
+                                         ["gold", ">=", 12],
+                                         ["not", ["flag", "bitus_gift", "==", true]]
+                                        ],
+                                  "do": [
+                                         ["gold", -12],
+                                         ["give_item", "decoy_charm", 1],
+                                         ["set_flag", "bitus_gift", true]
+                                        ],
+                                  "goto": "coin"
+                                 },
+                                 {
+                                  "text_key": "dlg_bitus_hello_c2",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "made_up": {
+                       "speaker": "npc_bitus",
+                       "text_key": "dlg_bitus_made_up",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_bitus_made_up_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "hello"
+                                   }
+                                  ]
+                      },
+           "coin": {
+                    "speaker": "npc_bitus",
+                    "text_key": "dlg_bitus_coin",
+                    "choices": [
+                                {"text_key": "dlg_bitus_coin_c0", "if": [], "do": [], "goto": "end"}
+                               ]
+                   }
+          }
+}

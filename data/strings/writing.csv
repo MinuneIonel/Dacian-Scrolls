@@ -1,0 +1,255 @@
+keys,en
+npc_vezina,"Vezina, Priest of Zalmoxis"
+npc_dida,Dida the Trader
+npc_zia,"Zia, Keeper of the Thirsty Draco"
+npc_mucapor,"Mucapor, Royal Tax Collector"
+npc_tsinna,Tsinna
+npc_rholes,"Rholes, Gate Guard"
+npc_bitus,Little Bitus
+npc_duras,Boier Duras the Late
+npc_ozo,"Ozo, Grazi Thrall"
+dlg_vezina_hello,"Vezina, high priest of Zalmoxis, looks up from the altar. ""Zalmoxis promises that the brave do not die. They go to him instead. It is a technicality, but an important one."""
+dlg_vezina_hello_c0,"Heal us, holy one."
+dlg_vezina_hello_c1,Tell me about Zalmoxis.
+dlg_vezina_hello_c2,Have you seen the lights in the sky?
+dlg_vezina_hello_c3,Come with us. We could use a healer.
+dlg_vezina_hello_c4,Farewell.
+dlg_vezina_healed,"He murmurs a prayer and taps each of you with a sprig of fir. Cuts close, bruises fade, and someone's ear reattaches with a small pop. ""No offering needed. Zalmoxis is funded by the king."""
+dlg_vezina_healed_c0,Thank you.
+dlg_vezina_healed_c1,Farewell.
+dlg_vezina_lore,"""Zalmoxis lived among the Getae, then went down into a chamber under the earth for three years, and came back. The Greeks say it was a trick with a cellar. The Greeks say many things. Every five years we send him a messenger with our requests. The details are written in the scrolls."""
+dlg_vezina_lore_c0,Which scrolls?
+dlg_vezina_lore_c1,I see.
+dlg_vezina_scrolls,"""Our history. Kings, battles, the old songs. Pages are vanishing from the temple shelves, one by one, as if someone up there were erasing us. If you find any of them, keep them safe. A people that forgets itself is very easy to conquer."""
+dlg_vezina_scrolls_c0,I will look for them.
+dlg_vezina_lights,"""The priests of the sanctuary read the sky with the great stone calendar. Last month the calendar counted a day that does not exist. That has never happened before. We are deeply concerned, in a calm and dignified manner."""
+dlg_vezina_lights_c0,Back to other matters.
+dlg_vezina_recruit,"""Leave the temple? Zalmoxis is everywhere, so strictly speaking I would not be leaving."" He takes up his staff. ""I will come. Someone has to keep you on this side of the afterlife."""
+dlg_vezina_recruit_c0,Welcome aboard.
+dlg_dida_hello,"Dida runs the only stall in Sarmizegetusa that accepts Dacian silver, Roman denarii and ""shiny things that fell out of the sky"". ""Prices are in twelves now. Everything is in twelves. Ever since the sky traders started dropping by, my abacus has two extra beads."""
+dlg_dida_hello_c0,Show me your wares.
+dlg_dida_hello_c1,Sky traders?
+dlg_dida_hello_c2,Goodbye.
+dlg_dida_sky,"""Big folk. Very big. They do not haggle, they have never seen a market, and they keep asking where the cofetărie is. I sold one a cart of honey cakes. He ate the cart as well. Paid for it, to be fair."""
+dlg_dida_sky_c0,Let me see your wares.
+dlg_dida_sky_c1,Goodbye.
+dlg_zia_hello,"Zia wipes a cup that has never once been clean. ""Welcome to the Thirsty Draco. We have mead, we have stew, and we have rumours. The rumours are the freshest thing on the menu."""
+dlg_zia_hello_c0,A meal for the road. (12 gold)
+dlg_zia_hello_c1,Heard any rumours?
+dlg_zia_hello_c2,Tell me one of your grandmother's stories. (12 gold)
+dlg_zia_hello_c3,Goodbye.
+dlg_zia_meal,"""Bean stew with smoked pork, wrapped in a cloth. Eat it before it eats you."" She packs enough for a few days on the road."
+dlg_zia_meal_c0,Thanks.
+dlg_zia_rumours,"""Which kind? Dead, sky, or road?"""
+dlg_zia_rumours_c0,The dead. Anything strange in the hills?
+dlg_zia_rumours_c1,The sky. What came down east of town?
+dlg_zia_rumours_c2,The road. Is it safe?
+dlg_zia_rumours_c3,That's enough gossip.
+dlg_zia_rumour_cave,"""West of town, six hours through the forest, there is a cave under the hill. Old boier Duras was buried there eleven years ago. He did not stay buried. Every night he comes out, eats a goat and goes back in. Very punctual. You could set a sundial by him."""
+dlg_zia_rumour_cave_c0,Another one.
+dlg_zia_rumour_cave_c1,Thanks.
+dlg_zia_rumour_crash,"""East, twelve hours down the road, there is a burnt clearing in the forest and a metal thing as big as a house. My cousin went to look. He came back with no eyebrows and some very strong opinions."""
+dlg_zia_rumour_crash_c0,Another one.
+dlg_zia_rumour_crash_c1,Thanks.
+dlg_zia_rumour_road,"""The road east is quick, but the lights in the sky circle over it day and night. The forest is slow, and you will eat through your bread, but they cannot see you under the trees. Fast and seen, or slow and hungry. Choose your poison. We also sell poison. It is called mead."""
+dlg_zia_rumour_road_c0,Another one.
+dlg_zia_rumour_road_c1,Thanks.
+dlg_zia_story,"Zia pulls up a stool. ""My grandmother told me this one, and her grandmother told her..."" She tells it well, and you write it down before it can vanish."
+dlg_zia_story_c0,"Thank you, Zia."
+dlg_mucapor_hello,"Mucapor, royal collector of taxes for King Decebalus, sits behind a table stacked with wax tablets. ""Name? Occupation? Number of goats? Ah, adventurers. Adventurers are taxed at the same rate as goats."""
+dlg_mucapor_hello_c0,Have you got any work?
+dlg_mucapor_hello_c1,About that strigoi...
+dlg_mucapor_hello_c2,Here are Duras's taxes.
+dlg_mucapor_hello_c3,How goes the war?
+dlg_mucapor_hello_c4,Goodbye.
+dlg_mucapor_offer,"""Boier Duras died eleven years ago and has paid no tax since. That would be acceptable, the dead are exempt, except that he keeps getting up. If he walks, he pays. That is the law. He lives in the cave under the hill, west of town through the forest. Collect, by whatever means. Receipts are optional."""
+dlg_mucapor_offer_c0,Consider it collected.
+dlg_mucapor_reminder,"""Duras. Cave. West. Taxes. I would go myself, but I have a medical condition: I am alive, and I would like it to continue."""
+dlg_mucapor_reminder_c0,On my way.
+dlg_mucapor_turnin,"Mucapor weighs the damp purse, counts the coins twice and writes a receipt to a dead man. ""Eleven years of arrears, paid in full. The treasury thanks you. Here is your share, and this page, which turned up in the Duras file. It is old. Take it."""
+dlg_mucapor_turnin_c0,He did not go quietly.
+dlg_mucapor_turnin_c1,We talked. He will pay quarterly now.
+dlg_mucapor_turnin_c2,He works for me now.
+dlg_mucapor_turnin_c3,Glad to help.
+dlg_mucapor_end_fight,"""They rarely do. I will mark him deceased. Again. In ink this time."""
+dlg_mucapor_end_fight_c0,Goodbye.
+dlg_mucapor_end_talk,"""A dead man on the tax register, paying of his own free will. This is the proudest day of my career."" He dabs his eye with a tablet."
+dlg_mucapor_end_talk_c0,Goodbye.
+dlg_mucapor_end_necro,"Mucapor looks at you for a long moment. ""Then he is your employee, and you owe tax on him. I will send the form."""
+dlg_mucapor_end_necro_c0,Goodbye.
+dlg_mucapor_war,"""Trajan's legions are camped at the Danube. Decebalus says it is fine. Meanwhile there are lights in the sky, giants in the forest, and not one of them has filed a single form."""
+dlg_mucapor_war_c0,Back to business.
+dlg_tsinna_hello,"Tsinna stands in her yard staring at the eastern sky, clutching a humming metal box. ""It is late. It said one hundred and eighty-eight hours. It has been one hundred and eighty-eight hours."""
+dlg_tsinna_hello_c0,What is late?
+dlg_tsinna_hello_c1,Any news of your parcel?
+dlg_tsinna_hello_c2,"Your parcel, as promised."
+dlg_tsinna_hello_c3,What is that box?
+dlg_tsinna_hello_c4,Goodbye.
+dlg_tsinna_explain,"""Last week a box fell out of the sky into my turnips. It hums. It has buttons. I pressed one, and a voice said, in perfect Dacian, 'Thank you for your order. Delivery in one hundred and eighty-eight hours.' I did not order anything. But now I want it."""
+dlg_tsinna_explain_c0,So where is it?
+dlg_tsinna_explain2,"""This morning something huge came down east of town, twelve hours along the road, all smoke and fire. That must be the delivery. Bring me my parcel. I paid for it. Well. The box says I paid for it."""
+dlg_tsinna_explain2_c0,I'll fetch it.
+dlg_tsinna_explain2_c1,Maybe later.
+dlg_tsinna_box,"""It is called a centrală vibratorie. I have not put it down in a week. It tells me things. Mostly it tells me about cofetării."""
+dlg_tsinna_box_c0,Back.
+dlg_tsinna_waiting,"""East. Twelve hours by road. The road is quicker, but the lights fly over it. Take the forest if you are shy. Bring it back unopened. Mostly unopened."""
+dlg_tsinna_waiting_c0,On my way.
+dlg_tsinna_delivered,"Tsinna tears open the parcel. Inside is a typewriter the size of a loom. She presses one key and it writes a hundred thousand words in a minute. She reads a few of them. ""They are all... the same. Very confident. They say nothing at all."" She beams. ""I love it. Here, for your trouble. And this page was in the packing."""
+dlg_tsinna_delivered_c0,Enjoy your typewriter.
+dlg_rholes_hello,"Rholes leans on his spear at the gate, the wolf-headed Draco painted on his shield. ""Halt. State your business. Actually, never mind. Nobody has any business these days. Everyone just stares at the sky."""
+dlg_rholes_hello_c0,Any advice for the road?
+dlg_rholes_hello_c1,What is that banner on your shield?
+dlg_rholes_hello_c2,Goodbye.
+dlg_rholes_advice,"""The road is fast, and the lights in the sky patrol the road. The forest is slow, but the trees hide you. At night they see less. And last week a merchant threw a clay cow from Dida's stall and the light chased the cow instead. Do not ask me why it works. It works."""
+dlg_rholes_advice_c0,Thanks.
+dlg_rholes_draco,"""The Draco. A wolf's head on a tube of cloth. When the wind runs through it, it howls. The Romans hate it. That is most of the point."""
+dlg_rholes_draco_c0,Back.
+dlg_bitus_hello,"A boy of about ten plants himself in your way. ""Are you going to fight the giants? My friend says they are fifteen metres tall and they sort people by height, and we are so short we count as snacks."""
+dlg_bitus_hello_c0,That sounds made up.
+dlg_bitus_hello_c1,"Here, have a coin. (12 gold)"
+dlg_bitus_hello_c2,Run along home.
+dlg_bitus_made_up,"""It is in a book. Well, it will be. In about one thousand eight hundred and fifty years. My grandmother dreamed it."""
+dlg_bitus_made_up_c0,Of course she did.
+dlg_bitus_coin,"He takes the coin and hands you a lumpy clay cow. ""I made it. If the lights chase you, use it. They love cows. Everyone knows that."""
+dlg_bitus_coin_c0,"Thanks, Bitus."
+dlg_duras_hello,"A pale man in a mouldy boier's cloak sits up in his coffin and sighs. ""Visitors. Wonderful. Let me guess. Mucapor sent you."""
+dlg_duras_hello_c0,You owe eleven years of taxes.
+dlg_duras_hello_c1,"Kneel, strigoi. I have a use for you."
+dlg_duras_hello_c2,Prepare to be buried again.
+dlg_duras_hello_c3,Just checking on you.
+dlg_duras_hello_c4,Sorry. Wrong cave.
+dlg_duras_taxes,"""The dead are exempt. Everyone knows that."" He raises one long finger. ""But I am not dead. I am undead. Nobody has written a law about that."""
+dlg_duras_taxes_c0,Walking means paying. That is the law. (Wits)
+dlg_duras_taxes_c1,Appeal to his honour as a boier. (Spirit)
+dlg_duras_taxes_c2,Enough talk.
+dlg_duras_taxes_c3,Let me think about it.
+dlg_duras_taxes_result,"Duras considers this for a long, cold moment."
+dlg_duras_taxes_result_c0,Well?
+dlg_duras_taxes_result_c1,Well?
+dlg_duras_taxes_result_c2,Leave him to it.
+dlg_duras_talked,"""Fine. Fine!"" He pulls a purse of very old coins from under his pillow. ""And take this scroll. It was in the coffin when I woke up. I could not read it in the dark. I could not read it in the light either, I am a boier."" He lies back down. ""Tell Mucapor I will pay quarterly. In base twelve, to annoy him."""
+dlg_duras_talked_c0,Rest well.
+dlg_duras_refused,"""No. I have been dead for eleven years and I have never felt more alive. I am not paying."" He folds his arms. In a coffin, this takes some doing."
+dlg_duras_refused_c0,Then we do this the hard way.
+dlg_duras_refused_c1,"Kneel, strigoi. I have a use for you."
+dlg_duras_refused_c2,I'll be back.
+dlg_duras_necro,"You speak the old words. Duras stiffens, then bows his head. ""A strigoi-caller. My mother warned me about your kind. Very well: I will fight for you once, and then my debt is paid and I go back to sleep. Take the taxes too. I would rather owe Mucapor than owe you."""
+dlg_duras_necro_c0,Rise when I call.
+dlg_duras_after,"""Go away. I am resting in peace. Mostly resting."""
+dlg_duras_after_c0,Goodbye.
+dlg_ozo_hello,"A grazi thrall in dented Lobizi armour stands guard over a parcel the size of a hut, spear levelled. ""Halt. This delivery is Lobizi property. I am Ozo, thrall of the giants. I guard it until it is collected, or until I die. Whichever comes first. They told me which comes first."""
+dlg_ozo_hello_c0,Hand it over and these coins are yours. (36 gold)
+dlg_ozo_hello_c1,"You are free, Ozo. Nobody told you? (Wits)"
+dlg_ozo_hello_c2,My strigoi would like a word.
+dlg_ozo_hello_c3,Then you die first.
+dlg_ozo_hello_c4,"Carry on, then."
+dlg_ozo_freed_result,Ozo lowers his spear an inch and thinks very hard.
+dlg_ozo_freed_result_c0,Well?
+dlg_ozo_freed_result_c1,Well?
+dlg_ozo_freed_result_c2,Leave him to his thoughts.
+dlg_ozo_freed,"""Free? Me?"" His lip trembles. ""Nobody tells thralls anything. The giant said wait here, so I waited. One hundred and eighty-eight hours."" He drops the spear. ""I am going home to my mother. She is four feet tall and she is going to be so angry."" He walks off into the forest, whistling."
+dlg_ozo_freed_c0,"Safe travels, Ozo."
+dlg_ozo_doubts,"""Nice try. The giants warned me. They said: if anyone tells you that you are free, that is how you know you are not."" The spear comes back up."
+dlg_ozo_doubts_c0,Let's talk about something else.
+dlg_ozo_bribed,"Ozo bites every coin, which is not how you test Dacian silver, but he seems satisfied. ""I never saw you. I am now going to go and not see you somewhere else."" He leaves."
+dlg_ozo_bribed_c0,Pleasure.
+dlg_ozo_strigoi,"Duras rises out of your shadow, cloak flapping, and says ""Boo"" in a voice of deep fatigue. Ozo screams on a note you did not know men could reach and sprints into the forest. Duras bows. ""My debt is paid."" He dissolves into a smell of old cellar."
+dlg_ozo_strigoi_c0,"Thank you, Duras."
+quest_dead_dont_pay_taxes,The Dead Don't Pay Taxes
+quest_dead_dont_pay_taxes_10,"Mucapor, the royal tax collector, wants eleven years of back taxes from boier Duras, a strigoi living in the cave under the hill west of town."
+quest_dead_dont_pay_taxes_30,Duras is in his coffin and disputes that the tax law applies to the undead.
+quest_dead_dont_pay_taxes_40,"Duras chose violence. Once he is lying down again, search his coffin for the tax purse."
+quest_dead_dont_pay_taxes_50,You have Duras's tax purse. Take it to Mucapor in Sarmizegetusa.
+quest_dead_dont_pay_taxes_100,The taxes are paid. The treasury of Decebalus is eleven years less behind.
+quest_delivery_in_188_hours,Delivery in 188 Hours
+quest_delivery_in_188_hours_10,"Tsinna's parcel, ordered 188 hours ago by a box that fell into her turnips, was aboard the spintecătoare that crashed east of town. Fetch it."
+quest_delivery_in_188_hours_30,"A grazi thrall named Ozo guards the parcel at the crash site. He can be fought, bribed, or told the truth."
+quest_delivery_in_188_hours_60,You have the parcel. It is the size of a hut. Bring it to Tsinna in Sarmizegetusa.
+quest_delivery_in_188_hours_100,"Delivered. Tsinna now owns a typewriter that writes a hundred thousand words a minute, all of them confident."
+page_strigoi_title,Zalmoxis
+page_strigoi_body,"Herodotus wrote that the Getae believe they do not die: the dead go to Zalmoxis, their god. Zalmoxis was said to have lived among them as a teacher, then vanished into an underground chamber for three years and returned, proving the soul outlives the body. Every five years the Dacians chose a messenger to carry their requests to him. Fanfi adds: three years underground and he comes back a god. I spent eight thousand years on the astral plane and I got a séance in a flat in Bucharest."
+page_surgeon_log_title,Caps and Long Hair
+page_surgeon_log_body,"Dacian society had two ranks. The tarabostes, the nobles, wore felt caps and were called pileati. The common folk went bareheaded with long hair and were called comati. Both fought, farmed and paid taxes to the king, and both are carved, caps and hair, on Roman monuments. Fanfi adds: two classes, sorted by hat. Amateurs. We had four castes, sorted by height. The surgeon's notes measure you in fractions of a snack."
+page_tavern_title,The King Who Banned Wine
+page_tavern_body,Around 60 BC King Burebista united the Dacian tribes into a kingdom feared from the Danube to the Black Sea. His high priest Deceneus persuaded the Dacians to uproot their vineyards and live soberly. Strabo says they obeyed. Burebista was murdered by his own nobles soon after. Fanfi adds: you heard this story in a tavern. Over a mead. Deceneus would like a word.
+page_calendar_title,The Stone Calendar
+page_calendar_body,"On the sacred terrace of Sarmizegetusa Regia stand the sanctuaries of the Dacians: rows of andesite and limestone pillar drums, and a great round sanctuary of stone and timber posts. Next to them lies the andesite sun disc. Scholars believe the round sanctuary worked as a calendar, counting the days of a year that the priests kept for the whole kingdom. Fanfi adds: we also had a calendar. It was a button. You pressed it and it told you the date. Your ancestors used a building."
+page_trader_title,Gold and Silver
+page_trader_body,"The Dacians minted their own coins, including the gold staters stamped KOSON, and their smiths worked silver into bracelets, spirals and fine drinking cups. Traders carried Dacian salt, honey, wax and furs to the Greek cities of the Black Sea coast and came back with wine and painted pottery. Fanfi adds: markets. Haggling. Coins. We abolished all of that and had everything delivered. Eventually."
+page_flight_recorder_title,The Draco
+page_flight_recorder_body,"The Dacian battle standard was the Draco: a wolf's head of bronze with an open mouth, fixed to a long tube of cloth. When a rider carried it at speed, the wind poured through the jaws and it howled. After the wars, Roman cavalry adopted the Draco for itself, which is the sincerest form of losing an argument. Fanfi adds: found in the black box of one of our saucers. We recorded your flag howling. On loop. For research."
+page_delivery_title,Tapae
+page_delivery_body,"In AD 87 a Roman army under Cornelius Fuscus crossed the Danube to punish the Dacians. At the pass of Tapae, King Decebalus destroyed it. Fuscus fell, and a legion's eagle standard was carried back to Sarmizegetusa as a trophy. Fanfi adds: a whole legion, and nobody delivered a warning on time. Relatable."
+page_taxes_title,Rome Pays Up
+page_taxes_body,"After years of war, the emperor Domitian made peace with Decebalus in AD 89. Rome agreed to pay Dacia a yearly subsidy and to send it craftsmen and engineers. Roman writers called it shameful. Decebalus called it a good deal, and used the engineers to strengthen his fortresses. Fanfi adds: an empire paying taxes to a kingdom. Mucapor framed this page."
+page_deserters_title,Deserters Welcome
+page_deserters_body,"Decebalus welcomed Roman deserters, and their skills, into his service. When Trajan forced a peace on Dacia in AD 102, one of his demands was that every Roman deserter be handed back. Many were not. They had found that Dacia had better mountains, better honey and fewer centurions. Fanfi adds: the deserters you met had stopped running. Some were even paying rent."
+page_parcel_title,The Bridge
+page_parcel_body,"Between AD 103 and 105, Apollodorus of Damascus built a bridge for Trajan across the Danube at Drobeta: twenty stone piers carrying a timber deck over a kilometre of river. It was the longest arch bridge in the world for more than a thousand years. Its stumps still stand in the water. Fanfi adds: this page was in our parcel, and it describes a bridge nobody has built yet. Spoilers. We looked ahead through the oglinda."
+page_sargetia_title,The River's Treasure
+page_sargetia_body,"Cassius Dio tells that Decebalus hid his treasure beneath the river Sargetia, near his capital: the river was turned aside, the gold and silver buried in its bed, and the water let back over it. The secret held until a nobleman named Bicilis betrayed it to the Romans. Fanfi adds: you found this page in a well, near a river, in Sarmizegetusa. I am saying nothing. I am a narrator. I narrate."
+page_oglinda_title,The Column
+page_oglinda_body,"In AD 113 Trajan raised a column in Rome: thirty metres of marble wrapped in a carved spiral band that tells the whole Dacian war, scene by scene. It shows the bridge, the battles, the Draco, the caps and the long hair. Carved by the victors, it still shows the Dacians as proud and fierce. It stands there today. Fanfi adds: thirty metres. Two Lobizi standing on each other's shoulders. Seen through the oglinda, it looks like a scroll. Funny, that."
+dlg_cave_wolves_narr,Something growls in the dark ahead. Several somethings.
+dlg_cave_graves_narr,The floor of the passage is lined with graves. All of them are empty. That is the bad news.
+enc_wolves_sneak_pass,"You slip past through the undergrowth. One wolf sniffs the air, shrugs, and goes back to the horns."
+enc_wolves_sneak_fail,A twig snaps. Every wolf turns at once.
+enc_wolves_opt_sneak,"Creep around them, downwind. (Agility)"
+enc_wolves_talk_pass,"You whisper in the voice of the grave. The wolves flatten their ears, whine, and leave to find a less haunted dinner."
+enc_wolves_talk_fail,Your grave-voice cracks halfway through. The wolves are not impressed.
+enc_wolves_opt_talk,Speak to them in the voice of the dead. (Spirit)
+enc_wolves_bribe_pass,"The wolves fall on the bread, fight over it, and forget you exist. Dacian bread: good for morale."
+enc_wolves_opt_bribe,Throw them your bread.
+enc_wolves_help_pass,"Duras rises from your shadow and hisses. The wolves remember an appointment elsewhere. Duras bows, says ""My debt is paid"", and crumbles into a smell of old cellar."
+enc_wolves_opt_help,"Call on Duras, your strigoi."
+enc_wolves,"A pack of grey wolves slinks onto the path, ribs showing. Behind them lies a neat pile of goat horns. The wolves look at you the way you look at a second goat."
+enc_roman_deserters_talk_pass,"""Honey, mountains, no centurions?"" They confer, and the tallest hands you a wax tablet of complaints about Trajan. ""For the record. We are going to Sarmizegetusa."""
+enc_roman_deserters_talk_fail,"""Nice try, Dacian. Last time someone said that, we ended up building a fortress for free."""
+enc_roman_deserters_opt_talk,Remind them Decebalus welcomes deserters. (Wits)
+enc_roman_deserters_bribe_pass,"They bite the coins, salute out of habit, and throw in a wax tablet full of complaints about Trajan. ""Some light reading."""
+enc_roman_deserters_opt_bribe,Pay their road toll. (24 gold)
+enc_roman_deserters_help_pass,"Duras rises from your shadow. Three Roman soldiers see a pale nobleman in a mouldy cloak and decide, as one, that this posting is not worth it. Duras bows, says ""My debt is paid"", and is gone."
+enc_roman_deserters_opt_help,"Call on Duras, your strigoi."
+enc_roman_deserters,"Three legionaries in mismatched armour block the road, the eagles scratched off their shields. ""We are not deserters,"" says the tallest. ""We are on an extended scouting mission. Very extended. In the opposite direction."""
+enc_wandering_trader_trade_pass,"He spreads a blanket by the road. ""And for you, a gift: an old page. I use them to wrap the eggs."""
+enc_wandering_trader_opt_trade,See what he has.
+enc_wandering_trader_talk_pass,"He draws in the dust: a cave west of the capital where a dead boier eats goats, and a smoking crater to the east. ""Avoid both. Unless there is money in it."""
+enc_wandering_trader_talk_fail,He talks for an hour about the price of salt and you learn nothing at all.
+enc_wandering_trader_opt_talk,Ask about the road ahead. (Wits)
+enc_wandering_trader,"A trader leads a mule loaded with pots, furs and one suspicious glowing rock. Two bored guards trail behind. ""Greetings, travellers! Everything is priced in twelves. Do not ask why. Nobody knows why. It is the fashion."""
+enc_bancul_patrol_sneak_pass,You tiptoe past a pair of ankles the size of tree trunks. The recruit finishes the tree and starts on a second one.
+enc_bancul_patrol_sneak_fail,You step on a pinecone. The recruit looks down. Way down. Its stomach rumbles like a landslide.
+enc_bancul_patrol_opt_sneak,Edge past while it is busy with the tree. (Agility)
+enc_bancul_patrol_bribe_pass,"The recruit has never seen bread. It eats both loaves, weeps with joy, and sits down to digest. The thrall waves you past."
+enc_bancul_patrol_opt_bribe,Toss the recruit two loaves of bread.
+enc_bancul_patrol_talk_pass,"The thrall thinks about it, unlocks the chain and walks away. The recruit wanders off after a butterfly."
+enc_bancul_patrol_talk_fail,"""Better? I get a chain AND a giant. This is a promotion."""
+enc_bancul_patrol_opt_talk,Tell the thrall he deserves better. (Spirit)
+enc_bancul_patrol_help_pass,"Duras rises from your shadow and stares up the giant's leg with total contempt. The recruit, being thirty-three and a coward, runs. The thrall follows. Duras bows and fades away."
+enc_bancul_patrol_opt_help,"Call on Duras, your strigoi."
+enc_bancul_patrol,"A grazi thrall leads a bancul recruit on a very thick chain. The recruit is a giant, freshly reincarnated, aged exactly thirty-three, hairy, speechless and eating a tree. The thrall looks embarrassed for both of them."
+enc_saucer_surgeon,"You wake strapped to an operating table the size of a village square. The straps were made for someone fifteen metres tall, so you slide straight out of them. A Lobizi surgeon looms above, humming, polishing a scalpel the length of a canoe. Zalmoxis cannot hear you up here. A calm voice begins counting down in base twelve."
+enc_cave_wolves,"Eyes in the dark. A wolf pack has made its den in the mouth of the cave, and a strigoi is sharing their dinner."
+enc_cave_restless,"The graves along the passage burst open. Duras's servants, unpaid for eleven years, rise to defend him anyway. Loyalty, or habit."
+enc_cave_strigoi,"Duras climbs out of his coffin, cracks his neck and calls his two last servants. ""Taxes,"" he spits. ""Over my dead body. Which you will find is a lot harder to arrange than it sounds."""
+enc_crash_thrall,"Ozo whistles. Two wolves in tiny Lobizi helmets bound out of the wreck to stand beside him. ""Delivery guard dogs,"" he says. ""They came with the subscription."""
+fanfi_new_game_1,"Communication of 25 April 1953. Fanfi speaking, from the astral plane, through a medium in Bucharest who charges by the hour. Before we begin, I would like to state for the record that we did nothing wrong."
+fanfi_new_game_2,"It is the year 101. Trajan's legions are at the Danube. My people, the Lobizi, are fifteen metres tall and coming down from the sky. You are not fifteen metres tall. Legally, you are a snack."
+fanfi_new_game_3,"Mirg has already written your whole life in his book of fates. It ends badly. You can collect the scroll pages and rewrite it, if you insist. I will narrate. I am very good at it. I ruled for 8,723 years and nobody ever interrupted."
+fanfi_abducted_1,"Communication of 3 May 1953. Ah, a spintecătoare. You are being beamed up for a routine medical. Do not struggle. Struggling voids the warranty."
+fanfi_abducted_2,Communication of 4 May 1953. Again? You keep standing under the saucer. At this point it is a subscription.
+fanfi_died_1,Communication of 9 June 1953. Look at that. They pop. The medium has asked me to describe it less vividly. I decline.
+fanfi_died_2,"Communication of 10 June 1953. Another one. Someone is going to have to mop all that up, and it will not be a fifteen-metre sage, I can tell you."
+fanfi_page_found_1,"Communication of 25 April 1953, later that evening. A page of the Dacian Scrolls. History we went to a lot of trouble to erase. I hope you are pleased with yourself."
+fanfi_page_found_2,Communication of 26 April 1953. Another page. Mirg's book of fates now has a strongly worded footnote.
+fanfi_level_up_1,"Communication of 1 May 1953. You have grown stronger. Under Filo's caste laws you remain a snack, but a more filling one."
+fanfi_level_up_2,"Communication of 2 May 1953. Stronger again. Main character energy, at roughly one hundred and seventy centimetres."
+fanfi_saved_1,Communication of 11 May 1953. You have saved your progress: a copy of your fate kept outside Mirg's book. Bold. Very bold.
+fanfi_saved_2,Communication of 12 May 1953. Saved. Mirg never needed to save. Mirg wrote everything down correctly the first time.
+fanfi_starved_1,"Communication of 20 May 1953. You are starving. We had deliveries every 188 hours. Technically that is also starving, but with better packaging."
+fanfi_fled_battle_1,"Communication of 22 May 1953. A tactical retreat. Bertimeg the Conqueror never retreated. Then again, Bertimeg went to fight the fish and we never found the body, so."
+fanfi_quest_changed_taxes,Communication of 29 May 1953. A dead man has paid his taxes. Our council of seventy sages would have wept. Several of them were older than taxes.
+fanfi_quest_changed_delivery,"Communication of 30 May 1953. A parcel, delivered: late, damaged and opened by the wrong person. Exactly as our system was designed."
+fanfi_quest_changed_1,"Communication of 28 May 1953. Your quest log has been updated. Ours was carved in stone by seventy sages, none younger than nine thousand. It took a while."
+fanfi_recruited_vezina,Communication of 2 June 1953. A priest of Zalmoxis has joined you. He believes in an afterlife. I live in one. We should talk.
+fanfi_recruited_1,"Communication of 3 June 1953. Your party grows. Still shorter, combined, than one Lobizi child."

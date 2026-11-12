@@ -1,0 +1,7 @@
+{
+ "id": "tsinna",
+ "name_key": "npc_tsinna",
+ "sprite": "villager_4",
+ "portrait": "portrait_tsinna",
+ "dialogue": "tsinna"
+}

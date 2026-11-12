@@ -1,0 +1,14 @@
+{
+ "id": "healer",
+ "name_key": "class_healer",
+ "desc_key": "class_healer_desc",
+ "base_stats": {"might": 3, "agility": 4, "wits": 3, "spirit": 6},
+ "base_hp": 24,
+ "hp_per_level": 5,
+ "base_mana": 12,
+ "base_charge": 6,
+ "basic_attack": "staff_smack",
+ "abilities": ["staff_smack", "blessing_of_zalmoxis", "med_gel_field"],
+ "sprite": "healer",
+ "portrait": "portrait_healer"
+}
