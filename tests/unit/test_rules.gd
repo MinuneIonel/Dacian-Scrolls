@@ -32,7 +32,7 @@ func _add_necro(id: String) -> Character:
 
 func test_tables_match_contract() -> void:
 	assert_eq(Rules.CONDITIONS.keys().size(), 11)
-	assert_eq(Rules.EFFECTS.keys().size(), 16)
+	assert_eq(Rules.EFFECTS.keys().size(), 17)  # restore_charge added after Wave 1
 
 # ---- conditions -------------------------------------------------------------
 
