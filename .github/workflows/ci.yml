@@ -22,6 +22,8 @@ jobs:
           path: .godot-bin
           key: godot-4.5.1-stable-linux
       - run: tools/get_godot.sh
+      - name: Import assets
+        run: .godot-bin/godot --headless --path . --import 2>&1 | tail -40; ls .godot/imported | wc -l
       - name: Unit and integration tests
         run: tools/test.sh
       - name: Bot tests
