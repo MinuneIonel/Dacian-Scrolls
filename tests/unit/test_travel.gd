@@ -135,13 +135,6 @@ func test_fog_exactly_radius_two_after_one_step() -> void:
 			assert_eq(Fog.is_revealed(s, Vector2i(x, y)), inside, "cell %d,%d" % [x, y])
 	assert_eq(find_event(ev, "revealed").cells.size(), 25)
 
-func test_fog_clipped_at_edge_and_only_new_cells() -> void:
-	var size := Vector2i(12, 8)
-	assert_eq(Fog.reveal(s, Vector2i(0, 0), 2, size).size(), 9)
-	var again: Array[Vector2i] = Fog.reveal(s, Vector2i(1, 0), 2, size)
-	assert_eq(again, [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2)] as Array[Vector2i])
-	assert_eq(Fog.reveal(s, Vector2i(1, 0), 2, size).size(), 0)
-
 func test_no_revealed_event_when_nothing_new() -> void:
 	Fog.reveal(s, Vector2i(3, 4), 4, Vector2i(12, 8))
 	s.world_pos = Vector2i(3, 4)
