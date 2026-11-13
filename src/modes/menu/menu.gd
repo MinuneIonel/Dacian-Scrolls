@@ -204,7 +204,7 @@ func _build_settings() -> Control:
 	box.custom_minimum_size.x = COLUMN_W - 16
 	p.add_child(box)
 	var head: Label = UiKit.label("settings_title")
-	head.add_theme_color_override(&"font_color", UiKit.BRONZE_LIGHT)
+	head.add_theme_color_override(&"font_color", PartyScreen.INK_RED)
 	box.add_child(head)
 	var grid := GridContainer.new()
 	grid.columns = 3

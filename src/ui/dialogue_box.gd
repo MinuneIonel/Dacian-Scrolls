@@ -51,7 +51,7 @@ func _init() -> void:
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(col)
 	speaker_label = UiKit.label("")
-	speaker_label.add_theme_color_override("font_color", UiKit.BRONZE_LIGHT)
+	speaker_label.add_theme_color_override("font_color", PartyScreen.INK_RED)   # red ink on the parchment
 	col.add_child(speaker_label)
 	text_label = UiKit.label("")
 	text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
