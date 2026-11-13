@@ -230,6 +230,15 @@ func unit_at(cell: Vector2i) -> int:
 	var u: Dictionary = _unit_at(cell)
 	return u.uid if not u.is_empty() else -1
 
+## The ability definition, or {} when unknown. Shared with Defs: read it, never modify it.
+func ability_def(id: StringName) -> Dictionary:
+	return _ability(id)
+
+## The ability a consumable uses, or {} when it is not usable right now (none left in the
+## inventory, not a consumable, no use_ability). Read it, never modify it.
+func item_ability(item_id: StringName) -> Dictionary:
+	return _item_ability(item_id)
+
 ## Moves a unit without rules or events. For tests and scripted setups only.
 func place(uid: int, cell: Vector2i) -> void:
 	var u: Dictionary = _u(uid)

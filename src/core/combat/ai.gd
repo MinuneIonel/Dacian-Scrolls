@@ -136,7 +136,7 @@ static func _context(b: Battle, uid: int, style: String) -> Dictionary:
 	var max_range: int = 0
 	var has_melee: bool = false
 	for id in me.abilities:
-		var ab: Dictionary = b._ability(StringName(str(id)))
+		var ab: Dictionary = b.ability_def(StringName(str(id)))
 		if ab.is_empty() or int(ab.get("ap", 0)) <= 0 or not _has_hostile(ab) or not _affordable(b, me, ab): continue
 		if not str(ab.get("target", "")) in ["enemy", "cell"]: continue
 		offense.append(ab)
@@ -144,7 +144,16 @@ static func _context(b: Battle, uid: int, style: String) -> Dictionary:
 		if int(ab.get("range", 0)) <= 1: has_melee = true
 	ctx["offense"] = offense
 	ctx["max_range"] = max_range
-	ctx["ranged"] = max_range > 1 and (style == "skirmisher" or style == "caster" or not has_melee)
+	var healer: bool = false
+	for id in me.abilities:
+		var hab: Dictionary = b.ability_def(StringName(str(id)))
+		if not hab.is_empty() and _affordable(b, me, hab):
+			for e in hab.get("effects", []):
+				if str(e.get("kind", "")) == "heal": healer = true
+	ctx["healer"] = healer
+	# Healers on the party side stay out of melee (they are worth more alive than their staff).
+	ctx["ranged"] = (max_range > 1 and (style == "skirmisher" or style == "caster" or not has_melee)) \
+		or (healer and style == "good")
 	ctx["field"] = _attack_field(ctx, maxi(1, max_range))
 	return ctx
 
@@ -157,8 +166,8 @@ static func _affordable(b: Battle, me: Dictionary, ab: Dictionary) -> bool:
 	return true
 
 static func _action_ability(b: Battle, a: Dictionary) -> Dictionary:
-	if a.type == "ability": return b._ability(StringName(str(a.ability)))
-	if a.type == "item": return b._item_ability(StringName(str(a.item)))
+	if a.type == "ability": return b.ability_def(StringName(str(a.ability)))
+	if a.type == "item": return b.item_ability(StringName(str(a.item)))
 	return {}
 
 static func _has_hostile(ab: Dictionary) -> bool:
@@ -452,7 +461,12 @@ static func _position_score(ctx: Dictionary, anchor: Vector2i, ap: int) -> float
 		if not near.is_empty():
 			s += _cover_vs(ctx, anchor, size, near) / 5.0
 			if ctx.style == "skirmisher": s += 0.5 * mini(_reach(anchor, size, near), int(ctx.max_range))
-	elif ctx.style == "good":
+	if ctx.healer and ctx.style == "good":
+		var gap: int = FAR
+		for a in ctx.allies:
+			if int(a.uid) != int(ctx.uid): gap = mini(gap, _reach(anchor, size, a))
+		if gap < FAR: s -= 0.5 * maxi(0, gap - 3)
+	if not ctx.ranged and ctx.style == "good":
 		var near2: Dictionary = _nearest_hostile(ctx, anchor)
 		if not near2.is_empty(): s += _cover_vs(ctx, anchor, size, near2) / 10.0
 	return s

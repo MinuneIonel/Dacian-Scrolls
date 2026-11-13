@@ -4,6 +4,7 @@
 ##   --level=N                 party level (default 1)
 ##   --items=item:n,item:n     consumables in the battle inventory (default none)
 ##   --seed=S                  first seed (default 1)
+##   --log                     print the events of the first battle of each run
 ## Enemies use Ai.choose; party units use the policy (summons and charmed units use Ai.choose).
 extends SceneTree
 
@@ -50,7 +51,7 @@ func _init() -> void:
 	print("%-22s %-7s %6s %6s %6s %7s %8s" % ["encounter", "policy", "win%", "fled", "t/o", "rounds", "hp_left%"])
 	for enc in encs:
 		for pol in policies:
-			var st: Dictionary = run_many(defs, enc, classes, level, items, pol, n, seed0)
+			var st: Dictionary = run_many(defs, enc, classes, level, items, pol, n, seed0, opt.has("log"))
 			print("%-22s %-7s %6.1f %6d %6d %7.1f %8.1f" % [enc, pol, 100.0 * st.wins / n, st.fled, st.timeout,
 				float(st.rounds) / n, 100.0 * st.hp_frac / n])
 	quit(0)
@@ -88,7 +89,7 @@ static func build_party(defs: Defs, classes: Array[StringName], level: int) -> A
 
 ## {wins, fled, timeout, rounds, hp_frac} summed over n battles.
 static func run_many(defs: Defs, enc: StringName, classes: Array[StringName], level: int, items: Dictionary,
-		policy: String, n: int, seed0: int) -> Dictionary:
+		policy: String, n: int, seed0: int, log: bool = false) -> Dictionary:
 	var st: Dictionary = {"wins": 0, "fled": 0, "timeout": 0, "rounds": 0, "hp_frac": 0.0}
 	for i in n:
 		var s: int = seed0 + i
@@ -96,7 +97,8 @@ static func run_many(defs: Defs, enc: StringName, classes: Array[StringName], le
 		var b := Battle.new(enc, party, Rng.new(s), defs)
 		b.inventory = items.duplicate()
 		var r := Rng.new(s * 7919 + 17)
-		b.start()
+		var ev0: Array[Dictionary] = b.start()
+		if log and i == 0: _log(b, -1, ev0)
 		var guard: int = 0
 		while not b.is_over() and guard < 20000:
 			var uid: int = b.current_unit()
@@ -104,7 +106,8 @@ static func run_many(defs: Defs, enc: StringName, classes: Array[StringName], le
 			if b.is_ai(uid): a = Ai.choose(b, uid, r)
 			elif policy == "random": a = Ai.policy_random(b, uid, r)
 			else: a = Ai.policy_good(b, uid, r)
-			b.apply(a)
+			var ev: Array[Dictionary] = b.apply(a)
+			if log and i == 0: _log(b, uid, ev)
 			guard += 1
 		var res: Dictionary = b.result()
 		if res.outcome == "win": st.wins += 1
@@ -118,3 +121,12 @@ static func run_many(defs: Defs, enc: StringName, classes: Array[StringName], le
 			mx += c.max_hp
 		st.hp_frac += float(hp) / maxf(1.0, float(mx))
 	return st
+
+static func _log(b: Battle, uid: int, ev: Array[Dictionary]) -> void:
+	for e in ev:
+		var who: Dictionary = b.unit(int(e.get("uid", e.get("target", uid))))
+		var name: String = str(who.get("char_id", "")) if str(who.get("char_id", "")) != "" else str(who.get("def_id", ""))
+		var parts: Array[String] = []
+		for k in e:
+			if k != "type": parts.append("%s=%s" % [k, e[k]])
+		print("  r%d %-14s %-13s %s" % [b.round, name, e.type, " ".join(parts)])
