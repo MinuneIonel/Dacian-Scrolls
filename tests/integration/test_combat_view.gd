@@ -287,3 +287,19 @@ func test_smoke_real_battle_saucer_giant() -> void:
 	assert_eq(Router.current, &"worldmap")
 	assert_has(["win", "lose"], view.result.get("outcome", ""))
 	assert_true(count_events(bus_events, "timer") > 0, "turn limit counted down")
+
+func test_self_area_ability_previews_then_fires_on_second_press() -> void:
+	var stub := StubBattle.new()
+	stub.legal = [{"type": "end_turn"}, {"type": "ability", "ability": &"fx_ward", "cell": Vector2i(1, 2)}]
+	await _open(stub)
+	await _settle()
+	view.select_button(1)
+	assert_eq(view.selected, 1)
+	assert_eq(stub.applied.size(), 0, "first press only previews")
+	assert_true(view.overlay.area_cells.size() > 1, "area shown around the caster")
+	view.cancel_selection()
+	assert_eq(view.selected, -1)
+	view.select_button(1)
+	view.select_button(1)
+	await wait_frames(2)
+	assert_eq(stub.applied, [{"type": "ability", "ability": &"fx_ward", "cell": Vector2i(1, 2)}])

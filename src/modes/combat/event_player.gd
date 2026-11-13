@@ -56,8 +56,6 @@ func play_one(e: Dictionary) -> void:
 			await _wait(0.5)
 		"turn_started":
 			_set_active(int(e.get("uid", -1)))
-			var v: UnitView = units.get(active_uid)
-			if v != null: focus_requested.emit(v.position)
 			turn_started.emit(active_uid, int(e.get("ap", 0)))
 			await _wait(0.15)
 		"moved":

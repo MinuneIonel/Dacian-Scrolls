@@ -166,7 +166,9 @@ func _build_player() -> void:
 	player.event_started.connect(_on_event_started)
 
 func _on_event_started(e: Dictionary) -> void:
-	if str(e.get("type", "")) == "turn_started": _refresh_hud()
+	if str(e.get("type", "")) == "turn_started":
+		_frame_turn(int(e.get("uid", -1)))
+		_refresh_hud()
 
 ## A UnitView for a battle unit dictionary.
 func _add_unit(u: Dictionary) -> Node2D:
@@ -356,6 +358,18 @@ func _begin_input(uid: int) -> void:
 	hud.set_controls(true, _can_flee)
 	_refresh_marks()
 	_refresh_hud()
+	_apply_debug_args()
+
+## Screenshot helpers from Router.args: debug_select (button index), debug_hover ([x, y]).
+func _apply_debug_args() -> void:
+	var a: Dictionary = Router.args if Router.args is Dictionary else {}
+	if a.has("debug_select"): select_button(int(a.debug_select))
+	if a.has("debug_hover"):
+		_hover = EventPlayer._cell(a.debug_hover)
+		overlay.set_hover(_hover)
+		_update_hover_marks()
+		var v: Vector2 = get_viewport().get_canvas_transform() * map_root.to_global(Iso.cell_to_world(_hover))
+		hud.show_tip(hud.tip_label.text if hud.tip_panel.visible else "", v)
 
 func _button_for(kind: String, id: StringName) -> Dictionary:
 	for b in _buttons:
@@ -380,13 +394,23 @@ func select_button(i: int) -> void:
 	if not awaiting_input or i < 0 or i >= _buttons.size(): return
 	var b: Dictionary = _buttons[i]
 	if (b.targets as Dictionary).is_empty(): return
-	if selected == i:
+	var is_self: bool = str(b.def.get("target", "")) == "self"
+	if selected == i and is_self:
+		_fire(i, (b.targets as Dictionary).keys()[0])
+		return
+	elif selected == i:
 		selected = -1
-	elif str(b.def.get("target", "")) == "self" and (b.targets as Dictionary).size() == 1:
+	elif is_self and int(b.def.get("area", 0)) == 0:
 		_fire(i, (b.targets as Dictionary).keys()[0])
 		return
 	else:
 		selected = i
+	_refresh_marks()
+	_refresh_abilities()
+
+func cancel_selection() -> void:
+	if selected < 0: return
+	selected = -1
 	_refresh_marks()
 	_refresh_abilities()
 
@@ -443,6 +467,7 @@ func _update_hover_marks() -> void:
 	if awaiting_input and selected >= 0:
 		var b: Dictionary = _buttons[selected]
 		var t: Vector2i = _target_for(selected, _hover)
+		if str(b.def.get("target", "")) == "self": t = (b.targets as Dictionary).keys()[0]
 		if t != NO_CELL:
 			var area: int = int(b.def.get("area", 0))
 			if area > 0:
@@ -545,6 +570,30 @@ func _frame_camera() -> void:
 	var c: Vector2 = sum / n if n > 0 else _map_bounds.get_center()
 	camera.position = _clamp_cam(c + Vector2(0, (CombatHud.BAR_H - TOP_STRIP) / 2.0))
 
+## At a turn start, prefer a view of the whole fight (all units' centre) as long as the active
+## unit stays well inside it; otherwise pan to the active unit.
+func _frame_turn(uid: int) -> void:
+	var v: UnitView = player.units.get(uid)
+	if v == null or camera == null: return
+	var box := Rect2(v.position, Vector2.ZERO)
+	for u in player.units.values(): box = box.expand((u as Node2D).position)
+	box = box.grow_individual(16, 50, 16, 8)   # heads above the feet
+	var off: float = (CombatHud.BAR_H - TOP_STRIP) / 2.0
+	var cand: Vector2 = _clamp_cam(box.get_center() + Vector2(0, off))
+	var vs: Vector2 = _view_size()
+	var usable := Vector2(vs.x, vs.y - CombatHud.BAR_H - TOP_STRIP)
+	var safe := Rect2(cand - Vector2(0, off) - usable / 2.0 + Vector2(24, 48), usable - Vector2(48, 56))
+	if safe.has_point(v.position): _pan_to(cand)
+	else: focus(v.position)
+
+func _pan_to(to: Vector2) -> void:
+	if player.instant:
+		camera.position = to
+		return
+	if _cam_tween != null: _cam_tween.kill()
+	_cam_tween = create_tween()
+	_cam_tween.tween_property(camera, "position", to, 0.35 / player.speed).set_trans(Tween.TRANS_SINE)
+
 ## Pans so a map point is comfortably on screen (no move when it already is).
 func focus(point: Vector2) -> void:
 	if camera == null: return
@@ -554,13 +603,7 @@ func focus(point: Vector2) -> void:
 	# Visible map area centre is camera - off; keep the point inside its middle 80% x 70%.
 	var inner := Rect2(camera.position - Vector2(0, off) - usable * Vector2(0.4, 0.35), usable * Vector2(0.8, 0.7))
 	if inner.has_point(point): return
-	var to: Vector2 = _clamp_cam(point + Vector2(0, off))
-	if player.instant:
-		camera.position = to
-		return
-	if _cam_tween != null: _cam_tween.kill()
-	_cam_tween = create_tween()
-	_cam_tween.tween_property(camera, "position", to, 0.35 / player.speed).set_trans(Tween.TRANS_SINE)
+	_pan_to(_clamp_cam(point + Vector2(0, off)))
 
 func _process(delta: float) -> void:
 	if camera == null: return
@@ -620,14 +663,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			if done: _continue = true
 			else: click_cell(_pick_cell())
 		elif mb.pressed and mb.button_index == MOUSE_BUTTON_RIGHT:
-			select_button(selected)   # cancels
+			cancel_selection()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		var k: Key = (event as InputEventKey).keycode
 		if k >= KEY_1 and k <= KEY_8: select_button(k - KEY_1)
 		elif k == KEY_SPACE:
 			if done: _continue = true
 			else: submit({"type": "end_turn"})
-		elif k == KEY_ESCAPE: select_button(selected)
+		elif k == KEY_ESCAPE: cancel_selection()
 		elif k == KEY_TAB or k == KEY_F: set_fast(not _fast)
 		elif k == KEY_ENTER and done: _continue = true
 		else: return
