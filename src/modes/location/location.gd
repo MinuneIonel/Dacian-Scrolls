@@ -216,6 +216,20 @@ func _build_party(start: Vector2i) -> void:
 		followers.append(u)
 		prev = c
 
+## A member who joined here walks behind the party at once, not only after the next map load.
+func _add_follower(id: StringName) -> void:
+	for m: Character in Game.state.party:
+		if m.id != id: continue
+		var used: Dictionary = {leader.cell: true}
+		for t: Vector2i in _trail: used[t] = true
+		var c: Vector2i = _free_neighbour(_trail.back() if not _trail.is_empty() else leader.cell, used)
+		_trail.append(c)
+		var u := UnitSprite.new(_member_sprite(m))
+		u.place(c)
+		map_node.get_node("Sorted").add_child(u)
+		followers.append(u)
+		return
+
 func _free_neighbour(c: Vector2i, used: Dictionary) -> Vector2i:
 	var blocked: Dictionary = blocked_cells()
 	for d: Vector2i in [Vector2i(0, 1), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, -1)]:
@@ -553,6 +567,8 @@ func _handle(evts: Array[Dictionary], broadcast: bool) -> void:
 				_pending_battle = StringName(str(ev.get("encounter", "")))
 			"shop_requested":
 				_overlay = ShopScreen.show_over(self, StringName(str(ev.get("shop", ""))))
+			"recruited":
+				_add_follower(StringName(str(ev.get("unit", ""))))
 	if _pending_battle != &"" and (dialogue == null or not is_instance_valid(dialogue) or dialogue.is_closed()):
 		_start_battle(_pending_battle)
 

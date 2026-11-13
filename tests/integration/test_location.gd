@@ -126,6 +126,7 @@ func test_talking_opens_the_box_and_choices_apply() -> void:
 	box.reveal_all()
 	box.choose_number(3)   # join
 	assert_true(Rules.check([["in_party", "fx_priest"]], Game.state, Content.defs))
+	assert_eq(loc.followers.size(), 1, "the recruit walks behind the party at once")
 	assert_true(box.is_closed())
 	await wait_frames(1)
 	assert_null(loc.dialogue)
