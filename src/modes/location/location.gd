@@ -596,7 +596,8 @@ func open_party() -> void:
 
 func open_scroll() -> void:
 	_leaving = true
-	Router.go(&"scroll")
+	Router.go(&"scroll", {"return_mode": &"location",
+		"return_args": {"location_id": location_id, "cell": leader.cell}})
 
 func open_pause() -> void:
 	pause_menu.visible = true

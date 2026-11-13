@@ -194,9 +194,7 @@ func parse_seed(text: String) -> int:
 	return hash(s)
 
 func _begin() -> void:
-	Game.new_game(parse_seed(seed_edit.text), hero_class)
-	Bus.emit_events([{"type": "new_game"}])
-	Router.go(&"location", {"location_id": Game.state.location_id})
+	Flow.start_new_game(parse_seed(seed_edit.text), hero_class)
 
 # --- settings ---------------------------------------------------------------------------
 

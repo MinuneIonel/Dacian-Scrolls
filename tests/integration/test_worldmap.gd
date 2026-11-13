@@ -149,6 +149,7 @@ func test_peaceful_option_shows_outcome_then_continues() -> void:
 	assert_eq(view.encounter_id, &"")
 
 func test_abducted_routes_to_combat() -> void:
+	Flow.instant = true   # WP-30: skip the beam animation
 	Game.state.flags["enc_cooldown"] = 999
 	Game.state.ufos[0]["pos"] = Vector2i(27, 16)
 	Game.state.ufos[0]["state"] = "chase"
@@ -156,6 +157,7 @@ func test_abducted_routes_to_combat() -> void:
 	view.click_cell(Vector2i(25, 16))
 	view.click_cell(Vector2i(25, 16))
 	await _wait_travel()
+	Flow.instant = false
 	assert_eq(find_event(emitted, "abducted").get("encounter"), &"saucer_surgeon")
 	assert_eq(Router.current, &"combat")
 	assert_eq(Router.args.get("encounter_id"), &"saucer_surgeon")
