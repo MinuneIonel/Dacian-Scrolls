@@ -192,7 +192,7 @@
   "name_key": "ability_pilum_throw",
   "desc_key": "ability_pilum_throw_desc",
   "source": "steel",
-  "ap": 4,
+  "ap": 5,
   "cost": 0,
   "range": 4,
   "area": 0,
@@ -250,14 +250,14 @@
   "name_key": "ability_probe_zap",
   "desc_key": "ability_probe_zap_desc",
   "source": "steel",
-  "ap": 3,
+  "ap": 4,
   "cost": 0,
   "range": 4,
   "area": 0,
   "target": "enemy",
   "icon": "icon_probe_zap",
   "effects": [
-              {"kind": "damage", "base": 2, "stat": "wits", "scale": 0.5},
+              {"kind": "damage", "base": 1, "stat": "wits", "scale": 0.5},
               {"kind": "status", "status": "slowed", "turns": 1}
              ]
  },
@@ -272,7 +272,7 @@
   "area": 0,
   "target": "enemy",
   "icon": "icon_surgeon_scalpel",
-  "effects": [{"kind": "damage", "base": 3, "stat": "might", "scale": 0.75}]
+  "effects": [{"kind": "damage", "base": 3, "stat": "might", "scale": 0.5}]
  },
  {
   "id": "surgeon_specimen_tank",
