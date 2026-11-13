@@ -136,7 +136,7 @@ static func _context(b: Battle, uid: int, style: String) -> Dictionary:
 	var max_range: int = 0
 	var has_melee: bool = false
 	for id in me.abilities:
-		var ab: Dictionary = b._ability(StringName(str(id)))
+		var ab: Dictionary = b.ability_def(StringName(str(id)))
 		if ab.is_empty() or int(ab.get("ap", 0)) <= 0 or not _has_hostile(ab) or not _affordable(b, me, ab): continue
 		if not str(ab.get("target", "")) in ["enemy", "cell"]: continue
 		offense.append(ab)
@@ -157,8 +157,8 @@ static func _affordable(b: Battle, me: Dictionary, ab: Dictionary) -> bool:
 	return true
 
 static func _action_ability(b: Battle, a: Dictionary) -> Dictionary:
-	if a.type == "ability": return b._ability(StringName(str(a.ability)))
-	if a.type == "item": return b._item_ability(StringName(str(a.item)))
+	if a.type == "ability": return b.ability_def(StringName(str(a.ability)))
+	if a.type == "item": return b.item_ability(StringName(str(a.item)))
 	return {}
 
 static func _has_hostile(ab: Dictionary) -> bool:
