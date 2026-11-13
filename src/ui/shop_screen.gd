@@ -61,6 +61,7 @@ func buy(item: StringName) -> bool:
 		["set_flag", flag, int(Game.state.flags.get(flag, 0)) + 1]], Game.state, Game.rng, Content.defs)
 	Bus.emit_events(events)
 	refresh()
+	_refocus(buy_rows.get(item), btn_close)
 	return true
 
 ## Sells one from the pack for half its price. Items worth nothing (quest items) are refused.
@@ -74,7 +75,17 @@ func sell(item: StringName) -> bool:
 		Game.state, Game.rng, Content.defs)
 	Bus.emit_events(events)
 	refresh()
+	_refocus(sell_rows.get(item), btn_close)
 	return true
+
+## Focus the rebuilt row's button (or `fallback` when the row is gone or disabled).
+func _refocus(row: Variant, fallback: Control) -> void:
+	if not is_inside_tree(): return
+	var target: Control = fallback
+	if row is HBoxContainer:
+		var b: Button = (row as HBoxContainer).get_child((row as HBoxContainer).get_child_count() - 1)
+		if not b.disabled: target = b
+	if target != null: PartyScreen.focus_later(target)
 
 func close() -> void:
 	closed.emit()
@@ -135,7 +146,7 @@ func _ready() -> void:
 	btn_close.pressed.connect(close)
 	foot.add_child(btn_close)
 	refresh()
-	btn_close.grab_focus.call_deferred()
+	PartyScreen.focus_later(btn_close)
 
 func _list_column(parent: Control, key: String) -> VBoxContainer:
 	var col := VBoxContainer.new()

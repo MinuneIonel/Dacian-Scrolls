@@ -122,7 +122,7 @@ func _ready() -> void:
 	btn_menu = UiKit.button("ending_to_menu")
 	btn_menu.pressed.connect(_to_menu)
 	row.add_child(btn_menu)
-	btn_keep.grab_focus.call_deferred()
+	PartyScreen.focus_later(btn_keep)
 	# Centre vertically once the panel knows its height.
 	_center.call_deferred(p)
 

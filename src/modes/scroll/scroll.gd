@@ -125,7 +125,7 @@ func show_tab(t: StringName) -> void:
 		&"pages": first = slots[0] if not slots.is_empty() else null
 		&"saves": first = save_cards[1].save if save_cards.has(1) else null
 	if first == null: first = tab_buttons[t]
-	if first.is_inside_tree(): first.grab_focus.call_deferred()
+	PartyScreen.focus_later(first)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_cancel"):
@@ -315,7 +315,7 @@ func _build_saves() -> Control:
 	root.add_child(row)
 	for slot in MANUAL_SLOTS:
 		var card := _SlotCard.new()
-		card.custom_minimum_size = Vector2(178, 150)
+		card.custom_minimum_size = Vector2(178, 112)
 		row.add_child(card)
 		var v := VBoxContainer.new()
 		v.position = Vector2(10, 8)
@@ -327,7 +327,7 @@ func _build_saves() -> Control:
 		v.add_child(t)
 		var status: Label = _ink(UiKit.label(""), INK_DARK)
 		status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		status.custom_minimum_size = Vector2(158, 70)
+		status.custom_minimum_size = Vector2(158, 58)
 		v.add_child(status)
 		var btns := HBoxContainer.new()
 		btns.add_theme_constant_override(&"separation", 4)
@@ -508,9 +508,12 @@ class _SlotCard extends Control:
 		draw_rect(r, Color("efd391") if not empty else Color("efd391", 0.55))
 		draw_rect(r, Color("5e3b25"), false, 1.0)
 		if damaged:
-			for k in 7:
-				var x: float = 12.0 + k * 23.0
-				draw_rect(Rect2(x, size.y - 22 - (k % 3) * 6, 18, 22 + (k % 3) * 6), Color("3a2318", 0.55))
-			draw_line(Vector2(8, 20), Vector2(size.x - 10, size.y - 30), Color("963131"), 1.0)
+			# A burnt corner: charred ragged edge, scorched halo.
+			var c := Vector2(size.x, size.y)
+			var halo := PackedVector2Array([c, c - Vector2(78, 0), c - Vector2(70, 12), c - Vector2(52, 22), c - Vector2(40, 40), c - Vector2(20, 52), c - Vector2(0, 64)])
+			var burn := PackedVector2Array([c, c - Vector2(60, 0), c - Vector2(54, 9), c - Vector2(40, 16), c - Vector2(30, 30), c - Vector2(14, 40), c - Vector2(0, 50)])
+			draw_colored_polygon(halo, Color("8a5a34", 0.55))
+			draw_colored_polygon(burn, Color("1a1218"))
+			draw_polyline(burn, Color("d6a043", 0.8), 1.0)
 		draw_rect(Rect2(size.x / 2 - 2, -3, 5, 5), Color("77787e"))
 		draw_rect(Rect2(size.x / 2 - 1, -2, 3, 3), Color("d5d2c6"))

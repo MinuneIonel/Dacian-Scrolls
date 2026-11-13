@@ -143,7 +143,7 @@ func _ready() -> void:
 	btn_close.pressed.connect(close)
 	foot.add_child(btn_close)
 	refresh()
-	btn_close.grab_focus.call_deferred()
+	PartyScreen.focus_later(btn_close)
 
 func close() -> void:
 	closed.emit()
@@ -173,10 +173,12 @@ func toggle_ability(ability: StringName) -> bool:
 	elif c.equipped.size() >= Character.MAX_EQUIPPED:
 		Bus.toast.emit("party_abilities_full")
 		refresh()
+		_refocus(ability_boxes.get(ability))
 		return false
 	else:
 		c.equipped.append(ability)
 	refresh()
+	_refocus(ability_boxes.get(ability))
 	return true
 
 ## Moves a weapon, armour or trinket from the pack onto the current member; the old one goes
@@ -466,6 +468,19 @@ func _describe_ability(ad: Dictionary) -> void:
 	var src: String = str(ad.get("source", "steel"))
 	var cost: String = fmt("party_ability_cost", [int(ad.get("ap", 0)), int(ad.get("cost", 0)), tr("source_" + src)])
 	_desc.text = "%s: %s %s" % [tr(str(ad.get("name_key", ""))), tr(str(ad.get("desc_key", ""))), cost]
+
+## grab_focus at idle time, skipped if the control has left the tree by then.
+static func focus_later(c: Control) -> void:
+	var ref: WeakRef = weakref(c)
+	var f := func() -> void:
+		var o: Variant = ref.get_ref()
+		if o is Control and (o as Control).is_inside_tree() and (o as Control).is_visible_in_tree():
+			(o as Control).grab_focus()
+	f.call_deferred()
+
+## Keeps keyboard focus on the rebuilt control after a refresh.
+func _refocus(c: Variant) -> void:
+	if c is Control and is_inside_tree(): PartyScreen.focus_later(c as Control)
 
 static func _gap(h: int) -> Control:
 	var c := Control.new()

@@ -29,6 +29,13 @@ func _ready() -> void:
 		s.party[0].charge = 2
 	s.day = 9
 	var show: String = str(a.get("show", "scroll"))
+	if a.get("debug_saves", false):
+		Game.save_dir_override = "user://debug_screen_saves"
+		Game.save(1)
+		var f := FileAccess.open(Game.save_path(3), FileAccess.WRITE)
+		f.store_string("{ torn")
+		f.close()
+		if Game.has_save(2): DirAccess.remove_absolute(Game.save_path(2))
 	if show == "scroll":
 		var sc: Node = load("res://src/modes/scroll/scroll.tscn").instantiate()
 		add_child(sc)
@@ -41,6 +48,7 @@ func _ready() -> void:
 	var cam := Camera2D.new()
 	cam.position = Iso.cell_to_world(s.location_cell) + Vector2(0, -60)
 	add_child(cam)
+	if a.has("toast"): Bus.toast.emit.call_deferred(str(a.toast))
 	match show:
 		"party": PartyScreen.show_over(self)
 		"shop": ShopScreen.show_over(self, StringName(str(a.get("shop", "trader_shop"))))
