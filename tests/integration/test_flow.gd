@@ -163,6 +163,8 @@ func test_saucer_win_crash_site_pages_and_ufo_gone() -> void:
 	assert_has(Game.state.pages, &"page_surgeon_log")
 	assert_has(Game.state.pages, &"page_oglinda")
 	assert_eq(int(Game.state.inventory.get(&"lobizi_scalpel", 0)), 1, "salvage")
+	assert_false(Game.state.inventory.has(&"surgeon_logbook"), "a page item is used up when its page is read")
+	assert_false(Game.state.inventory.has(&"oglinda_shard"))
 	var crash: Vector2i = Rules.to_cell(Rules.location(&"crash_site", _defs()).cell)
 	var d: Vector2i = Game.state.world_pos - crash
 	assert_true(maxi(absi(d.x), absi(d.y)) == 1, "lands next to the crash site")
@@ -186,10 +188,12 @@ func _check_dumped(after: Dictionary, food_before: int) -> void:
 
 func test_saucer_lose_wakes_in_a_revealed_forest() -> void:
 	_abducted()
+	Game.state.hour = 9
 	Fog.reveal(Game.state, Vector2i(24, 16), 8, Travel.world_size(_defs()))
 	var res: Dictionary = _result("lose", "party_down")
 	Encounters.apply_battle_result(&"saucer_surgeon", res, Game.state, Game.rng, _defs())
 	_check_dumped(Flow.after_battle(&"saucer_surgeon", res, Game.state, Game.rng, _defs()), 9)
+	assert_eq(Game.state.hour, 9 + Flow.FOREST_WAKE_HOURS, "later, probably the same day")
 
 func test_saucer_timeout_is_the_same_wake_up() -> void:
 	_abducted()
@@ -235,9 +239,11 @@ func test_regular_defeat_wakes_at_the_temple() -> void:
 	_new()
 	Game.state.gold = 31
 	Game.state.world_pos = Vector2i(20, 20)
+	Game.state.hour = 10
 	var res: Dictionary = _result("lose", "party_down")
 	Encounters.apply_battle_result(&"wolves", res, Game.state, Game.rng, _defs())
 	var after: Dictionary = Flow.after_battle(&"wolves", res, Game.state, Game.rng, _defs())
+	assert_eq(Game.state.hour, 10 + Flow.TEMPLE_WAKE_HOURS, "time passes while carried to the temple")
 	assert_eq(find_event(after.events, "defeat").type, "defeat")
 	assert_eq(Game.state.gold, 31 - 10, "a third of the gold")
 	for m in Game.state.party: assert_true(m.hp >= 1)

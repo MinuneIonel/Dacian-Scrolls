@@ -22,6 +22,9 @@ const CRASH_LOCATION: StringName = &"crash_site"
 const DEFEAT_LINES: Array[String] = ["flow_defeat_1", "flow_defeat_2", "flow_defeat_3"]
 const FOREST_LINES: Array[String] = ["flow_wake_forest_1", "flow_wake_forest_2"]
 const CRASH_LINES: Array[String] = ["flow_saucer_down_1"]
+## Hours that pass while the party is out cold ("Later. A forest." / carried to the temple).
+const FOREST_WAKE_HOURS: int = 4
+const TEMPLE_WAKE_HOURS: int = 8
 ## Neighbours tried, in order, for the landing cell next to the crash site.
 const AROUND: Array[Vector2i] = [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0),
 	Vector2i(-1, 1), Vector2i(-1, -1), Vector2i(1, 1), Vector2i(1, -1)]
@@ -76,7 +79,8 @@ static func _saucer_down(result: Dictionary, state: GameState, rng: Rng, defs: D
 			if not defs.has(&"item", StringName(str(item))): continue
 			for fx in defs.get_def(&"item", StringName(str(item))).get("use_effects", []):
 				if fx is Array and fx.size() == 2 and str(fx[0]) == "page":
-					ev.append_array(Rules.run([["page", str(fx[1])]], state, rng, defs))
+					# Read at once, so the item is used up too (it sat in the pack, a dead button).
+					ev.append_array(Rules.run([["page", str(fx[1])], ["take_item", str(item), 1]], state, rng, defs))
 	var crash: Dictionary = Rules.location(CRASH_LOCATION, defs)
 	if not crash.is_empty():
 		var c: Vector2i = Rules.to_cell(crash.get("cell", []))
@@ -97,6 +101,7 @@ static func _saucer_dump(state: GameState, rng: Rng, defs: Defs, out: Dictionary
 	var ev: Array[Dictionary] = out.events
 	for m in state.party: m.hp = 1
 	ev.append_array(Rules.run([["food", -(state.food / 2)]], state, rng, defs))
+	ev.append_array(Travel.advance_time(state, FOREST_WAKE_HOURS))
 	state.world_pos = forest_cell(state, rng, defs)
 	out.mode = &"worldmap"
 	out.wake = "forest"
@@ -107,6 +112,7 @@ static func _temple(state: GameState, rng: Rng, defs: Defs, out: Dictionary) -> 
 	ev.append({"type": "defeat"})
 	for m in state.party: m.hp = maxi(m.hp, 1)
 	ev.append_array(Rules.run([["gold", -(state.gold / 3)]], state, rng, defs))
+	ev.append_array(Travel.advance_time(state, TEMPLE_WAKE_HOURS))
 	var n: int = int(state.flags.get("times_defeated", 0))
 	ev.append_array(Rules.run([["set_flag", "times_defeated", n + 1]], state, rng, defs))
 	var loc_id: StringName = TEMPLE_LOCATION
