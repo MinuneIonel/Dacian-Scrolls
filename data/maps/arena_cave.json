@@ -1,0 +1,17 @@
+{
+ "id": "arena_cave",
+ "kind": "arena",
+ "name_key": "map_arena_cave",
+ "legend": {"#": "cave_wall", ".": "cave_floor", "i": "stalagmite", "x": "bones"},
+ "ground": ["############",
+            "##........##",
+            "#...i......#",
+            "#.......i..#",
+            "#.....x....#",
+            "#........x.#",
+            "#..x.i.....#",
+            "#.......i..#",
+            "##.........#",
+            "############"],
+ "entities": [{"id": "entry", "kind": "spawn_ally", "cell": [1, 3]}]
+}

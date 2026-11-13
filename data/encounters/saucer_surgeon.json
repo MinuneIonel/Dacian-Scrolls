@@ -1,0 +1,30 @@
+{
+ "id": "saucer_surgeon",
+ "intro_key": "enc_saucer_surgeon",
+ "map": "arena_saucer",
+ "xp": 144,
+ "party_spawn": [[5, 5], [5, 6], [6, 5], [6, 6]],
+ "enemies": [
+             {"enemy": "lobizi_surgeon", "cell": [9, 4]},
+             {"enemy": "probe_drone", "cell": [13, 3]}
+            ],
+ "rules": {"magic_disabled": true, "gravity": "floaty", "turn_limit": 12},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "saucer_surgeon"]],
+              "fail": []
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 99},
+              "pass": [],
+              "fail": [["battle", "saucer_surgeon"]]
+             }
+            ]
+}

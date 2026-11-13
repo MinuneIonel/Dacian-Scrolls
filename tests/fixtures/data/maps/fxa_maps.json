@@ -1,0 +1,12 @@
+[
+ {"id": "fxa_yard", "kind": "arena", "name_key": "fxa_map_yard",
+  "legend": {".": "grass", "#": "wall", "c": "crate"},
+  "ground": ["#########",
+             "#.......#",
+             "#..c.c..#",
+             "#.......#",
+             "#..c.c..#",
+             "#.......#",
+             "#########"],
+  "entities": []}
+]

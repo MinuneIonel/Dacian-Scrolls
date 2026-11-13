@@ -1,0 +1,73 @@
+{
+ "id": "crash_site",
+ "kind": "outskirts",
+ "name_key": "map_crash_site",
+ "legend": {
+            "f": "forest_floor",
+            "Y": "tree",
+            "b": "bush",
+            "s": "scorched_earth",
+            "H": "wreck_hull",
+            "d": "wreck_debris",
+            "=": "mud",
+            "u": "stump"
+           },
+ "ground": ["YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+            "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+            "YYfffYfYffYfffffffbffffbffYffbYY",
+            "YYYfffffffYffffffffffYffffYfffYY",
+            "YYfffffffYffffffsYYffffYffYuffYY",
+            "YYfffYufffYsssssssssssfYffffffYY",
+            "YYfffYfbfsssssssHHHsssdsfffYYbYY",
+            "YYfYffffsssssHHHHHHHHHsssfffffYY",
+            "YYffYYfssssdsHHHHHHHHHssssffffYY",
+            "YYfffYfssssssHHHHHHHHHssdsfYYbYY",
+            "YYfffbsssdssssssHHHssssssssYffYY",
+            "YYYffYfsssssdssssssssssdssffffYY",
+            "YYfffffsssssssssssssssssssffffYY",
+            "YYffffYfsssssssssssdsssssfffffYY",
+            "YYffbffffsssssssssssssssffbffYYY",
+            "YYfffffffffssss==sssssffffufffYY",
+            "YYfffbfffffYfff==YffffbffYfYfbYY",
+            "YYfYfufffffffff==fffffffYffYYfYY",
+            "YYYfffffYffffff==ffYffYfYfffffYY",
+            "YYffffffffbfYff==bfbbYYfffffYfYY",
+            "YYfYffffffffYff==YffffffffffffYY",
+            "YYfYfffffffffff==ffffYffbYffffYY",
+            "YYYYYYYYYYYYYYY==YYYYYYYYYYYYYYY",
+            "YYYYYYYYYYYYYYY==YYYYYYYYYYYYYYY"],
+ "entities": [
+              {
+               "id": "ozo",
+               "kind": "npc",
+               "cell": [21, 12],
+               "npc": "ozo",
+               "if": [["flag", "ozo_gone", "==", false], ["flag", "won_crash_thrall", "==", false]]
+              },
+              {
+               "id": "parcel",
+               "kind": "container",
+               "cell": [23, 13],
+               "once": true,
+               "if": [["any", [["flag", "ozo_gone", "==", true], ["flag", "won_crash_thrall", "==", true]]]],
+               "effects": [
+                           ["give_item", "lobizi_parcel", 1],
+                           ["page", "page_parcel"],
+                           ["quest", "delivery_in_188_hours", 60]
+                          ],
+               "sprite": "prop_parcel"
+              },
+              {
+               "id": "flight_recorder",
+               "kind": "container",
+               "cell": [10, 11],
+               "once": true,
+               "if": [],
+               "effects": [["page", "page_flight_recorder"], ["give_item", "power_cell", 1]],
+               "sprite": "prop_black_box"
+              },
+              {"id": "path_w", "kind": "exit", "cell": [15, 23], "to": {"mode": "worldmap"}},
+              {"id": "path_e", "kind": "exit", "cell": [16, 23], "to": {"mode": "worldmap"}},
+              {"id": "entry", "kind": "spawn_ally", "cell": [15, 21]}
+             ]
+}

@@ -1,0 +1,19 @@
+[
+ {"id": "fxc_dummy", "name_key": "fxc_enemy_dummy", "size": 1, "hp": 60, "armor": 0,
+  "stats": {"might": 0, "agility": 0, "wits": 0, "spirit": 0}, "abilities": ["fxc_poke"],
+  "ai": "brute", "raiseable": false, "machine": false, "gib": false, "sprite": "dummy",
+  "loot": [{"item": "fx_bread", "chance": 1.0}]},
+ {"id": "fxc_drone", "name_key": "fxc_enemy_drone", "size": 1, "hp": 8, "armor": 1,
+  "stats": {"might": 2, "agility": 3, "wits": 4, "spirit": 0}, "abilities": ["fxc_poke"],
+  "ai": "skirmisher", "raiseable": false, "machine": true, "gib": true, "sprite": "drone",
+  "loot": [{"item": "fx_cell", "chance": 0.5}]},
+ {"id": "fxc_brute", "name_key": "fxc_enemy_brute", "size": 1, "hp": 12, "armor": 1,
+  "stats": {"might": 4, "agility": 3, "wits": 1, "spirit": 1}, "abilities": ["fx_strike", "fxc_bleed", "fxc_shove"],
+  "ai": "brute", "raiseable": true, "machine": false, "gib": true, "sprite": "brute",
+  "loot": []},
+ {"id": "fxc_surgeon", "name_key": "fxc_enemy_surgeon", "size": 2, "hp": 30, "armor": 2,
+  "stats": {"might": 5, "agility": 3, "wits": 5, "spirit": 2},
+  "abilities": ["fx_strike", "fxc_tank", "fxc_gravity", "fxc_acid", "fxc_spawn"],
+  "ai": "boss_surgeon", "raiseable": false, "machine": true, "gib": false, "sprite": "surgeon",
+  "loot": [{"item": "fx_cell", "chance": 1.0}]}
+]

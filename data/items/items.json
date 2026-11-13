@@ -1,0 +1,177 @@
+[
+ {
+  "id": "iron_falx",
+  "name_key": "item_iron_falx",
+  "desc_key": "item_iron_falx_desc",
+  "kind": "weapon",
+  "price": 72,
+  "mods": {"damage": 3},
+  "icon": "icon_iron_falx"
+ },
+ {
+  "id": "sica",
+  "name_key": "item_sica",
+  "desc_key": "item_sica_desc",
+  "kind": "weapon",
+  "price": 36,
+  "mods": {"damage": 2},
+  "icon": "icon_sica"
+ },
+ {
+  "id": "oak_staff",
+  "name_key": "item_oak_staff",
+  "desc_key": "item_oak_staff_desc",
+  "kind": "weapon",
+  "price": 36,
+  "mods": {"damage": 1, "spirit": 1},
+  "icon": "icon_oak_staff"
+ },
+ {
+  "id": "wolf_pelt",
+  "name_key": "item_wolf_pelt",
+  "desc_key": "item_wolf_pelt_desc",
+  "kind": "armor",
+  "price": 24,
+  "mods": {"armor": 1},
+  "icon": "icon_wolf_pelt"
+ },
+ {
+  "id": "scale_mail",
+  "name_key": "item_scale_mail",
+  "desc_key": "item_scale_mail_desc",
+  "kind": "armor",
+  "price": 60,
+  "mods": {"armor": 2},
+  "icon": "icon_scale_mail"
+ },
+ {
+  "id": "roman_lorica",
+  "name_key": "item_roman_lorica",
+  "desc_key": "item_roman_lorica_desc",
+  "kind": "armor",
+  "price": 96,
+  "mods": {"armor": 3, "agility": -1},
+  "icon": "icon_roman_lorica"
+ },
+ {
+  "id": "decoy_charm",
+  "name_key": "item_decoy_charm",
+  "desc_key": "item_decoy_charm_desc",
+  "kind": "trinket",
+  "price": 36,
+  "use_effects": [["set_flag", "decoy_charm", true]],
+  "icon": "icon_decoy_charm"
+ },
+ {
+  "id": "draco_pennant",
+  "name_key": "item_draco_pennant",
+  "desc_key": "item_draco_pennant_desc",
+  "kind": "trinket",
+  "price": 48,
+  "mods": {"might": 1},
+  "icon": "icon_draco_pennant"
+ },
+ {
+  "id": "zalmoxis_amulet",
+  "name_key": "item_zalmoxis_amulet",
+  "desc_key": "item_zalmoxis_amulet_desc",
+  "kind": "trinket",
+  "price": 48,
+  "mods": {"spirit": 1},
+  "icon": "icon_zalmoxis_amulet"
+ },
+ {
+  "id": "bread",
+  "name_key": "item_bread",
+  "desc_key": "item_bread_desc",
+  "kind": "consumable",
+  "price": 12,
+  "use_effects": [["food", 3]],
+  "icon": "icon_bread"
+ },
+ {
+  "id": "healing_herbs",
+  "name_key": "item_healing_herbs",
+  "desc_key": "item_healing_herbs_desc",
+  "kind": "consumable",
+  "price": 24,
+  "use_ability": "herb_poultice",
+  "icon": "icon_healing_herbs"
+ },
+ {
+  "id": "power_cell",
+  "name_key": "item_power_cell",
+  "desc_key": "item_power_cell_desc",
+  "kind": "consumable",
+  "price": 36,
+  "use_effects": [["restore_charge", 6]],
+  "icon": "icon_power_cell"
+ },
+ {
+  "id": "lobizi_scalpel",
+  "name_key": "item_lobizi_scalpel",
+  "desc_key": "item_lobizi_scalpel_desc",
+  "kind": "salvage",
+  "price": 96,
+  "icon": "icon_lobizi_scalpel"
+ },
+ {
+  "id": "gravity_coil",
+  "name_key": "item_gravity_coil",
+  "desc_key": "item_gravity_coil_desc",
+  "kind": "salvage",
+  "price": 120,
+  "icon": "icon_gravity_coil"
+ },
+ {
+  "id": "med_gel_canister",
+  "name_key": "item_med_gel_canister",
+  "desc_key": "item_med_gel_canister_desc",
+  "kind": "salvage",
+  "price": 72,
+  "icon": "icon_med_gel_canister"
+ },
+ {
+  "id": "surgeon_logbook",
+  "name_key": "item_surgeon_logbook",
+  "desc_key": "item_surgeon_logbook_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_surgeon_log"]],
+  "icon": "icon_surgeon_logbook"
+ },
+ {
+  "id": "oglinda_shard",
+  "name_key": "item_oglinda_shard",
+  "desc_key": "item_oglinda_shard_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_oglinda"]],
+  "icon": "icon_oglinda_shard"
+ },
+ {
+  "id": "deserters_diary",
+  "name_key": "item_deserters_diary",
+  "desc_key": "item_deserters_diary_desc",
+  "kind": "consumable",
+  "price": 0,
+  "use_effects": [["page", "page_deserters"]],
+  "icon": "icon_deserters_diary"
+ },
+ {
+  "id": "strigoi_taxes",
+  "name_key": "item_strigoi_taxes",
+  "desc_key": "item_strigoi_taxes_desc",
+  "kind": "quest",
+  "price": 0,
+  "icon": "icon_strigoi_taxes"
+ },
+ {
+  "id": "lobizi_parcel",
+  "name_key": "item_lobizi_parcel",
+  "desc_key": "item_lobizi_parcel_desc",
+  "kind": "quest",
+  "price": 0,
+  "icon": "icon_lobizi_parcel"
+ }
+]

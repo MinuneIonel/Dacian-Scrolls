@@ -1,0 +1,125 @@
+name: release
+# A tag slice-* builds Windows, macOS, Linux and Web, attaches the desktop zips to a GitHub release
+# and publishes the Web build to GitHub Pages. workflow_dispatch builds and publishes Pages only.
+on:
+  push:
+    tags: ["slice-*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+      - name: Cache Godot
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
+        with:
+          path: .godot-bin
+          key: godot-4.5.1-stable-linux
+      - name: Cache export templates
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
+        with:
+          path: ~/.local/share/godot/export_templates/4.5.1.stable
+          key: godot-templates-4.5.1-stable
+      - run: tools/get_godot.sh
+      - run: tools/get_templates.sh
+      - name: Prepare export
+        # Our CSV string tables are read raw by ContentLoader: import them with "keep" so the export
+        # packs the .csv itself instead of a .translation. The macOS universal template needs
+        # ETC2/ASTC enabled (our textures are lossless, so nothing changes). Both are no-ops once
+        # the repo carries them (see docs/handoff/WP-33.md).
+        run: |
+          for f in data/strings/*.csv; do printf '[remap]\n\nimporter="keep"\n' > "$f.import"; done
+          grep -q '^textures/vram_compression/import_etc2_astc' project.godot \
+            || sed -i '/^\[rendering\]/a textures/vram_compression/import_etc2_astc=true' project.godot
+      - name: Import assets
+        run: .godot-bin/godot --headless --path . --import 2>&1 | tail -20
+      - name: Export
+        run: |
+          mkdir -p build/windows build/macos build/linux build/web build/dist
+          touch build/.gdignore  # keep the editor from importing exported files on the next scan
+          export_one() {  # mode, preset, path
+            if ! .godot-bin/godot --headless --path . "$1" "$2" "$3" > build/export.log 2>&1; then
+              grep -v 'Storing File' build/export.log | tail -40; echo "export '$2' failed"; return 1
+            fi
+            grep 'ERROR\|WARNING' build/export.log || true
+          }
+          export_one --export-release "Windows Desktop" build/windows/DacianScrolls.exe
+          export_one --export-release "macOS" build/macos/DacianScrolls.zip
+          export_one --export-release "Linux" build/linux/DacianScrolls.x86_64
+          export_one --export-release "Web" build/web/index.html
+          export_one --export-pack "Linux" build/pack-check.zip
+      - name: Verify exports
+        run: |
+          for f in build/windows/DacianScrolls.exe build/macos/DacianScrolls.zip \
+                   build/linux/DacianScrolls.x86_64 build/web/index.html build/web/index.pck build/web/index.wasm; do
+            test -s "$f" || { echo "missing $f"; exit 1; }
+          done
+          # The game reads data/**/*.json and data/strings/*.csv as raw files: they must be in the pack.
+          unzip -Z1 build/pack-check.zip > build/pack-files.txt
+          grep -qx 'data/strings/en.csv' build/pack-files.txt || { echo "string tables not packed"; exit 1; }
+          grep -qx 'data/world.json' build/pack-files.txt || { echo "data json not packed"; exit 1; }
+          if grep -q '^tests/' build/pack-files.txt; then echo "tests leaked into the pack"; exit 1; fi
+          timeout 20 build/linux/DacianScrolls.x86_64 --headless --quit-after 300 > build/run.log 2>&1
+          cat build/run.log
+          if grep -q 'ERROR' build/run.log; then echo "errors while running the Linux build"; exit 1; fi
+      - name: Package desktop zips
+        run: |
+          (cd build/windows && zip -9q ../dist/DacianScrolls-windows.zip DacianScrolls.exe)
+          cp build/macos/DacianScrolls.zip build/dist/DacianScrolls-macos.zip
+          (cd build/linux && chmod +x DacianScrolls.x86_64 && zip -9q ../dist/DacianScrolls-linux.zip DacianScrolls.x86_64)
+          cp docs/how-to-play.md build/dist/how-to-play.md
+          ls -la build/dist build/web
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: desktop
+          path: build/dist/
+          if-no-files-found: error
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3.0.1
+        with:
+          path: build/web
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/slice-')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
+        with:
+          name: desktop
+          path: dist
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          PAGES: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          notes="Play in the browser: $PAGES  Desktop builds below (unsigned). Controls: how-to-play.md."
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --clobber -R "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" dist/* -R "$GITHUB_REPOSITORY" --title "$TAG" --notes "$notes" --prerelease
+          fi
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4.0.5

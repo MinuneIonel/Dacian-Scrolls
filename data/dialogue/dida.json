@@ -1,0 +1,43 @@
+{
+ "id": "dida",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_dida",
+                     "text_key": "dlg_dida_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_dida_hello_c0",
+                                  "if": [],
+                                  "do": [["shop", "trader_shop"]],
+                                  "goto": "end"
+                                 },
+                                 {
+                                  "text_key": "dlg_dida_hello_c1",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "sky"
+                                 },
+                                 {
+                                  "text_key": "dlg_dida_hello_c2",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "sky": {
+                   "speaker": "npc_dida",
+                   "text_key": "dlg_dida_sky",
+                   "choices": [
+                               {
+                                "text_key": "dlg_dida_sky_c0",
+                                "if": [],
+                                "do": [["shop", "trader_shop"]],
+                                "goto": "end"
+                               },
+                               {"text_key": "dlg_dida_sky_c1", "if": [], "do": [], "goto": "end"}
+                              ]
+                  }
+          }
+}

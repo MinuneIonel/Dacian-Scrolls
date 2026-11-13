@@ -1,0 +1,156 @@
+{
+ "id": "mucapor",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_mucapor",
+                     "text_key": "dlg_mucapor_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_mucapor_hello_c0",
+                                  "if": [["quest", "dead_dont_pay_taxes", "==", 0]],
+                                  "do": [
+                                         ["quest", "dead_dont_pay_taxes", 10],
+                                         ["discover", "strigoi_cave"]
+                                        ],
+                                  "goto": "offer"
+                                 },
+                                 {
+                                  "text_key": "dlg_mucapor_hello_c1",
+                                  "if": [
+                                         ["quest", "dead_dont_pay_taxes", ">=", 10],
+                                         ["quest", "dead_dont_pay_taxes", "<", 100],
+                                         ["not", ["has_item", "strigoi_taxes", 1]]
+                                        ],
+                                  "do": [],
+                                  "goto": "reminder"
+                                 },
+                                 {
+                                  "text_key": "dlg_mucapor_hello_c2",
+                                  "if": [["has_item", "strigoi_taxes", 1]],
+                                  "do": [
+                                         ["take_item", "strigoi_taxes", 1],
+                                         ["quest", "dead_dont_pay_taxes", 100],
+                                         ["gold", 36],
+                                         ["page", "page_taxes"]
+                                        ],
+                                  "goto": "turnin"
+                                 },
+                                 {
+                                  "text_key": "dlg_mucapor_hello_c3",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "war"
+                                 },
+                                 {
+                                  "text_key": "dlg_mucapor_hello_c4",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "offer": {
+                     "speaker": "npc_mucapor",
+                     "text_key": "dlg_mucapor_offer",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_mucapor_offer_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "reminder": {
+                        "speaker": "npc_mucapor",
+                        "text_key": "dlg_mucapor_reminder",
+                        "choices": [
+                                    {
+                                     "text_key": "dlg_mucapor_reminder_c0",
+                                     "if": [],
+                                     "do": [],
+                                     "goto": "end"
+                                    }
+                                   ]
+                       },
+           "turnin": {
+                      "speaker": "npc_mucapor",
+                      "text_key": "dlg_mucapor_turnin",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_mucapor_turnin_c0",
+                                   "if": [["flag", "won_cave_strigoi", "==", true]],
+                                   "do": [],
+                                   "goto": "end_fight"
+                                  },
+                                  {
+                                   "text_key": "dlg_mucapor_turnin_c1",
+                                   "if": [["flag", "duras_talked", "==", true]],
+                                   "do": [],
+                                   "goto": "end_talk"
+                                  },
+                                  {
+                                   "text_key": "dlg_mucapor_turnin_c2",
+                                   "if": [["flag", "strigoi_ally_taken", "==", true]],
+                                   "do": [],
+                                   "goto": "end_necro"
+                                  },
+                                  {
+                                   "text_key": "dlg_mucapor_turnin_c3",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "end"
+                                  }
+                                 ]
+                     },
+           "end_fight": {
+                         "speaker": "npc_mucapor",
+                         "text_key": "dlg_mucapor_end_fight",
+                         "choices": [
+                                     {
+                                      "text_key": "dlg_mucapor_end_fight_c0",
+                                      "if": [],
+                                      "do": [],
+                                      "goto": "end"
+                                     }
+                                    ]
+                        },
+           "end_talk": {
+                        "speaker": "npc_mucapor",
+                        "text_key": "dlg_mucapor_end_talk",
+                        "choices": [
+                                    {
+                                     "text_key": "dlg_mucapor_end_talk_c0",
+                                     "if": [],
+                                     "do": [],
+                                     "goto": "end"
+                                    }
+                                   ]
+                       },
+           "end_necro": {
+                         "speaker": "npc_mucapor",
+                         "text_key": "dlg_mucapor_end_necro",
+                         "choices": [
+                                     {
+                                      "text_key": "dlg_mucapor_end_necro_c0",
+                                      "if": [],
+                                      "do": [],
+                                      "goto": "end"
+                                     }
+                                    ]
+                        },
+           "war": {
+                   "speaker": "npc_mucapor",
+                   "text_key": "dlg_mucapor_war",
+                   "choices": [
+                               {
+                                "text_key": "dlg_mucapor_war_c0",
+                                "if": [],
+                                "do": [],
+                                "goto": "hello"
+                               }
+                              ]
+                  }
+          }
+}

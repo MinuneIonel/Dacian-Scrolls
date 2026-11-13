@@ -1,0 +1,26 @@
+keys,en
+wm_clock,"Day %d, %02d:00"
+wm_night,Night
+wm_food,Food %d
+wm_gold,Gold %d
+wm_pages,Pages %d/%d
+wm_party,Party
+wm_scroll,Scroll
+wm_cost,"%d h, %d food"
+wm_cost_hungry,"%d h, %d food (you have %d)"
+wm_click_again,Click again to go.
+wm_encounter_title,Company
+wm_option_chance,%s (%d%%)
+wm_roll,"%s roll: %d against %d. %s"
+wm_roll_pass,It works.
+wm_roll_fail,It does not.
+wm_outcome_none,You leave before anyone can object. Nobody objects.
+wm_xp,+%d XP for everyone.
+wm_continue,Carry on
+wm_enter,Enter %s?
+wm_enter_yes,Enter
+wm_enter_no,Not yet
+wm_stat_might,Might
+wm_stat_agility,Agility
+wm_stat_wits,Wits
+wm_stat_spirit,Spirit

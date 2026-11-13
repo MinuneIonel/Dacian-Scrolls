@@ -1,0 +1,12 @@
+{"id": "fxw_bandits", "intro_key": "fxw_enc_bandits", "map": "fx_arena", "xp": 36,
+ "party_spawn": [[1, 2], [1, 3], [1, 4], [2, 3]],
+ "enemies": [{"enemy": "fx_wolf", "cell": [6, 2]}],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+  {"id": "fight", "label_key": "opt_fight", "if": [["flag", "never", "==", true]], "roll": null, "pass": [["battle", "fxw_bandits"]], "fail": []},
+  {"id": "talk", "label_key": "fxw_opt_talk", "if": [], "roll": null, "pass": [["narrate", "fxw_line_talk"]], "fail": []},
+  {"id": "sneak", "label_key": "fxw_opt_sneak", "if": [], "roll": {"stat": "agility", "dc": 12}, "pass": [], "fail": [["battle", "fxw_bandits"]]},
+  {"id": "bribe", "label_key": "fxw_opt_bribe", "if": [["gold", ">=", 12]], "roll": null, "pass": [["gold", -12]], "fail": []},
+  {"id": "help", "label_key": "fxw_opt_help", "if": [["flag", "helped", "==", true]], "roll": null, "pass": [], "fail": []},
+  {"id": "flee", "label_key": "opt_flee", "if": [["flag", "never", "==", true]], "roll": {"stat": "agility", "dc": 10}, "pass": [], "fail": [["battle", "fxw_bandits"]]}
+ ]}

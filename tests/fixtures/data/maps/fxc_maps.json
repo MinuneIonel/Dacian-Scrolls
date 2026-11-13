@@ -1,0 +1,19 @@
+[
+ {"id": "fxc_open", "kind": "arena", "name_key": "fxc_map_open",
+  "legend": {".": "grass"},
+  "ground": ["......",
+             "......",
+             "......",
+             "......",
+             "......",
+             "......"],
+  "entities": []},
+ {"id": "fxc_box", "kind": "arena", "name_key": "fxc_map_box",
+  "legend": {".": "grass", "#": "wall"},
+  "ground": ["###....",
+             "#.#....",
+             "###....",
+             ".......",
+             "......."],
+  "entities": []}
+]

@@ -1,0 +1,62 @@
+{
+ "id": "roman_deserters",
+ "intro_key": "enc_roman_deserters",
+ "map": "arena_road",
+ "xp": 36,
+ "party_spawn": [[1, 3], [1, 5], [2, 4], [2, 6]],
+ "enemies": [
+             {"enemy": "roman_deserter", "cell": [9, 3]},
+             {"enemy": "roman_deserter", "cell": [10, 5]},
+             {"enemy": "roman_deserter", "cell": [9, 7]}
+            ],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "roman_deserters"]],
+              "fail": []
+             },
+             {
+              "id": "talk",
+              "label_key": "enc_roman_deserters_opt_talk",
+              "if": [],
+              "roll": {"stat": "wits", "dc": 12},
+              "pass": [["narrate", "enc_roman_deserters_talk_pass"], ["page", "page_deserters"]],
+              "fail": [["narrate", "enc_roman_deserters_talk_fail"], ["battle", "roman_deserters"]]
+             },
+             {
+              "id": "bribe",
+              "label_key": "enc_roman_deserters_opt_bribe",
+              "if": [["gold", ">=", 24]],
+              "roll": null,
+              "pass": [
+                       ["narrate", "enc_roman_deserters_bribe_pass"],
+                       ["gold", -24],
+                       ["page", "page_deserters"]
+                      ],
+              "fail": []
+             },
+             {
+              "id": "help",
+              "label_key": "enc_roman_deserters_opt_help",
+              "if": [["flag", "strigoi_ally", "==", true]],
+              "roll": null,
+              "pass": [
+                       ["narrate", "enc_roman_deserters_help_pass"],
+                       ["set_flag", "strigoi_ally", false]
+                      ],
+              "fail": []
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 10},
+              "pass": [],
+              "fail": [["battle", "roman_deserters"]]
+             }
+            ]
+}

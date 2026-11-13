@@ -1,0 +1,5 @@
+[
+ {"id": "fx_sword", "name_key": "fx_item_sword", "desc_key": "fx_item_sword_desc", "kind": "weapon", "price": 24, "mods": {"damage": 2}, "icon": "icon_sword"},
+ {"id": "fx_bread", "name_key": "fx_item_bread", "desc_key": "fx_item_bread_desc", "kind": "consumable", "price": 12, "use_effects": [["food", 3]], "icon": "icon_bread"},
+ {"id": "fx_cell", "name_key": "fx_item_cell", "desc_key": "fx_item_cell_desc", "kind": "salvage", "price": 36, "icon": "icon_cell"}
+]

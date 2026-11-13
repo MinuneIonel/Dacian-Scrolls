@@ -1,0 +1,144 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "map",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "kind": {
+   "enum": [
+    "town",
+    "outskirts",
+    "dungeon",
+    "arena"
+   ]
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "legend": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string",
+    "pattern": "^[a-z0-9_]+$"
+   }
+  },
+  "ground": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 1
+  },
+  "music": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "entities": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "kind": {
+      "enum": [
+       "npc",
+       "container",
+       "exit",
+       "trigger",
+       "spawn_ally",
+       "spawn_enemy",
+       "prop"
+      ]
+     },
+     "cell": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "npc": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "dialogue": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "once": {
+      "type": "boolean"
+     },
+     "if": {
+      "type": "array"
+     },
+     "effects": {
+      "type": "array"
+     },
+     "sprite": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "to": {
+      "type": "object",
+      "properties": {
+       "mode": {
+        "enum": [
+         "worldmap",
+         "location"
+        ]
+       },
+       "location": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+       },
+       "cell": {
+        "type": "array",
+        "items": {
+         "type": "integer"
+        },
+        "minItems": 2,
+        "maxItems": 2
+       }
+      },
+      "required": [
+       "mode"
+      ],
+      "patternProperties": {
+       "^_": {}
+      },
+      "additionalProperties": false
+     }
+    },
+    "required": [
+     "id",
+     "kind",
+     "cell"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "required": [
+  "id",
+  "kind",
+  "name_key",
+  "legend",
+  "ground",
+  "entities"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

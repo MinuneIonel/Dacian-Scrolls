@@ -1,0 +1,84 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "dialogue",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "start": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "nodes": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "properties": {
+     "speaker": {
+      "type": "string",
+      "minLength": 1
+     },
+     "text_key": {
+      "type": "string",
+      "minLength": 1
+     },
+     "do": {
+      "type": "array"
+     },
+     "choices": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "text_key": {
+         "type": "string",
+         "minLength": 1
+        },
+        "if": {
+         "type": "array"
+        },
+        "do": {
+         "type": "array"
+        },
+        "goto": {
+         "type": "string",
+         "pattern": "^[a-z0-9_]+$"
+        }
+       },
+       "required": [
+        "text_key",
+        "if",
+        "do",
+        "goto"
+       ],
+       "patternProperties": {
+        "^_": {}
+       },
+       "additionalProperties": false
+      }
+     }
+    },
+    "required": [
+     "speaker",
+     "text_key",
+     "choices"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "required": [
+  "id",
+  "start",
+  "nodes"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

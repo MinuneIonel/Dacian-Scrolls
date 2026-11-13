@@ -1,0 +1,17 @@
+[
+ {"id": "fx_strike", "name_key": "fx_ab_strike", "desc_key": "fx_ab_strike_desc", "source": "steel",
+  "ap": 3, "cost": 0, "range": 1, "area": 0, "target": "enemy", "icon": "icon_strike",
+  "effects": [{"kind": "damage", "base": 4, "stat": "might", "scale": 1.0}]},
+ {"id": "fx_ward", "name_key": "fx_ab_ward", "desc_key": "fx_ab_ward_desc", "source": "magic",
+  "ap": 3, "cost": 3, "range": 0, "area": 3, "target": "self", "icon": "icon_ward",
+  "effects": [{"kind": "taunt", "turns": 2}, {"kind": "shield", "amount": 6, "turns": 2}]},
+ {"id": "fx_zap", "name_key": "fx_ab_zap", "desc_key": "fx_ab_zap_desc", "source": "tech",
+  "ap": 4, "cost": 2, "range": 4, "area": 0, "target": "enemy", "icon": "icon_zap",
+  "effects": [{"kind": "damage", "base": 6, "stat": "wits", "scale": 0.5, "ignore_armor": true}, {"kind": "push", "cells": 1}]},
+ {"id": "fx_raise", "name_key": "fx_ab_raise", "desc_key": "fx_ab_raise_desc", "source": "magic",
+  "ap": 4, "cost": 4, "range": 3, "area": 0, "target": "corpse", "icon": "icon_raise",
+  "effects": [{"kind": "summon", "from": "corpse"}]},
+ {"id": "fx_heal", "name_key": "fx_ab_heal", "desc_key": "fx_ab_heal_desc", "source": "magic",
+  "ap": 3, "cost": 3, "range": 3, "area": 0, "target": "ally", "icon": "icon_heal",
+  "effects": [{"kind": "heal", "base": 6, "stat": "spirit", "scale": 1.0}, {"kind": "cleanse"}, {"kind": "status", "status": "regen", "turns": 2, "value": 2}]}
+]

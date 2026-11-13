@@ -1,0 +1,15 @@
+keys,en
+fxa_ab_spit,Spit
+fxa_ab_spit_desc,Spits.
+fxa_ab_hex,Hex
+fxa_ab_hex_desc,Hexes.
+fxa_ab_mend,Mend
+fxa_ab_mend_desc,Mends.
+fxa_ab_probe,Probe
+fxa_ab_probe_desc,Deploys a probe.
+fxa_enemy_skirm,Skirmisher
+fxa_enemy_shaman,Shaman
+fxa_enemy_surgeon,Surgeon
+fxa_enemy_probe,Probe drone
+fxa_map_yard,Yard
+fxa_enc,An AI test fight.

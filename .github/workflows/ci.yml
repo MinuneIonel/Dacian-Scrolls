@@ -1,0 +1,30 @@
+name: ci
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install jsonschema==4.26.0 Pillow==12.3.0 numpy==2.5.3  # match the agent container: generated assets must be byte-identical
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Validate data and generated assets
+        run: python3 tools/validate_data.py && python3 tools/test_validate_data.py && python3 tools/art/test_art.py && python3 tools/audio/test_audio.py
+      - name: Cache Godot
+        uses: actions/cache@v4
+        with:
+          path: .godot-bin
+          key: godot-4.5.1-stable-linux
+      - run: tools/get_godot.sh
+      - name: Import assets
+        run: .godot-bin/godot --headless --path . --import 2>&1 | tail -40; ls .godot/imported | wc -l
+      - name: Unit and integration tests
+        run: tools/test.sh
+      - name: Bot tests
+        run: if ls tests/bot/test_*.gd >/dev/null 2>&1; then tools/test.sh tests/bot; fi

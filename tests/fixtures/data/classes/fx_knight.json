@@ -1,0 +1,4 @@
+{"id": "fx_knight", "name_key": "fx_class_knight", "desc_key": "fx_class_knight_desc",
+ "base_stats": {"might": 6, "agility": 4, "wits": 2, "spirit": 3},
+ "base_hp": 30, "hp_per_level": 6, "base_mana": 4, "base_charge": 4,
+ "basic_attack": "fx_strike", "abilities": ["fx_strike", "fx_ward", "fx_zap"], "sprite": "knight"}

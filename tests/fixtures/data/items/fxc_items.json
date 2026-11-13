@@ -1,0 +1,4 @@
+[
+ {"id": "fxc_medkit", "name_key": "fxc_item_medkit", "desc_key": "fxc_item_medkit_desc", "kind": "consumable", "price": 12, "use_ability": "fxc_patch", "icon": "icon_medkit"},
+ {"id": "fxc_plate", "name_key": "fxc_item_plate", "desc_key": "fxc_item_plate_desc", "kind": "armor", "price": 24, "mods": {"armor": 2}, "icon": "icon_plate"}
+]
