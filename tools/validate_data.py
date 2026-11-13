@@ -104,6 +104,9 @@ def load_strings(root, rep):
         rep.err(os.path.relpath(root, ROOT), "no strings/*.csv")
     for path in paths:
         load_string_file(path, keys, rep)
+        imp = path + ".import"
+        if not os.path.exists(imp) or 'importer="keep"' not in open(imp, encoding="utf-8").read():
+            rep.err(os.path.relpath(path, ROOT), 'needs a committed %s.import with importer="keep" (else exports drop the CSV)' % os.path.basename(path))
     return keys
 
 

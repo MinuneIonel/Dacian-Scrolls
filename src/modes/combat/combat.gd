@@ -9,6 +9,7 @@ const UnitView := preload("res://src/modes/combat/unit_view.gd")
 const Overlay := preload("res://src/modes/combat/overlay.gd")
 const CombatHud := preload("res://src/modes/combat/combat_hud.gd")
 const Txt := preload("res://src/modes/combat/combat_text.gd")
+const CombatFx := preload("res://src/modes/combat/fx/combat_fx.gd")
 const NO_CELL := Vector2i(-999, -999)
 const TOP_STRIP: float = 18.0
 const PAN_SPEED: float = 260.0
@@ -44,6 +45,8 @@ var fx_layer: Node2D
 var camera: Camera2D
 var hud: CanvasLayer
 var player: Node
+## Gore and juice (WP-32): listens to the player, draws only.
+var fx: Node
 var awaiting_input: bool = false
 var selected: int = -1
 var done: bool = false
@@ -166,6 +169,10 @@ func _build_player() -> void:
 	player.banner.connect(func(text: String, alien: bool) -> void: hud.show_banner(text, alien, 0.6, player.speed))
 	player.focus_requested.connect(focus)
 	player.event_started.connect(_on_event_started)
+	fx = CombatFx.new()
+	fx.name = "CombatFx"
+	add_child(fx)
+	fx.setup(self)
 
 func _on_event_started(e: Dictionary) -> void:
 	if str(e.get("type", "")) == "turn_started":
