@@ -20,12 +20,20 @@ import kit as K  # noqa: E402
 import gen_tiles  # noqa: E402
 import gen_chars  # noqa: E402
 import gen_ui  # noqa: E402
+import gen_cast  # noqa: E402
+import gen_beasts  # noqa: E402
+import gen_giants  # noqa: E402
+import gen_terrain  # noqa: E402
 
 GENERATORS = {}
 GENERATORS.update(gen_tiles.GENERATORS)
 GENERATORS.update(gen_ui.GENERATORS)
 GENERATORS.update({"knight": gen_chars.knight, "grazi_thrall": gen_chars.grazi_thrall,
                    "giant_legs": gen_chars.giant_legs})
+for _mod in (gen_cast, gen_beasts, gen_giants, gen_terrain):
+    for _k, _v in _mod.GENERATORS.items():
+        assert _k not in GENERATORS, _k
+        GENERATORS[_k] = _v
 
 
 def load_specs():
@@ -38,15 +46,20 @@ def load_specs():
     return specs
 
 
+def anim_list(spec):
+    """(name, frames, fps, loop) per sheet row: the character set (SE then NE), or the spec's own `anims`."""
+    if "anims" in spec:
+        return [tuple(a) for a in spec["anims"]]
+    return [(name + suffix, n, fps, loop) for suffix in ("", "_ne") for name, n, fps, loop in gen_chars.ANIMS]
+
+
 def frames_entry(spec, rows):
     fw, fh = spec["frame_size"]
     anims = {}
-    r = 0
-    for suffix in ("", "_ne"):
-        for name, n, fps, loop in gen_chars.ANIMS:
-            assert len(rows[r]) == n, (spec["id"], name, len(rows[r]))
-            anims[name + suffix] = {"row": r, "frames": n, "fps": fps, "loop": loop}
-            r += 1
+    for r, (name, n, fps, loop) in enumerate(anim_list(spec)):
+        assert len(rows[r]) == n, (spec["id"], name, len(rows[r]))
+        anims[name] = {"row": r, "frames": n, "fps": float(fps), "loop": loop}
+    assert len(rows) == len(anims), (spec["id"], len(rows))
     entry = {"sheet": "res://" + spec["out"], "frame_size": [fw, fh], "anims": anims, "anchor": spec["anchor"]}
     if "footprint" in spec:
         entry["footprint"] = spec["footprint"]

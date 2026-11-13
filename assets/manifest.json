@@ -1,6 +1,83 @@
 {
  "audio": {},
  "frames": {
+  "bancul_recruit": {
+   "anchor": [
+    64,
+    160
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "footprint": [
+    2,
+    2
+   ],
+   "frame_size": [
+    128,
+    192
+   ],
+   "sheet": "res://assets/sprites/bancul_recruit.png"
+  },
   "giant_legs": {
    "anchor": [
     64,
@@ -151,6 +228,79 @@
    ],
    "sheet": "res://assets/sprites/grazi_thrall.png"
   },
+  "healer": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/healer.png"
+  },
   "knight": {
    "anchor": [
     16,
@@ -223,14 +373,799 @@
     48
    ],
    "sheet": "res://assets/sprites/knight.png"
+  },
+  "lobizi_surgeon": {
+   "anchor": [
+    64,
+    160
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "footprint": [
+    2,
+    2
+   ],
+   "frame_size": [
+    128,
+    192
+   ],
+   "sheet": "res://assets/sprites/lobizi_surgeon.png"
+  },
+  "necromancer": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/necromancer.png"
+  },
+  "probe_drone": {
+   "anchor": [
+    24,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    48,
+    48
+   ],
+   "sheet": "res://assets/sprites/probe_drone.png"
+  },
+  "roman_deserter": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/roman_deserter.png"
+  },
+  "strigoi": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/strigoi.png"
+  },
+  "villager_1": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/villager_1.png"
+  },
+  "villager_2": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/villager_2.png"
+  },
+  "villager_3": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/villager_3.png"
+  },
+  "villager_4": {
+   "anchor": [
+    16,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    32,
+    48
+   ],
+   "sheet": "res://assets/sprites/villager_4.png"
+  },
+  "wolf": {
+   "anchor": [
+    24,
+    44
+   ],
+   "anims": {
+    "attack": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 2
+    },
+    "attack_ne": {
+     "fps": 10.0,
+     "frames": 3,
+     "loop": false,
+     "row": 7
+    },
+    "death": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 4
+    },
+    "death_ne": {
+     "fps": 6.0,
+     "frames": 3,
+     "loop": false,
+     "row": 9
+    },
+    "hit": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 3
+    },
+    "hit_ne": {
+     "fps": 6.0,
+     "frames": 1,
+     "loop": false,
+     "row": 8
+    },
+    "idle": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 0
+    },
+    "idle_ne": {
+     "fps": 2.0,
+     "frames": 2,
+     "loop": true,
+     "row": 5
+    },
+    "walk": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 1
+    },
+    "walk_ne": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": true,
+     "row": 6
+    }
+   },
+   "frame_size": [
+    48,
+    48
+   ],
+   "sheet": "res://assets/sprites/wolf.png"
   }
  },
  "textures": {
+  "tile_altar": "res://assets/tiles/tile_altar.png",
+  "tile_andesite": "res://assets/tiles/tile_andesite.png",
+  "tile_andesite_pillar": "res://assets/tiles/tile_andesite_pillar.png",
+  "tile_barrel": "res://assets/tiles/tile_barrel.png",
+  "tile_bones": "res://assets/tiles/tile_bones.png",
+  "tile_boulder": "res://assets/tiles/tile_boulder.png",
+  "tile_bridge": "res://assets/tiles/tile_bridge.png",
+  "tile_bush": "res://assets/tiles/tile_bush.png",
+  "tile_cart": "res://assets/tiles/tile_cart.png",
+  "tile_cave_floor": "res://assets/tiles/tile_cave_floor.png",
+  "tile_cave_wall": "res://assets/tiles/tile_cave_wall.png",
+  "tile_cave_water": "res://assets/tiles/tile_cave_water.png",
+  "tile_cliff": "res://assets/tiles/tile_cliff.png",
+  "tile_cobble": "res://assets/tiles/tile_cobble.png",
+  "tile_coffin": "res://assets/tiles/tile_coffin.png",
+  "tile_console": "res://assets/tiles/tile_console.png",
+  "tile_crate": "res://assets/tiles/tile_crate.png",
+  "tile_dirt": "res://assets/tiles/tile_dirt.png",
+  "tile_door": "res://assets/tiles/tile_door.png",
+  "tile_fence": "res://assets/tiles/tile_fence.png",
+  "tile_flowers": "res://assets/tiles/tile_flowers.png",
+  "tile_forest": "res://assets/tiles/tile_forest.png",
   "tile_forest_floor": "res://assets/tiles/tile_forest_floor.png",
   "tile_grass": "res://assets/tiles/tile_grass.png",
+  "tile_house": "res://assets/tiles/tile_house.png",
+  "tile_limestone_pillar": "res://assets/tiles/tile_limestone_pillar.png",
+  "tile_market_stall": "res://assets/tiles/tile_market_stall.png",
+  "tile_milestone": "res://assets/tiles/tile_milestone.png",
+  "tile_mountain": "res://assets/tiles/tile_mountain.png",
+  "tile_mud": "res://assets/tiles/tile_mud.png",
+  "tile_murus_dacicus": "res://assets/tiles/tile_murus_dacicus.png",
+  "tile_operating_table": "res://assets/tiles/tile_operating_table.png",
+  "tile_plains": "res://assets/tiles/tile_plains.png",
+  "tile_river": "res://assets/tiles/tile_river.png",
   "tile_road": "res://assets/tiles/tile_road.png",
+  "tile_rock": "res://assets/tiles/tile_rock.png",
+  "tile_saucer_floor": "res://assets/tiles/tile_saucer_floor.png",
+  "tile_saucer_grate": "res://assets/tiles/tile_saucer_grate.png",
+  "tile_saucer_wall": "res://assets/tiles/tile_saucer_wall.png",
+  "tile_scorched_earth": "res://assets/tiles/tile_scorched_earth.png",
+  "tile_scree": "res://assets/tiles/tile_scree.png",
+  "tile_snow": "res://assets/tiles/tile_snow.png",
+  "tile_specimen_tank": "res://assets/tiles/tile_specimen_tank.png",
+  "tile_stalagmite": "res://assets/tiles/tile_stalagmite.png",
   "tile_stone": "res://assets/tiles/tile_stone.png",
+  "tile_stump": "res://assets/tiles/tile_stump.png",
+  "tile_sun_disc": "res://assets/tiles/tile_sun_disc.png",
+  "tile_table": "res://assets/tiles/tile_table.png",
+  "tile_timber_wall": "res://assets/tiles/tile_timber_wall.png",
+  "tile_tree": "res://assets/tiles/tile_tree.png",
   "tile_wall": "res://assets/tiles/tile_wall.png",
+  "tile_water": "res://assets/tiles/tile_water.png",
+  "tile_well": "res://assets/tiles/tile_well.png",
+  "tile_wood_floor": "res://assets/tiles/tile_wood_floor.png",
+  "tile_wreck_debris": "res://assets/tiles/tile_wreck_debris.png",
+  "tile_wreck_hull": "res://assets/tiles/tile_wreck_hull.png",
   "ui_panel": "res://assets/ui/ui_panel.png"
  }
 }
