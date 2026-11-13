@@ -16,8 +16,8 @@ const Gib := preload("res://src/modes/combat/fx/gib.gd")
 const HIT_PAUSE: float = 0.06
 const SPLATS: Array[StringName] = [&"fx_blood_splat_1", &"fx_blood_splat_2", &"fx_blood_splat_3"]
 const GIBS: Array[StringName] = [&"fx_gib_1", &"fx_gib_2", &"fx_gib_3", &"fx_gib_4", &"fx_gib_5", &"fx_gib_6"]
-const OIL := Color(0.32, 0.33, 0.42)
-const DUST := Color(0.78, 0.72, 0.6, 0.85)
+const OIL := Color(0.2, 0.2, 0.26)
+const DUST := Color(0.86, 0.8, 0.68, 0.95)
 const SPARK := Color(1.0, 0.9, 0.45, 0.95)
 const BLOOD_PUFF := Color(0.86, 0.16, 0.14, 0.9)
 const SHAKE_DECAY: float = 18.0
@@ -45,6 +45,7 @@ var _nudge := Vector2.ZERO
 var _nudge_tw: Tween
 var _t: float = 0.0
 var _paused: bool = false
+var _scrap_tex: Texture2D
 
 ## `view` is the combat view (combat.gd). Call after its player, map and camera exist.
 func setup(view: Node2D) -> void:
@@ -153,11 +154,11 @@ func _dust(view: Node2D) -> void:
 	_count("dust")
 	if _instant(): return
 	var size: int = int(view.get("size"))
-	Puff.spawn(fx_layer, view.position - Vector2(0, 4), DUST, 9.0 * size, _speed(), _rng.randi())
+	Puff.spawn(fx_layer, view.position - Vector2(0, 4), DUST, 12.0 * size, _speed(), _rng.randi())
 
 ## Chunks: hide the body, scatter gibs that stay, splats around the cell, shake.
-func _burst(view: Node2D, machine: bool, _corpse: bool) -> void:
-	_hide_body(view)
+func _burst(view: Node2D, machine: bool, corpse: bool) -> void:
+	_hide_body(view, corpse)
 	var cell: Vector2i = view.get("cell")
 	_splat(cell, machine, 1.15, 0.0)
 	for i in 2:
@@ -169,8 +170,8 @@ func _burst(view: Node2D, machine: bool, _corpse: bool) -> void:
 	shake(4.0)
 
 ## Water-balloon pop for a 2x2 giant: burst anim, every cell around the footprint coated.
-func _balloon(view: Node2D, machine: bool, _corpse: bool) -> void:
-	_hide_body(view)
+func _balloon(view: Node2D, machine: bool, corpse: bool) -> void:
+	_hide_body(view, corpse)
 	var cell: Vector2i = view.get("cell")
 	_count("balloon")
 	if not _instant():
@@ -182,7 +183,12 @@ func _balloon(view: Node2D, machine: bool, _corpse: bool) -> void:
 	_gibs(view, 8, 56.0, machine)
 	shake(7.0)
 
-func _hide_body(view: Node2D) -> void:
+## Gone in a splash. A corpse that can still be raised keeps its (invisible) node so it stays
+## targetable; anything else hides whole, ring and HP bar included.
+func _hide_body(view: Node2D, corpse: bool) -> void:
+	if not corpse:
+		view.visible = false
+		return
 	var s: Variant = view.get("sprite")
 	if s is Node2D: (s as Node2D).visible = false
 
@@ -191,14 +197,13 @@ func _gibs(view: Node2D, n: int, spread: float, machine: bool) -> void:
 	for i in n:
 		_count("gib")
 		var g: Sprite2D = Gib.new()
-		g.texture = Assets.tex(GIBS[_rng.randi() % GIBS.size()])
+		g.texture = _scrap() if machine else Assets.tex(GIBS[_rng.randi() % GIBS.size()])
 		g.rotation = _rng.randf_range(0.0, TAU)
 		g.flip_h = _rng.randf() < 0.5
-		if machine: g.modulate = OIL.lightened(0.35)
 		var a: float = _rng.randf_range(0.0, TAU)
 		var r: float = _rng.randf_range(spread * 0.35, spread)
 		g.from = from
-		g.to = view.position + Vector2(cos(a) * r, sin(a) * r * 0.5)
+		g.to = _floor_point(view.position, Vector2(cos(a) * r, sin(a) * r * 0.5))
 		g.height = view.position.y - from.y
 		g.arc = _rng.randf_range(14.0, 34.0)
 		g.decals = decals
@@ -289,6 +294,28 @@ func _bob() -> void:
 func _body(view: Node2D) -> Vector2:
 	var head: Vector2 = view.call("head_offset") if view.has_method("head_offset") else Vector2(0, -40)
 	return view.position + Vector2(0, head.y * 0.5)
+
+## Machines throw bolts and plates instead of chunks: a tiny grey plate made in code.
+func _scrap() -> Texture2D:
+	if _scrap_tex != null: return _scrap_tex
+	var img := Image.create(6, 4, false, Image.FORMAT_RGBA8)
+	img.fill(Color("8a8f9c"))
+	for x in 6:
+		img.set_pixel(x, 3, Color("4a4e5a"))
+	img.set_pixel(0, 0, Color("c8ccd6"))
+	img.set_pixel(4, 1, Color("2a2c33"))
+	_scrap_tex = ImageTexture.create_from_image(img)
+	return _scrap_tex
+
+## `origin + offset`, pulled back toward origin until it lies on a walkable floor cell, so chunks
+## never land on top of walls.
+func _floor_point(origin: Vector2, offset: Vector2) -> Vector2:
+	if grid == null: return origin + offset
+	for k in [1.0, 0.66, 0.33, 0.0]:
+		var p: Vector2 = origin + offset * k
+		var c: Vector2i = Iso.world_to_cell(p)
+		if grid.in_bounds(c) and grid.is_walkable(c): return p
+	return origin
 
 func _unit_at(c: Vector2i) -> Node2D:
 	for v in player.units.values():
