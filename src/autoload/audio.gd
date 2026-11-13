@@ -57,7 +57,7 @@ func quit(exit_code: int = 0) -> void:
 	stop_music(0.0)
 	for c in get_children():
 		if c is AudioStreamPlayer: (c as AudioStreamPlayer).stop()
-	await get_tree().create_timer(0.1, true, false, true).timeout
+	await get_tree().create_timer(0.5, true, false, true).timeout
 	get_tree().quit(exit_code)
 
 func _exit_tree() -> void:
