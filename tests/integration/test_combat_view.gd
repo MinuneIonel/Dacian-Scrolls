@@ -318,3 +318,10 @@ func test_round_label_counts_rounds_from_turns() -> void:
 	view._count_round(901)
 	assert_eq(view._round_shown, start + 1, "a unit's second turn starts the next round")
 	assert_eq(view.hud.round_label.text, view.hud.Txt.trf("cbt_round", start + 1))
+
+func test_combat_bar_sends_fanfis_caption_to_the_top() -> void:
+	var stub := StubBattle.new()
+	stub.legal = [{"type": "end_turn"}]
+	stub.reply = _fixed_events()
+	await _open(stub)
+	assert_true(view.hud.is_in_group(NarratorCaption.BOTTOM_UI_GROUP), "the caption must not cover the abilities")

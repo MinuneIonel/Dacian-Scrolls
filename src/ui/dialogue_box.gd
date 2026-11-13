@@ -24,7 +24,7 @@ var _reveal: float = 0.0
 var _closed: bool = false
 
 func _init() -> void:
-	add_to_group(&"dialogue_box")   # NarratorCaption moves to the top while one is open
+	add_to_group(NarratorCaption.BOTTOM_UI_GROUP)   # Fanfi's caption moves to the top meanwhile
 	theme = UiKit.theme()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP

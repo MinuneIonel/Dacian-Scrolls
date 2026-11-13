@@ -11,6 +11,9 @@ const WIDTH: int = 448
 const PAD: Vector2i = Vector2i(14, 8)
 const BOTTOM_GAP: int = 10
 const TOP_GAP: int = 28
+## Nodes that own the bottom of the screen (dialogue box, combat bar): while one exists the
+## caption sits under the top edge instead, so it never covers answers or ability buttons.
+const BOTTOM_UI_GROUP: StringName = &"caption_goes_up"
 
 const SMOKE := Color("0e0a12")
 const SMOKE_EDGE := Color("2a2236")
@@ -87,10 +90,9 @@ func _layout() -> void:
 	size = Vector2(WIDTH, h)
 	position = Vector2(roundf((vp.x - WIDTH) / 2.0), _y_for(h, vp))
 
-## Bottom of the screen, or under the top bar while a dialogue box owns the bottom (the caption
-## used to cover its answers).
+## Bottom of the screen, or under the top bar while something owns the bottom (BOTTOM_UI_GROUP).
 func _y_for(h: float, vp: Vector2) -> float:
-	if is_inside_tree() and get_tree().get_first_node_in_group(&"dialogue_box") != null: return TOP_GAP
+	if is_inside_tree() and get_tree().get_first_node_in_group(BOTTOM_UI_GROUP) != null: return TOP_GAP
 	return vp.y - h - BOTTOM_GAP
 
 func _process(delta: float) -> void:

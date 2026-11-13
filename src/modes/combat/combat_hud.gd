@@ -41,6 +41,7 @@ var ap_max: int = 0
 var _banner_tween: Tween
 
 func _ready() -> void:
+	add_to_group(NarratorCaption.BOTTOM_UI_GROUP)   # Fanfi talks at the top, not over the abilities
 	layer = 10
 	root = Control.new()
 	root.name = "HudRoot"
