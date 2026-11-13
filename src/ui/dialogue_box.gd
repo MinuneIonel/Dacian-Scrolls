@@ -24,6 +24,7 @@ var _reveal: float = 0.0
 var _closed: bool = false
 
 func _init() -> void:
+	add_to_group(&"dialogue_box")   # NarratorCaption moves to the top while one is open
 	theme = UiKit.theme()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP

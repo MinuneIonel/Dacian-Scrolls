@@ -120,3 +120,14 @@ func test_recap_counts_abductions_and_companions() -> void:
 	assert_has(lines, tr("ending_companions") % tr("fx_npc_priest"))
 	assert_has(lines, tr("ending_ozo_freed"))
 	assert_has(lines, tr("ending_quest_done") % tr("fx_quest_name"))
+
+func test_caption_moves_to_the_top_while_a_dialogue_is_open() -> void:
+	var c: NarratorCaption = _keep(NarratorCaption.new())
+	c.queue_line("fx_line")
+	assert_true(c.position.y > 180.0, "bottom of the screen by default")
+	var box: Node = _keep(DialogueBox.new())
+	await wait_frames(1)
+	assert_eq(c.position.y, float(NarratorCaption.TOP_GAP), "off the dialogue's answers")
+	box.free()
+	await wait_frames(1)
+	assert_true(c.position.y > 180.0)
