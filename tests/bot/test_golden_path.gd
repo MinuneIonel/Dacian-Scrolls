@@ -68,12 +68,13 @@ func test_back_home_in_town() -> void:
 	assert_true(bot.at_location(&"sarmizegetusa"), "ended at %s" % bot.state.world_pos)
 	assert_true(bot.state.food >= 0)
 
-## KNOWN BALANCE BLOCKER (2026-11): the saucer_surgeon battle is near-unwinnable for this
-## party, so the bot applies a synthetic win after its real attempts to check the rest of the
-## route. This single test fails until the balance change lands; its message gives the rates.
+## The saucer must fall in a real battle. After max_saucer_attempts real losses the bot applies
+## a synthetic win only as a diagnostic (so the rest of the route still gets checked); that
+## always fails this test, and the message gives the real results and the simulated win rate.
 func test_saucer_won_in_real_battle() -> void:
 	var sim: Dictionary = bot.stats.saucer_sim
+	assert_false(bot.stats.saucer_forced, "the saucer win was synthetic (diagnostic fallback)")
 	assert_true(bot.stats.saucer_won_in_battle,
-		"BALANCE BLOCKER: saucer lost %d/%d real attempts (%s); win rate at level %d: %.1f%% over %d seeds" % [
+		"saucer lost %d/%d real attempts (%s); win rate at level %d: %.1f%% over %d seeds" % [
 			bot.stats.saucer_attempts, bot.stats.saucer_attempts, ", ".join(bot.stats.saucer_results),
 			int(sim.get("level", 0)), float(sim.get("pct", 0.0)), int(sim.get("n", 0))])

@@ -21,6 +21,8 @@ func after_all() -> void:
 func test_route_completes() -> void:
 	assert_true(knight.ended, "route did not finish")
 	assert_eq(knight.bot.problems, [])
+	assert_false(knight.bot.stats.saucer_forced, "saucer win was synthetic: %s" % [knight.bot.stats.saucer_results])
+	assert_true(knight.bot.stats.saucer_won_in_battle)
 	assert_eq(knight.bot.state.pages.size(), 12)
 	assert_eq(int(knight.bot.state.quests.get(&"dead_dont_pay_taxes", 0)), 100)
 	assert_eq(int(knight.bot.state.quests.get(&"delivery_in_188_hours", 0)), 100)

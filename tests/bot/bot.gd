@@ -15,6 +15,9 @@ const CAVE: StringName = &"strigoi_cave"
 const CRASH: StringName = &"crash_site"
 const SAUCER: StringName = &"saucer_surgeon"
 const BATTLE_GUARD: int = 6000
+## A hurt party avoids open cells within this many cells of a flying UFO's loop (chase radius 5).
+const UFO_WATCH: int = 6
+const UFO_PENALTY: int = 40
 ## Road cells where the UFO's loop crosses the fast road (x31..34, y16): the bot walks between
 ## them until the saucer takes it.
 const LOITER: Array[Vector2i] = [Vector2i(30, 16), Vector2i(33, 16)]
@@ -137,7 +140,7 @@ func finish_battle(enc: StringName, res: Dictionary) -> Dictionary:
 func travel_to(target: Vector2i, max_steps: int = 600) -> bool:
 	var steps: int = 0
 	while state.world_pos != target and steps < max_steps:
-		var path: Array[Vector2i] = Travel.path(state, target, defs)
+		var path: Array[Vector2i] = safe_path(target) if wants_cover() else Travel.path(state, target, defs)
 		if path.is_empty():
 			problems.append("no path from %s to %s" % [state.world_pos, target])
 			return false
@@ -160,6 +163,72 @@ func travel_to(target: Vector2i, max_steps: int = 600) -> bool:
 				break
 			eat_if_hungry()
 	return state.world_pos == target
+
+## A hurt party keeps out of the saucer's sight while one still flies (what a player at 1 HP
+## does after waking in the forest): it walks under the trees instead of the open road.
+func wants_cover() -> bool:
+	if not party_hurt(): return false
+	for u in state.ufos:
+		if str(u.get("state", "")) != "gone": return true
+	return false
+
+## Fewest hours like Travel.path, but cells in the open within UFO_WATCH of a flying UFO's
+## route cost UFO_PENALTY more (forest and location cells are free of it).
+func safe_path(target: Vector2i) -> Array[Vector2i]:
+	var watched: Array[Vector2i] = []
+	var w: Variant = defs.json("world")
+	for u in state.ufos:
+		if str(u.get("state", "")) == "gone": continue
+		for wu in w.get("ufos", []):
+			if str(wu.get("id", "")) == str(u.get("id", "")):
+				for c in wu.get("route", []): watched.append(Rules.to_cell(c))
+	var locs: Array[Vector2i] = []
+	for l in w.get("locations", []): locs.append(Rules.to_cell(l.get("cell", [])))
+	var size: Vector2i = Travel.world_size(defs)
+	var n: int = size.x * size.y
+	var cost := PackedInt32Array(); cost.resize(n)
+	for i in n:
+		var c := Vector2i(i % size.x, i / size.x)
+		cost[i] = Travel.hours_at(c, defs)
+		if Travel.hides(c, defs) or locs.has(c): continue
+		for r in watched:
+			if maxi(absi(r.x - c.x), absi(r.y - c.y)) <= UFO_WATCH:
+				cost[i] += UFO_PENALTY
+				break
+	var dist := PackedInt32Array(); dist.resize(n); dist.fill(-1)
+	var prev := PackedInt32Array(); prev.resize(n); prev.fill(-1)
+	var done := PackedByteArray(); done.resize(n)
+	var start: int = state.world_pos.y * size.x + state.world_pos.x
+	var goal: int = target.y * size.x + target.x
+	dist[start] = 0
+	var open: Array[int] = [start]
+	while not open.is_empty():
+		var bi: int = 0
+		for i in range(1, open.size()):
+			if dist[open[i]] < dist[open[bi]]: bi = i
+		var cur: int = open[bi]
+		open.remove_at(bi)
+		if done[cur] == 1: continue
+		done[cur] = 1
+		if cur == goal: break
+		var cc := Vector2i(cur % size.x, cur / size.x)
+		for d in Travel.DIRS:
+			var nc: Vector2i = cc + d
+			if not Travel.passable(nc, defs): continue
+			var ni: int = nc.y * size.x + nc.x
+			if done[ni] == 1: continue
+			var nd: int = dist[cur] + cost[ni]
+			if dist[ni] == -1 or nd < dist[ni]:
+				dist[ni] = nd
+				prev[ni] = cur
+				open.append(ni)
+	var out: Array[Vector2i] = []
+	if dist[goal] == -1 or goal == start: return out
+	var i: int = goal
+	while i != start:
+		out.push_front(Vector2i(i % size.x, i / size.x))
+		i = prev[i]
+	return out
 
 func travel_to_location(id: StringName) -> bool:
 	return travel_to(Rules.to_cell(Rules.location(id, defs).get("cell", [])))
@@ -209,7 +278,7 @@ func choose_option(enc: StringName, opts: Array[Dictionary]) -> String:
 func abduction(ufo: StringName, enc: StringName) -> void:
 	stats.abductions += 1
 	_count(Flow.begin_abduction(state, rng, defs))
-	note("abducted by %s" % ufo)
+	note("abducted by %s; party %s" % [ufo, party_line()])
 	stats.saucer_attempts += 1
 	var res: Dictionary = run_battle(enc, state.party, state.inventory, rng)
 	stats.saucer_results.append("%s/%s r%d" % [res.outcome, res.reason, int(res.get("rounds", 0))])
@@ -260,6 +329,7 @@ func saucer_win_rate(n: int) -> Dictionary:
 func loiter_for_abduction(max_legs: int = 40) -> bool:
 	var start: int = stats.abductions
 	for i in max_legs:
+		if party_hurt(): return false        # a road fight hurt the party: heal first
 		travel_to(LOITER[i % LOITER.size()], 60)
 		if stats.abductions > start: return true
 	return false
@@ -360,6 +430,13 @@ func _handle(ev: Array[Dictionary]) -> void:
 	use_page_items()
 	var br: Dictionary = find(ev, "battle_requested")
 	if not br.is_empty(): fight(StringName(str(br.get("encounter", ""))))
+
+## "hero 12/30hp 4/12mp 6/6ch, vezina ..."
+func party_line() -> String:
+	var parts: Array[String] = []
+	for m in state.party:
+		parts.append("%s %d/%dhp %d/%dmp %d/%dch" % [m.id, m.hp, m.max_hp, m.mana, m.max_mana, m.charge, m.max_charge])
+	return ", ".join(parts)
 
 func party_hurt() -> bool:
 	for m in state.party:
