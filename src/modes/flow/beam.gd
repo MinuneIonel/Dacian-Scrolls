@@ -5,6 +5,8 @@ extends CanvasLayer
 
 signal whited_out
 
+const OneShot := preload("res://src/ui/fx/one_shot.gd")
+
 const BEAM_S: float = 1.3
 const WHITE_IN: Vector2 = Vector2(0.9, 1.7)    # start, full
 const HOLD_UNTIL: float = 2.0
@@ -37,15 +39,10 @@ func _ready() -> void:
 	root.draw.connect(_draw_cone)
 	add_child(root)
 	var top := Vector2(screen_pos.x, maxf(24.0, screen_pos.y - 120.0))
-	beam_sprite = AnimatedSprite2D.new()
-	beam_sprite.sprite_frames = Assets.frames(&"fx_tractor_beam")
-	beam_sprite.centered = false
-	beam_sprite.offset = Vector2(-24, 0)
-	beam_sprite.position = top
+	# WP-32's one-shot player: anchored at the saucer's belly, loops until the white-out.
+	beam_sprite = OneShot.spawn(self, &"fx_tractor_beam", &"play", top, 1.0, WHITE_IN.y)
 	beam_sprite.scale = Vector2(1.0, (screen_pos.y - top.y + 8.0) / 128.0)
-	if beam_sprite.sprite_frames.has_animation(&"play"): beam_sprite.play(&"play")
 	beam_sprite.modulate.a = 0.0
-	add_child(beam_sprite)
 	saucer = Sprite2D.new()
 	saucer.texture = Assets.tex(&"marker_ufo")
 	saucer.position = top + Vector2(0, -6)
@@ -61,7 +58,8 @@ func _process(delta: float) -> void:
 	if instant: return
 	t += delta
 	var grow: float = clampf(t / BEAM_S, 0.0, 1.0)
-	beam_sprite.modulate.a = grow * (0.8 + 0.2 * sin(t * 20.0))
+	if is_instance_valid(beam_sprite) and t < WHITE_IN.y - 0.2:
+		beam_sprite.modulate.a = grow * (0.8 + 0.2 * sin(t * 20.0))
 	saucer.position.y += sin(t * 6.0) * 0.15
 	var w: float = 0.0
 	if t < HOLD_UNTIL:
@@ -71,7 +69,7 @@ func _process(delta: float) -> void:
 	white.color = Color(WHITE, w)
 	if t >= WHITE_IN.y and not emitted:
 		_emit()
-		beam_sprite.visible = false
+		if is_instance_valid(beam_sprite): beam_sprite.visible = false
 		saucer.visible = false
 		root.visible = false
 	if t >= HOLD_UNTIL + WHITE_OUT_S: queue_free()

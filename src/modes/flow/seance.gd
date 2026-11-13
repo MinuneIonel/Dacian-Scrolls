@@ -55,8 +55,8 @@ func _ready() -> void:
 	var panel: PanelContainer = UiKit.panel()
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.custom_minimum_size = Vector2(PANEL_W, 84)
-	panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	panel.position = Vector2((640 - PANEL_W) / 2.0, 360 - 84 - 24)
+	panel.position = Vector2((640 - PANEL_W) / 2.0, 360 - 84 - 26)
+	panel.size = panel.custom_minimum_size
 	root.add_child(panel)
 	var box := VBoxContainer.new()
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -154,23 +154,25 @@ func _draw_bg() -> void:
 	var s: Vector2 = bg.size
 	bg.draw_rect(Rect2(Vector2.ZERO, s), SMOKE)
 	var flick: float = 0.75 + 0.15 * sin(_t * 9.0) + 0.1 * sin(_t * 23.0 + 1.7)
-	var c := Vector2(s.x * 0.5, s.y * 0.62)
+	var c := Vector2(s.x * 0.5, s.y * 0.56)
 	# candle light on the room
-	for i in 7:
-		var r: float = 210.0 - i * 26.0
-		bg.draw_circle(c + Vector2(0, -6), r, Color(FLAME, 0.025 * flick * (i + 1)))
-	# smoke wisps
-	for k in 5:
-		var x: float = s.x * (0.2 + 0.15 * k) + sin(_t * 0.6 + k) * 14.0
-		var y: float = s.y * 0.3 + sin(_t * 0.9 + k * 2.0) * 10.0
-		bg.draw_circle(Vector2(x, y), 26.0 + 6.0 * sin(_t + k), Color(SMOKE_EDGE, 0.35))
-	# Fanfi in the smoke
-	var p := Vector2(c.x, s.y * 0.30 + sin(_t * 1.4) * 3.0)
-	for i in 4:
-		bg.draw_circle(p, 44.0 - i * 8.0, Color(SEANCE, 0.06 + 0.04 * i))
+	for i in 24:
+		var r: float = 190.0 - i * 7.5
+		bg.draw_circle(c + Vector2(0, -6), r, Color(FLAME, 0.011 * flick))
+	# smoke drifting up from the candle
+	for k in 9:
+		var ph: float = fposmod(_t * 0.12 + k / 9.0, 1.0)
+		var x: float = c.x + sin(_t * 0.7 + k * 1.3) * (20.0 + 90.0 * ph)
+		var y: float = c.y - 30.0 - ph * 200.0
+		bg.draw_circle(Vector2(x, y), 10.0 + 30.0 * ph, Color(SMOKE_EDGE, 0.22 * (1.0 - ph)))
+	# Fanfi in the smoke: the portrait without its frame, faded at the edges by a silk halo
+	var p := Vector2(c.x, s.y * 0.28 + sin(_t * 1.4) * 3.0)
+	for i in 16:
+		bg.draw_circle(p, 70.0 - i * 3.5, Color(SEANCE, 0.018))
 	if _fanfi != null:
-		var a: float = 0.78 + 0.12 * sin(_t * 2.1)
-		bg.draw_texture_rect(_fanfi, Rect2(p - Vector2(48, 48), Vector2(96, 96)), false, Color(1, 1, 1, a))
+		var a: float = 0.72 + 0.12 * sin(_t * 2.1)
+		var src := Rect2(Vector2(3, 3), _fanfi.get_size() - Vector2(6, 6))
+		bg.draw_texture_rect_region(_fanfi, Rect2(p - Vector2(42, 42), Vector2(84, 84)), src, Color(0.85, 0.85, 1.0, a))
 	# the round table
 	bg.draw_set_transform(c + Vector2(0, 20), 0.0, Vector2(1.0, 0.32))
 	bg.draw_circle(Vector2.ZERO, 120.0, TABLE)

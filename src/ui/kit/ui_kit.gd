@@ -162,11 +162,17 @@ static func theme() -> Theme:
 	return t
 
 ## A framed panel (parchment-on-wood). Uses the ui_panel texture once the art exists.
-## Labels inside it read in dark ink (see panel_theme()).
+## Labels inside it read in dark ink (see panel_theme()) while it shows the parchment art; a
+## view that overrides the "panel" stylebox with a dark box gets parchment text back.
 static func panel() -> PanelContainer:
 	var p := PanelContainer.new()
 	p.theme = panel_theme()
+	p.theme_changed.connect(_sync_panel_ink.bind(p))
 	return p
+
+static func _sync_panel_ink(p: PanelContainer) -> void:
+	var want: Theme = panel_theme() if p.get_theme_stylebox(&"panel") is StyleBoxTexture else theme()
+	if p.theme != want: p.theme = want
 
 ## The theme of panel(): the game theme plus ink text for the parchment centre. Without the
 ## ui_panel art the panel is a dark box, so the text stays parchment.
