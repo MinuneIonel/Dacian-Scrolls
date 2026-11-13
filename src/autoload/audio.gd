@@ -46,6 +46,19 @@ func _ready() -> void:
 	add_child(_stinger_player)
 	Settings.changed.connect(_apply_volumes)
 	_apply_volumes()
+	get_tree().auto_accept_quit = false   # window close goes through quit() below
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST: quit()
+
+## Stops every stream, lets the audio thread drop its playbacks, then quits. Quitting while
+## music plays leaves the playbacks (and their .ogg files) alive: "resources still in use".
+func quit(exit_code: int = 0) -> void:
+	stop_music(0.0)
+	for c in get_children():
+		if c is AudioStreamPlayer: (c as AudioStreamPlayer).stop()
+	await get_tree().create_timer(0.1, true, false, true).timeout
+	get_tree().quit(exit_code)
 
 func _exit_tree() -> void:
 	# Release streams before the engine's resource cache shuts down (no leak warnings at exit).
