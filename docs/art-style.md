@@ -27,6 +27,16 @@ Pixels are palette colours or fully transparent; no partial alpha. Shadows in co
 - Humans: 32x48 frames, feet at `anchor` [16, 44] = the cell centre.
 - Giants: 2x2 footprint, 128x192 frames, waist down only; `anchor` [64, 160] = footprint centre.
 - `ui_panel`: 48x48, 9-slice with 12 px margins on every side.
+- Low props in tiles.json (crate, barrel, table, well, bush, console...): 64 x (32+h), h <= 40, with their
+  own ground diamond, because MapBuilder draws non-tall tiles in the ground layer. Tall tiles fill their
+  base diamond too, so the fallback floor never shows. House and cave-wall tops have no rim so blocks merge.
+- Wolf and probe drone: 48x48 frames, anchor [24, 44]. The drone hovers; its dithered shadow marks the cell.
+- Icons 24x24: abilities on a badge by `source` (steel oxblood, magic night-blue with bronze rim, tech teal);
+  items bare on transparency. Portraits 48x48, framed. Props and markers 32x32, ground point (16, 26).
+- FX (`assets/fx/`): `fx_blood_splat_1..3` flat decals (centred), `fx_gib_1..6` 12x12 chunks, and frames
+  entries with `"kind": "fx"` and their own anims: `fx_balloon_burst` (96x96, `burst` 6), `fx_heal_sparkle`,
+  `fx_tech_zap` (32x32, `play` 4), `fx_magic_glyph` (48x24 ground ring, loops), `fx_tractor_beam`
+  (48x128, anchor [24, 0] = the saucer's belly, loops). Splatter comedy: bright red, round, never anatomical.
 - Sheets: one row per animation: `idle` 2, `walk` 4, `attack` 3, `hit` 1, `death` 3, then the same
   for north-east as `idle_ne` ... `death_ne`. Drawn facing SE and NE; the game flips for SW and NW.
 
@@ -36,6 +46,12 @@ Pixels are palette colours or fully transparent; no partial alpha. Shadows in co
   shadow on the lower-right. Large soft surfaces (silk) may use 4x4 ordered dithering; small sprites don't.
 - Sprites: 1 px `outline` around the silhouette, and a dark line where a front part overlaps another.
 - Ground tiles have no outline (they must join). Walls: lit left face, darker right face, light rim on top.
+
+## Generators
+
+`gen_cast` (humanoids on the WP-14 rig), `gen_beasts` (wolf, drone), `gen_giants` (bancul, surgeon),
+`gen_terrain` (every tile, world terrain), `gen_icons` (icons, props, markers), `gen_portraits`, `gen_fx`.
+`sheets.py` writes `docs/art-sheet-{characters,tiles,icons}.png` (3x) on every build: look at them.
 
 ## Adding a sprite
 
