@@ -11,6 +11,9 @@ var toasts: ToastLayer
 var caption: NarratorCaption
 var ending: EndingCard
 var _foreign_toasts: int = 0
+## Fanfi's line picker draws from its own Rng, never Game.rng: presentation must not shift
+## game outcomes (a battle or a roll would differ depending on how many lines were shown).
+var narrator_rng: Rng = Rng.new(randi())
 
 func _ready() -> void:
 	layer = 90
@@ -36,7 +39,7 @@ func _on_events(events: Array[Dictionary]) -> void:
 		for e in events:
 			if str(e.get("type", "")) == "narrator": evs.append(e)
 	if not evs.is_empty() and Content.defs != null:
-		for line in Narrator.lines_for(evs, Game.state, Game.rng, Content.defs):
+		for line in Narrator.lines_for(evs, Game.state, narrator_rng, Content.defs):
 			caption.queue_line(line)
 	for e in events:
 		if str(e.get("type", "")) == "page_found" and Game.state != null \

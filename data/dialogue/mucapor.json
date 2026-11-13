@@ -80,7 +80,7 @@
                       "choices": [
                                   {
                                    "text_key": "dlg_mucapor_turnin_c0",
-                                   "if": [["flag", "duras_fought", "==", true]],
+                                   "if": [["flag", "won_cave_strigoi", "==", true]],
                                    "do": [],
                                    "goto": "end_fight"
                                   },

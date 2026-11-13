@@ -42,14 +42,14 @@
                "kind": "npc",
                "cell": [21, 12],
                "npc": "ozo",
-               "if": [["flag", "ozo_gone", "==", false]]
+               "if": [["flag", "ozo_gone", "==", false], ["flag", "won_crash_thrall", "==", false]]
               },
               {
                "id": "parcel",
                "kind": "container",
                "cell": [23, 13],
                "once": true,
-               "if": [["flag", "ozo_gone", "==", true]],
+               "if": [["any", [["flag", "ozo_gone", "==", true], ["flag", "won_crash_thrall", "==", true]]]],
                "effects": [
                            ["give_item", "lobizi_parcel", 1],
                            ["page", "page_parcel"],

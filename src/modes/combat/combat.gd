@@ -52,6 +52,8 @@ var selected: int = -1
 var done: bool = false
 var result: Dictionary = {}
 var returned: bool = false
+## Flow.after_battle()'s answer: where the party wakes up (WP-30).
+var after: Dictionary = {}
 
 var _map_bounds: Rect2
 var _moves: Dictionary = {}      # Vector2i -> Array[Vector2i]
@@ -287,11 +289,12 @@ func _finish() -> void:
 	var outcome: String = str(result.get("outcome", ""))
 	var ev: Array[Dictionary] = []
 	if apply_result:
-		var used: Variant = result.get("items_used", {})
-		if used is Dictionary:
-			for item in used:
-				ev.append_array(Rules.run([["take_item", str(item), int(used[item])]], Game.state, Game.rng, Content.defs))
 		ev.append_array(Encounters.apply_battle_result(encounter_id, result, Game.state, Game.rng, Content.defs))
+		after = Flow.after_battle(encounter_id, result, Game.state, Game.rng, Content.defs)
+		ev.append_array(after.events)
+		if after.mode != &"":
+			return_mode = after.mode
+			return_args = after.args
 	if outcome == "fled": ev.append({"type": "fled_battle"})
 	Bus.emit_events(ev)
 	finished.emit(result)
@@ -306,6 +309,7 @@ func _finish() -> void:
 			left -= get_process_delta_time()
 	returned = true
 	Router.go(return_mode, return_args)
+	Flow.show_wake(after)
 
 func _result_title(outcome: String) -> String:
 	match outcome:

@@ -45,7 +45,6 @@
                                   "text_key": "dlg_ozo_hello_c3",
                                   "if": [],
                                   "do": [
-                                         ["set_flag", "ozo_gone", true],
                                          ["set_flag", "ozo_fought", true],
                                          ["battle", "crash_thrall"]
                                         ],

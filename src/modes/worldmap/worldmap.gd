@@ -462,7 +462,7 @@ func _on_party() -> void:
 
 func _on_scroll() -> void:
 	if modal != null or traveling: return
-	Router.go(&"scroll")
+	Router.go(&"scroll", {"return_mode": &"worldmap", "return_args": {}})
 
 # ---------------------------------------------------------------- panels
 
@@ -596,14 +596,9 @@ func enter(location_id: StringName) -> void:
 	_close_modal()
 	Router.go(&"location", {"location_id": location_id})
 
-## Hook for the abduction cutscene (WP-30 replaces the body with the beam). For now: straight
-## to the UFO's battle.
+## The abduction (WP-30 Flow): beam over the party, white-out, then the UFO's battle.
 func play_abduction(ufo_id: StringName, encounter: StringName) -> void:
-	Audio.stinger(&"abduction")
-	_abduction_battle(ufo_id, encounter)
-
-func _abduction_battle(_ufo_id: StringName, encounter: StringName) -> void:
-	Router.go(&"combat", {"encounter_id": encounter, "return_mode": &"worldmap", "return_args": {}})
+	Flow.play_abduction(ufo_id, encounter, map_view.position + screen_of(Game.state.world_pos))
 
 # ---------------------------------------------------------------- helpers
 
