@@ -303,3 +303,18 @@ func test_self_area_ability_previews_then_fires_on_second_press() -> void:
 	view.select_button(1)
 	await wait_frames(2)
 	assert_eq(stub.applied, [{"type": "ability", "ability": &"fx_ward", "cell": Vector2i(1, 2)}])
+
+## Untimed battles have no round event: a unit's second turn moves the "Round n" label on.
+func test_round_label_counts_rounds_from_turns() -> void:
+	var stub := StubBattle.new()
+	stub.legal = [{"type": "end_turn"}]
+	stub.reply = _fixed_events()
+	await _open(stub)
+	await _settle()
+	var start: int = view._round_shown
+	view._count_round(901)
+	view._count_round(902)
+	assert_eq(view._round_shown, start, "first turns of the round")
+	view._count_round(901)
+	assert_eq(view._round_shown, start + 1, "a unit's second turn starts the next round")
+	assert_eq(view.hud.round_label.text, view.hud.Txt.trf("cbt_round", start + 1))
