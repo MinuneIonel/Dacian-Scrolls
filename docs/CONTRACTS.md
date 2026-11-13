@@ -186,12 +186,14 @@ defeated UFO is `gone`.
 `Encounters.choose` runs `pass` or `fail` (after a roll when the option has one). An option that
 ends without a `battle` effect and is not `flee` resolves the encounter and grants its `xp`.
 `Encounters.apply_battle_result(encounter_id, result, state, rng, defs)` applies a finished
-battle: party HP, loot to inventory, and on a win flag `won_<encounter_id>` = true and the XP.
-Data uses that flag to gate rewards that need a won fight.
+battle: party HP, removes `items_used` from the inventory, loot to inventory, and on a win flag
+`won_<encounter_id>` = true and the XP. Data uses that flag to gate rewards that need a won fight.
+A UFO battle that is not won sets `flags.ufo_grace` so UFOs cannot spot the party for
+`Ufo.GRACE_STEPS` ticks. Defeat and abduction outcomes are applied by `Flow` (src/modes/flow.gd).
 
 ## 10. Views and autoloads
 
-- `Router.go(mode, args)` swaps to `res://src/modes/<mode>/<mode>.tscn`; the scene reads `Router.args` in `_ready()`. Autosaves (slot 0) except to `menu` and `combat`. Mode args: `worldmap {}`, `location {location_id, cell?}`, `combat {encounter_id, return_mode, return_args}`, `scroll {}`, `menu {}`.
+- `Router.go(mode, args)` swaps to `res://src/modes/<mode>/<mode>.tscn`; the scene reads `Router.args` in `_ready()`. Autosaves (slot 0) except to `menu` and `combat`. Mode args: `worldmap {}`, `location {location_id, cell?}`, `combat {encounter_id, return_mode, return_args}`, `scroll {return_mode?, return_args?}`, `menu {}`. The scroll is an overlay: going to it does not change the resume mode that Continue uses.
 - `Assets.tex(id)` / `Assets.frames(id)` never return null (magenta placeholder). Sprite frames have animations `idle walk attack hit death`, drawn facing south-east and north-east; flip horizontally for the other two directions.
 - `Audio` never errors on unknown ids.
 - `Settings.gore`: 0 Off, 1 Normal, 2 Bloody Mess. Presentation only.
