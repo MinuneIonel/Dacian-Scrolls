@@ -24,13 +24,16 @@ import gen_cast  # noqa: E402
 import gen_beasts  # noqa: E402
 import gen_giants  # noqa: E402
 import gen_terrain  # noqa: E402
+import gen_icons  # noqa: E402
+import gen_portraits  # noqa: E402
+import gen_fx  # noqa: E402
 
 GENERATORS = {}
 GENERATORS.update(gen_tiles.GENERATORS)
 GENERATORS.update(gen_ui.GENERATORS)
 GENERATORS.update({"knight": gen_chars.knight, "grazi_thrall": gen_chars.grazi_thrall,
                    "giant_legs": gen_chars.giant_legs})
-for _mod in (gen_cast, gen_beasts, gen_giants, gen_terrain):
+for _mod in (gen_cast, gen_beasts, gen_giants, gen_terrain, gen_icons, gen_portraits, gen_fx):
     for _k, _v in _mod.GENERATORS.items():
         assert _k not in GENERATORS, _k
         GENERATORS[_k] = _v
@@ -61,8 +64,9 @@ def frames_entry(spec, rows):
         anims[name] = {"row": r, "frames": n, "fps": float(fps), "loop": loop}
     assert len(rows) == len(anims), (spec["id"], len(rows))
     entry = {"sheet": "res://" + spec["out"], "frame_size": [fw, fh], "anims": anims, "anchor": spec["anchor"]}
-    if "footprint" in spec:
-        entry["footprint"] = spec["footprint"]
+    for k in ("footprint", "kind"):
+        if k in spec:
+            entry[k] = spec[k]
     return entry
 
 
@@ -97,6 +101,8 @@ def build(out_root=ROOT, spike=True):
     if spike:
         import spike as SP
         SP.compose(images, specs, os.path.join(out_root, "docs", "art-spike.png"))
+        import sheets
+        sheets.compose(images, specs, out_root)
     return manifest
 
 

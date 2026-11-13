@@ -78,6 +78,106 @@
    ],
    "sheet": "res://assets/sprites/bancul_recruit.png"
   },
+  "fx_balloon_burst": {
+   "anchor": [
+    48,
+    48
+   ],
+   "anims": {
+    "burst": {
+     "fps": 12.0,
+     "frames": 6,
+     "loop": false,
+     "row": 0
+    }
+   },
+   "frame_size": [
+    96,
+    96
+   ],
+   "kind": "fx",
+   "sheet": "res://assets/fx/fx_balloon_burst.png"
+  },
+  "fx_heal_sparkle": {
+   "anchor": [
+    16,
+    16
+   ],
+   "anims": {
+    "play": {
+     "fps": 8.0,
+     "frames": 4,
+     "loop": false,
+     "row": 0
+    }
+   },
+   "frame_size": [
+    32,
+    32
+   ],
+   "kind": "fx",
+   "sheet": "res://assets/fx/fx_heal_sparkle.png"
+  },
+  "fx_magic_glyph": {
+   "anchor": [
+    24,
+    12
+   ],
+   "anims": {
+    "play": {
+     "fps": 6.0,
+     "frames": 4,
+     "loop": true,
+     "row": 0
+    }
+   },
+   "frame_size": [
+    48,
+    24
+   ],
+   "kind": "fx",
+   "sheet": "res://assets/fx/fx_magic_glyph.png"
+  },
+  "fx_tech_zap": {
+   "anchor": [
+    16,
+    16
+   ],
+   "anims": {
+    "play": {
+     "fps": 14.0,
+     "frames": 4,
+     "loop": false,
+     "row": 0
+    }
+   },
+   "frame_size": [
+    32,
+    32
+   ],
+   "kind": "fx",
+   "sheet": "res://assets/fx/fx_tech_zap.png"
+  },
+  "fx_tractor_beam": {
+   "anchor": [
+    24,
+    0
+   ],
+   "anims": {
+    "play": {
+     "fps": 10.0,
+     "frames": 4,
+     "loop": true,
+     "row": 0
+    }
+   },
+   "frame_size": [
+    48,
+    128
+   ],
+   "kind": "fx",
+   "sheet": "res://assets/fx/fx_tractor_beam.png"
+  },
   "giant_legs": {
    "anchor": [
     64,
@@ -1110,6 +1210,84 @@
   }
  },
  "textures": {
+  "fx_blood_splat_1": "res://assets/fx/fx_blood_splat_1.png",
+  "fx_blood_splat_2": "res://assets/fx/fx_blood_splat_2.png",
+  "fx_blood_splat_3": "res://assets/fx/fx_blood_splat_3.png",
+  "fx_gib_1": "res://assets/fx/fx_gib_1.png",
+  "fx_gib_2": "res://assets/fx/fx_gib_2.png",
+  "fx_gib_3": "res://assets/fx/fx_gib_3.png",
+  "fx_gib_4": "res://assets/fx/fx_gib_4.png",
+  "fx_gib_5": "res://assets/fx/fx_gib_5.png",
+  "fx_gib_6": "res://assets/fx/fx_gib_6.png",
+  "icon_bancul_bite": "res://assets/icons/icon_bancul_bite.png",
+  "icon_blessing_of_zalmoxis": "res://assets/icons/icon_blessing_of_zalmoxis.png",
+  "icon_bone_chill": "res://assets/icons/icon_bone_chill.png",
+  "icon_bone_dart": "res://assets/icons/icon_bone_dart.png",
+  "icon_bread": "res://assets/icons/icon_bread.png",
+  "icon_decoy_charm": "res://assets/icons/icon_decoy_charm.png",
+  "icon_deserters_diary": "res://assets/icons/icon_deserters_diary.png",
+  "icon_draco_pennant": "res://assets/icons/icon_draco_pennant.png",
+  "icon_dracos_ward": "res://assets/icons/icon_dracos_ward.png",
+  "icon_falx_strike": "res://assets/icons/icon_falx_strike.png",
+  "icon_falx_sweep": "res://assets/icons/icon_falx_sweep.png",
+  "icon_gladius_stab": "res://assets/icons/icon_gladius_stab.png",
+  "icon_gravity_coil": "res://assets/icons/icon_gravity_coil.png",
+  "icon_healing_herbs": "res://assets/icons/icon_healing_herbs.png",
+  "icon_herb_poultice": "res://assets/icons/icon_herb_poultice.png",
+  "icon_iron_falx": "res://assets/icons/icon_iron_falx.png",
+  "icon_lobizi_parcel": "res://assets/icons/icon_lobizi_parcel.png",
+  "icon_lobizi_scalpel": "res://assets/icons/icon_lobizi_scalpel.png",
+  "icon_med_gel_canister": "res://assets/icons/icon_med_gel_canister.png",
+  "icon_med_gel_field": "res://assets/icons/icon_med_gel_field.png",
+  "icon_oak_staff": "res://assets/icons/icon_oak_staff.png",
+  "icon_oglinda_shard": "res://assets/icons/icon_oglinda_shard.png",
+  "icon_pilum_throw": "res://assets/icons/icon_pilum_throw.png",
+  "icon_plasma_falx": "res://assets/icons/icon_plasma_falx.png",
+  "icon_power_cell": "res://assets/icons/icon_power_cell.png",
+  "icon_probe_zap": "res://assets/icons/icon_probe_zap.png",
+  "icon_raise_strigoi": "res://assets/icons/icon_raise_strigoi.png",
+  "icon_reanimate_drone": "res://assets/icons/icon_reanimate_drone.png",
+  "icon_roman_lorica": "res://assets/icons/icon_roman_lorica.png",
+  "icon_scale_mail": "res://assets/icons/icon_scale_mail.png",
+  "icon_sica": "res://assets/icons/icon_sica.png",
+  "icon_staff_smack": "res://assets/icons/icon_staff_smack.png",
+  "icon_strigoi_claw": "res://assets/icons/icon_strigoi_claw.png",
+  "icon_strigoi_taxes": "res://assets/icons/icon_strigoi_taxes.png",
+  "icon_surgeon_anesthetic": "res://assets/icons/icon_surgeon_anesthetic.png",
+  "icon_surgeon_call_drone": "res://assets/icons/icon_surgeon_call_drone.png",
+  "icon_surgeon_gravity_well": "res://assets/icons/icon_surgeon_gravity_well.png",
+  "icon_surgeon_logbook": "res://assets/icons/icon_surgeon_logbook.png",
+  "icon_surgeon_scalpel": "res://assets/icons/icon_surgeon_scalpel.png",
+  "icon_surgeon_specimen_tank": "res://assets/icons/icon_surgeon_specimen_tank.png",
+  "icon_thrall_spear": "res://assets/icons/icon_thrall_spear.png",
+  "icon_wolf_bite": "res://assets/icons/icon_wolf_bite.png",
+  "icon_wolf_pelt": "res://assets/icons/icon_wolf_pelt.png",
+  "icon_zalmoxis_amulet": "res://assets/icons/icon_zalmoxis_amulet.png",
+  "marker_cave": "res://assets/sprites/marker_cave.png",
+  "marker_crash": "res://assets/sprites/marker_crash.png",
+  "marker_party": "res://assets/sprites/marker_party.png",
+  "marker_town": "res://assets/sprites/marker_town.png",
+  "marker_ufo": "res://assets/sprites/marker_ufo.png",
+  "portrait_bitus": "res://assets/portraits/portrait_bitus.png",
+  "portrait_dida": "res://assets/portraits/portrait_dida.png",
+  "portrait_duras": "res://assets/portraits/portrait_duras.png",
+  "portrait_fanfi": "res://assets/portraits/portrait_fanfi.png",
+  "portrait_healer": "res://assets/portraits/portrait_healer.png",
+  "portrait_knight": "res://assets/portraits/portrait_knight.png",
+  "portrait_mucapor": "res://assets/portraits/portrait_mucapor.png",
+  "portrait_necromancer": "res://assets/portraits/portrait_necromancer.png",
+  "portrait_ozo": "res://assets/portraits/portrait_ozo.png",
+  "portrait_rholes": "res://assets/portraits/portrait_rholes.png",
+  "portrait_tsinna": "res://assets/portraits/portrait_tsinna.png",
+  "portrait_vezina": "res://assets/portraits/portrait_vezina.png",
+  "portrait_zia": "res://assets/portraits/portrait_zia.png",
+  "prop_barrel": "res://assets/sprites/prop_barrel.png",
+  "prop_black_box": "res://assets/sprites/prop_black_box.png",
+  "prop_bucket": "res://assets/sprites/prop_bucket.png",
+  "prop_chest": "res://assets/sprites/prop_chest.png",
+  "prop_parcel": "res://assets/sprites/prop_parcel.png",
+  "prop_scroll": "res://assets/sprites/prop_scroll.png",
+  "prop_tax_purse": "res://assets/sprites/prop_tax_purse.png",
   "tile_altar": "res://assets/tiles/tile_altar.png",
   "tile_andesite": "res://assets/tiles/tile_andesite.png",
   "tile_andesite_pillar": "res://assets/tiles/tile_andesite_pillar.png",
