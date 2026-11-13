@@ -57,14 +57,14 @@
                "kind": "npc",
                "cell": [26, 4],
                "npc": "duras",
-               "if": [["flag", "duras_fought", "==", false]]
+               "if": [["flag", "won_cave_strigoi", "==", false]]
               },
               {
                "id": "duras_coffin",
                "kind": "container",
                "cell": [26, 2],
                "once": true,
-               "if": [["flag", "duras_fought", "==", true]],
+               "if": [["flag", "won_cave_strigoi", "==", true]],
                "effects": [
                            ["give_item", "strigoi_taxes", 1],
                            ["page", "page_strigoi"],
