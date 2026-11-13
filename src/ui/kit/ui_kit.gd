@@ -21,10 +21,14 @@ const PARCHMENT_DIM := Color("a8957a")
 const DISABLED := Color("6b5a48")
 const CYAN := Color("5ff2e6")
 const BLOOD := Color("b03030")
+## Text on the parchment centre of ui_panel (palette browns).
+const PANEL_INK := Color("3a2318")
+const PANEL_INK_DIM := Color("8a5a34")
 
 static var _font: Font
 static var _title_font: Font
 static var _theme: Theme
+static var _panel_theme: Theme
 
 ## The pixel font (11 px line, 5x7 glyphs).
 static func font() -> Font:
@@ -57,10 +61,14 @@ static func theme() -> Theme:
 	t.set_stylebox("panel", "PanelContainer", _panel_style())
 	t.set_stylebox("panel", "Panel", _panel_style())
 
-	t.set_color("font_color", "Label", PARCHMENT)
-	t.set_color("font_shadow_color", "Label", Color(INK, 0.8))
-	t.set_constant("shadow_offset_x", "Label", 1)
-	t.set_constant("shadow_offset_y", "Label", 1)
+	# Label and DimLabel colours live in the engine's fallback theme, not here: a Label's own
+	# theme is asked first, then its ancestors' themes, then the fallback. So labels inside a
+	# panel() take the panel's ink colours and every other label stays parchment on dark.
+	var fallback: Theme = ThemeDB.get_default_theme()
+	fallback.set_color("font_color", "Label", PARCHMENT)
+	fallback.set_color("font_shadow_color", "Label", Color(INK, 0.8))
+	fallback.set_constant("shadow_offset_x", "Label", 1)
+	fallback.set_constant("shadow_offset_y", "Label", 1)
 	t.set_constant("line_spacing", "Label", 1)
 
 	t.add_type("TitleLabel")
@@ -74,7 +82,9 @@ static func theme() -> Theme:
 
 	t.add_type("DimLabel")
 	t.set_type_variation("DimLabel", "Label")
-	t.set_color("font_color", "DimLabel", PARCHMENT_DIM)
+	fallback.add_type("DimLabel")
+	fallback.set_type_variation("DimLabel", "Label")
+	fallback.set_color("font_color", "DimLabel", PARCHMENT_DIM)
 
 	t.add_type("AlienLabel")
 	t.set_type_variation("AlienLabel", "Label")
@@ -152,10 +162,24 @@ static func theme() -> Theme:
 	return t
 
 ## A framed panel (parchment-on-wood). Uses the ui_panel texture once the art exists.
+## Labels inside it read in dark ink (see panel_theme()).
 static func panel() -> PanelContainer:
 	var p := PanelContainer.new()
-	p.theme = theme()
+	p.theme = panel_theme()
 	return p
+
+## The theme of panel(): the game theme plus ink text for the parchment centre. Without the
+## ui_panel art the panel is a dark box, so the text stays parchment.
+static func panel_theme() -> Theme:
+	if _panel_theme != null: return _panel_theme
+	var t: Theme = theme().duplicate()
+	if Engine.get_main_loop() != null and Assets.has_tex(&"ui_panel"):
+		t.set_color("font_color", "Label", PANEL_INK)
+		t.set_color("font_shadow_color", "Label", Color(0, 0, 0, 0))
+		t.set_color("font_color", "DimLabel", PANEL_INK_DIM)
+		t.set_color("font_shadow_color", "DimLabel", Color(0, 0, 0, 0))
+	_panel_theme = t
+	return t
 
 static func button(text_key: String) -> Button:
 	var b := Button.new()
