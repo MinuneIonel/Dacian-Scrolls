@@ -100,7 +100,9 @@ func is_revealed() -> bool:
 func reveal_all() -> void:
 	text_label.visible_characters = -1
 	choices.visible = true
-	choices.focus_first()
+	# Only a lone Continue takes focus: with real answers, the Space that skips the typewriter
+	# must not land on answer 1. Up/Down give the answers focus (see _unhandled_key_input).
+	if choices.buttons.size() == 1: choices.focus_first()
 
 func close() -> void:
 	if _closed: return
@@ -165,6 +167,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if not is_revealed():
 			reveal_all()
 			get_viewport().set_input_as_handled()
+	elif (k == KEY_UP or k == KEY_DOWN) and is_revealed() and get_viewport().gui_get_focus_owner() == null:
+		choices.focus_first()
+		get_viewport().set_input_as_handled()
 	elif k >= KEY_1 and k <= KEY_9:
 		choose_number(int(k - KEY_1) + 1)
 		get_viewport().set_input_as_handled()

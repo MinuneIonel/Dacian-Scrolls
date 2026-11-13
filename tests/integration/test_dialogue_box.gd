@@ -68,3 +68,13 @@ func test_unknown_dialogue_closes_at_once() -> void:
 	expect_errors(1)
 	box.begin(&"fxl_nope", Game.state, Game.rng, Content.defs)
 	assert_true(box.is_closed())
+
+func test_reveal_does_not_focus_an_answer_until_arrow_key() -> void:
+	box.begin(&"fx_priest", Game.state, Game.rng, Content.defs)
+	box.reveal_all()
+	assert_null(get_viewport().gui_get_focus_owner(), "Space after the typewriter must not pick answer 1")
+	var e := InputEventKey.new()
+	e.keycode = KEY_DOWN
+	e.pressed = true
+	box._unhandled_key_input(e)
+	assert_eq(get_viewport().gui_get_focus_owner(), box.choices.buttons[0])
