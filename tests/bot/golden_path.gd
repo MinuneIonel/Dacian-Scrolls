@@ -56,13 +56,16 @@ static func play(bot) -> bool:
 	tries = 0
 	while not bool(s.flags.get("won_saucer_surgeon", false)) and tries < 6:
 		tries += 1
-		if tries > 1:
+		# Never meet the saucer hurt: back to Vezina first (under the trees while hurt).
+		if bot.party_hurt():
 			if not _to_town(bot): return false
 			bot.rest_in_town()
+			if bot.party_hurt(): continue
 		var before: int = bot.stats.abductions
 		if bot.stats.saucer_sim.is_empty():
 			bot.stats.saucer_sim = bot.saucer_win_rate(40)
 		bot.travel_to_location(Bot.CRASH)
+		if bot.stats.abductions == before and not bot.at_location(Bot.CRASH) and bot.party_hurt(): continue
 		if bot.stats.abductions == before: bot.loiter_for_abduction()
 	if not bool(s.flags.get("won_saucer_surgeon", false)): return _gave_up(bot, "saucer")
 	# 5. The crash site: Ozo leaves (or is fought), the parcel, the flight recorder.
@@ -82,9 +85,11 @@ static func play(bot) -> bool:
 	# 7. The road pages: the trader and the deserters, met on the quiet southern road.
 	var legs: int = 0
 	while (not s.pages.has(&"page_trader") or not s.pages.has(&"page_deserters")) and legs < 60:
+		if bot.party_hurt() or s.food < s.party.size():
+			_to_town(bot)
+			bot.rest_in_town()
 		bot.travel_to(Bot.SOUTH_ROAD[legs % 2], 80)
 		legs += 1
-		if bot.party_hurt() and bot.at_location(Bot.TOWN): bot.rest_in_town()
 	# 8. Home for the night.
 	_to_town(bot)
 	bot.rest_in_town()
