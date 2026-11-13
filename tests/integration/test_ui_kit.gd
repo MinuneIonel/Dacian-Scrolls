@@ -55,3 +55,19 @@ func test_toast_layer_shows_and_expires() -> void:
 	await wait_frames(2)
 	assert_between(layer.count(), 1, ToastLayer.MAX_SHOWN)
 	layer.free()
+
+## The menu builds panels inside a themed column: their labels must still read in panel ink.
+func test_panel_labels_keep_ink_inside_a_themed_column() -> void:
+	var root := Control.new()
+	root.theme = UiKit.theme()
+	add_child(root)
+	var column := VBoxContainer.new()
+	root.add_child(column)
+	var p: PanelContainer = UiKit.panel()
+	var l: Label = UiKit.label("title")
+	p.add_child(l)
+	column.add_child(p)
+	await wait_frames(1)
+	assert_eq(p.theme, UiKit.panel_theme())
+	assert_eq(l.get_theme_color(&"font_color"), UiKit.PANEL_INK)
+	root.free()
