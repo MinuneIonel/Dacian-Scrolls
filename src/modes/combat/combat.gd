@@ -280,10 +280,6 @@ func _finish() -> void:
 	var outcome: String = str(result.get("outcome", ""))
 	var ev: Array[Dictionary] = []
 	if apply_result:
-		var used: Variant = result.get("items_used", {})
-		if used is Dictionary:
-			for item in used:
-				ev.append_array(Rules.run([["take_item", str(item), int(used[item])]], Game.state, Game.rng, Content.defs))
 		ev.append_array(Encounters.apply_battle_result(encounter_id, result, Game.state, Game.rng, Content.defs))
 	if outcome == "fled": ev.append({"type": "fled_battle"})
 	Bus.emit_events(ev)

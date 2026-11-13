@@ -5,6 +5,9 @@ const DETECT_RADIUS: int = 5
 const DETECT_RADIUS_NIGHT: int = 2
 const LOSE_RADIUS: int = 8
 const CHASE_SPEED: int = 2
+## After a lost or fled UFO battle: party steps during which no UFO can spot the party.
+const GRACE_FLAG: String = "ufo_grace"
+const GRACE_STEPS: int = 6
 
 ## Advances every UFO one party-step. Emits ufo_moved and possibly abducted.
 ## patrol: 1 cell (8-way) toward route[route_i], advancing route_i on arrival, looping.
@@ -12,10 +15,15 @@ const CHASE_SPEED: int = 2
 ## unless flags["decoy_charm"] is true, which is cleared instead. chase: 2 cells toward the
 ## party; back to patrol when the party hides or is >= 8 cells away. A chasing UFO on the
 ## party's cell abducts (at most one abducted event per tick). "gone" UFOs never act.
+## While flags["ufo_grace"] > 0 (counted down once per tick) the party counts as hidden.
 static func tick(state: GameState, rng: Rng, defs: Defs) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	var party: Vector2i = state.world_pos
-	var hidden: bool = Travel.hides(party, defs)
+	var grace: int = int(state.flags.get(GRACE_FLAG, 0))
+	if grace > 0:
+		if grace > 1: state.flags[GRACE_FLAG] = grace - 1
+		else: state.flags.erase(GRACE_FLAG)
+	var hidden: bool = Travel.hides(party, defs) or grace > 0
 	var radius: int = DETECT_RADIUS_NIGHT if state.is_night() else DETECT_RADIUS
 	var abducted: bool = false
 	for u in state.ufos:
