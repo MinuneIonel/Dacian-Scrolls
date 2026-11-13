@@ -7,7 +7,7 @@ const LOSE_RADIUS: int = 8
 const CHASE_SPEED: int = 2
 ## After a lost or fled UFO battle: party steps during which no UFO can spot the party.
 const GRACE_FLAG: String = "ufo_grace"
-const GRACE_STEPS: int = 6
+const GRACE_STEPS: int = 20
 
 ## Advances every UFO one party-step. Emits ufo_moved and possibly abducted.
 ## patrol: 1 cell (8-way) toward route[route_i], advancing route_i on arrival, looping.
