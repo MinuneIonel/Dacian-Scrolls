@@ -62,3 +62,4 @@ contract change requests. Then report back.
 - Generated PNG/OGG files are loaded through `Assets`/`Audio`, which fall back to raw files when
   the editor import has not run yet.
 - Typed arrays: `Array[Dictionary]` return values need typed locals (`var out: Array[Dictionary] = []`).
+- A new `strings/*.csv` needs a committed `<file>.csv.import` with `[remap]` and `importer="keep"`, or exports ship no text. The validator checks it.
