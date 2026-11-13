@@ -1,0 +1,16 @@
+[
+ {"id": "fx_blood_splat_1", "type": "texture", "gen": "blood_splat", "seed": 2601, "size": [32, 16], "out": "assets/fx/fx_blood_splat_1.png"},
+ {"id": "fx_blood_splat_2", "type": "texture", "gen": "blood_splat", "seed": 2602, "size": [32, 16], "out": "assets/fx/fx_blood_splat_2.png"},
+ {"id": "fx_blood_splat_3", "type": "texture", "gen": "blood_splat", "seed": 2603, "size": [40, 20], "out": "assets/fx/fx_blood_splat_3.png"},
+ {"id": "fx_gib_1", "type": "texture", "gen": "gib", "glyph": "meat", "out": "assets/fx/fx_gib_1.png"},
+ {"id": "fx_gib_2", "type": "texture", "gen": "gib", "glyph": "bone", "out": "assets/fx/fx_gib_2.png"},
+ {"id": "fx_gib_3", "type": "texture", "gen": "gib", "glyph": "tooth", "out": "assets/fx/fx_gib_3.png"},
+ {"id": "fx_gib_4", "type": "texture", "gen": "gib", "glyph": "eye", "out": "assets/fx/fx_gib_4.png"},
+ {"id": "fx_gib_5", "type": "texture", "gen": "gib", "glyph": "sandal", "out": "assets/fx/fx_gib_5.png"},
+ {"id": "fx_gib_6", "type": "texture", "gen": "gib", "glyph": "steak", "out": "assets/fx/fx_gib_6.png"},
+ {"id": "fx_balloon_burst", "type": "frames", "kind": "fx", "gen": "balloon_burst", "seed": 2611, "frame_size": [96, 96], "anchor": [48, 48], "anims": [["burst", 6, 12.0, false]], "out": "assets/fx/fx_balloon_burst.png"},
+ {"id": "fx_heal_sparkle", "type": "frames", "kind": "fx", "gen": "heal_sparkle", "seed": 2612, "frame_size": [32, 32], "anchor": [16, 16], "anims": [["play", 4, 8.0, false]], "out": "assets/fx/fx_heal_sparkle.png"},
+ {"id": "fx_tech_zap", "type": "frames", "kind": "fx", "gen": "tech_zap", "seed": 2613, "frame_size": [32, 32], "anchor": [16, 16], "anims": [["play", 4, 14.0, false]], "out": "assets/fx/fx_tech_zap.png"},
+ {"id": "fx_magic_glyph", "type": "frames", "kind": "fx", "gen": "magic_glyph", "seed": 2614, "frame_size": [48, 24], "anchor": [24, 12], "anims": [["play", 4, 6.0, true]], "out": "assets/fx/fx_magic_glyph.png"},
+ {"id": "fx_tractor_beam", "type": "frames", "kind": "fx", "gen": "tractor_beam", "seed": 2615, "frame_size": [48, 128], "anchor": [24, 0], "anims": [["play", 4, 10.0, true]], "out": "assets/fx/fx_tractor_beam.png"}
+]

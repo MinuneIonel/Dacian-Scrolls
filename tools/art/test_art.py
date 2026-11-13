@@ -21,9 +21,22 @@ import build  # noqa: E402
 import palette as P  # noqa: E402
 
 FAILS = []
-ART_DIRS = ["assets/sprites", "assets/tiles", "assets/ui"]
+ART_DIRS = ["assets/sprites", "assets/tiles", "assets/ui", "assets/fx", "assets/icons", "assets/portraits"]
 REQUIRED_ANIMS = ["idle", "walk", "attack", "hit", "death"]
-DACIAN = ["knight", "tile_grass", "tile_road", "tile_forest_floor", "tile_stone", "tile_wall", "ui_panel"]
+DACIAN = ["knight", "tile_grass", "tile_road", "tile_forest_floor", "tile_stone", "tile_wall", "ui_panel",
+          "necromancer", "healer", "villager_1", "villager_2", "villager_3", "villager_4", "strigoi", "wolf", "roman_deserter",
+          "bancul_recruit", "tile_dirt", "tile_cobble", "tile_andesite", "tile_sun_disc", "tile_wood_floor", "tile_door",
+          "tile_water", "tile_bridge", "tile_flowers", "tile_cave_floor", "tile_bones", "tile_cave_water", "tile_mud", "tile_scree",
+          "tile_snow", "tile_crate", "tile_barrel", "tile_table", "tile_altar", "tile_market_stall", "tile_fence", "tile_well",
+          "tile_bush", "tile_stump", "tile_coffin", "tile_cart", "tile_milestone", "tile_boulder", "tile_murus_dacicus",
+          "tile_timber_wall", "tile_house", "tile_cave_wall", "tile_cliff", "tile_andesite_pillar", "tile_limestone_pillar",
+          "tile_tree", "tile_rock", "tile_stalagmite", "icon_iron_falx", "icon_sica", "icon_oak_staff", "icon_wolf_pelt",
+          "icon_scale_mail", "icon_bread", "icon_healing_herbs", "icon_zalmoxis_amulet", "icon_draco_pennant",
+          "portrait_knight", "portrait_healer", "portrait_necromancer", "portrait_dida", "portrait_mucapor", "portrait_bitus",
+          "marker_town", "marker_cave", "prop_chest", "prop_barrel", "prop_bucket", "prop_scroll"]
+REQUIRED_FX = ["fx_blood_splat_1", "fx_blood_splat_2", "fx_blood_splat_3", "fx_gib_1", "fx_gib_2", "fx_gib_3", "fx_gib_4",
+               "fx_gib_5", "fx_gib_6", "fx_balloon_burst", "fx_heal_sparkle", "fx_tech_zap", "fx_magic_glyph", "fx_tractor_beam",
+               "portrait_fanfi"]
 
 
 def check(cond, msg):
@@ -67,6 +80,7 @@ def test_palette_only():
     for rel in ART_DIRS:
         files += glob.glob(os.path.join(ROOT, rel, "**", "*.png"), recursive=True)
     files.append(os.path.join(ROOT, "docs", "art-spike.png"))
+    files += glob.glob(os.path.join(ROOT, "docs", "art-sheet-*.png"))
     check(len(files) >= 10, "expected the spike's PNGs, found %d" % len(files))
     for f in files:
         px = load_rgba(f).reshape(-1, 4).astype(np.int32)
@@ -95,7 +109,8 @@ def test_manifest():
         rows = set()
         for suffix in ("", "_ne"):
             for a in REQUIRED_ANIMS:
-                check(a + suffix in e["anims"], "frames %s lacks anim %s" % (fid, a + suffix))
+                if e.get("kind") != "fx":
+                    check(a + suffix in e["anims"], "frames %s lacks anim %s" % (fid, a + suffix))
         for name, a in e["anims"].items():
             rows.add(a["row"])
             check((a["row"] + 1) * fh <= h, "%s.%s: row %d outside sheet" % (fid, name, a["row"]))
@@ -146,6 +161,29 @@ def test_tiles_shape():
         check(np.array_equal(a[:, :, 3] == 255, d), "%s does not fill the diamond exactly" % tid)
     w = load_rgba(os.path.join(ROOT, "assets", "tiles", "tile_wall.png"))
     check(w.shape[1] == 64 and w.shape[0] > 32, "tile_wall is %s" % (w.shape[:2],))
+
+
+def test_every_data_art_id_exists():
+    """Every sprite, icon, portrait and marker id under data/ is in the manifest, plus the fx set."""
+    m = json.load(open(os.path.join(ROOT, "assets", "manifest.json")))
+    have = set(m["textures"]) | set(m["frames"])
+    want = set(REQUIRED_FX)
+    for f in glob.glob(os.path.join(ROOT, "data", "**", "*.json"), recursive=True):
+        if "/schemas/" in f:
+            continue
+        stack = [json.load(open(f))]
+        while stack:
+            o = stack.pop()
+            if isinstance(o, dict):
+                for k, v in o.items():
+                    if k in ("sprite", "icon", "portrait", "marker") and isinstance(v, str):
+                        want.add(v)
+                    else:
+                        stack.append(v)
+            elif isinstance(o, list):
+                stack += o
+    missing = sorted(want - have)
+    check(not missing, "art ids without assets: %s" % missing)
 
 
 def main():
