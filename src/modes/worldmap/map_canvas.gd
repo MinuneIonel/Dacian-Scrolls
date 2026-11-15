@@ -77,6 +77,7 @@ func _draw_route(st: GameState) -> void:
 
 func _draw_markers(st: GameState) -> void:
 	var font: Font = UiKit.font()
+	var plates: Array[Rect2] = []
 	for loc in visible_locations():
 		var cell: Vector2i = Rules.to_cell(loc.get("cell", []))
 		var tex: Texture2D = marker_tex.get(str(loc.get("marker", "")))
@@ -89,6 +90,13 @@ func _draw_markers(st: GameState) -> void:
 		var text: String = tr(str(loc.get("name_key", "")))
 		var w: float = font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, UiKit.FONT_SIZE).x
 		var top := Vector2(floorf(base.x - w / 2.0), base.y + 3)
+		var plate := Rect2(top - Vector2(3, 1), Vector2(w + 6, 11))
+		# Neighbouring places (the cave is 3 cells from town): a plate that would overlap one
+		# already drawn goes above its marker instead.
+		if plates.any(func(r: Rect2) -> bool: return r.intersects(plate)):
+			top.y = base.y - (tex.get_size().y if tex != null else 10.0) - 13.0
+			plate.position.y = top.y - 1
+		plates.append(plate)
 		draw_rect(Rect2(top - Vector2(3, 1), Vector2(w + 6, 11)), PLATE)
 		draw_rect(Rect2(top - Vector2(3, 1), Vector2(w + 6, 11)), Color(UiKit.BRONZE, 0.9), false, 1.0)
 		draw_string(font, top + Vector2(0, font.get_ascent(UiKit.FONT_SIZE)), text,

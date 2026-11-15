@@ -126,6 +126,7 @@ func test_talking_opens_the_box_and_choices_apply() -> void:
 	box.reveal_all()
 	box.choose_number(3)   # join
 	assert_true(Rules.check([["in_party", "fx_priest"]], Game.state, Content.defs))
+	assert_eq(loc.followers.size(), 1, "the recruit walks behind the party at once")
 	assert_true(box.is_closed())
 	await wait_frames(1)
 	assert_null(loc.dialogue)
@@ -152,3 +153,15 @@ func test_battle_from_dialogue_waits_for_close() -> void:
 	loc.dialogue.choose_number(1)
 	assert_eq(Router.current, &"combat")
 	assert_eq(Router.args.return_args.cell, Vector2i(2, 1))
+
+## Keys are screen directions: diagonals are exact grid steps, a straight key zigzags.
+func test_keys_walk_in_screen_directions() -> void:
+	await _open({"location_id": "fx_town"})
+	assert_eq(loc.screen_to_grid(Vector2i(1, -1), false), Vector2i(0, -1), "W+D: north-east, up-right on screen")
+	assert_eq(loc.screen_to_grid(Vector2i(-1, -1), true), Vector2i(-1, 0), "W+A: up-left")
+	assert_eq(loc.screen_to_grid(Vector2i(1, 1), false), Vector2i(1, 0), "S+D: down-right")
+	assert_eq(loc.screen_to_grid(Vector2i(-1, 1), false), Vector2i(0, 1), "S+A: down-left")
+	for up: Vector2i in [loc.screen_to_grid(Vector2i(0, -1), false), loc.screen_to_grid(Vector2i(0, -1), true)]:
+		assert_true(up == Vector2i(0, -1) or up == Vector2i(-1, 0), "W goes up the screen")
+	for dn: Vector2i in [loc.screen_to_grid(Vector2i(0, 1), false), loc.screen_to_grid(Vector2i(0, 1), true)]:
+		assert_true(dn == Vector2i(1, 0) or dn == Vector2i(0, 1), "S goes down the screen")

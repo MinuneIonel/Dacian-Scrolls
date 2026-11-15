@@ -110,7 +110,7 @@ func _build_main() -> Control:
 	btn_new = _menu_button(box, "menu_new_game", func() -> void: show_screen(&"new"))
 	btn_continue = _menu_button(box, "menu_continue", _continue_game)
 	btn_settings = _menu_button(box, "menu_settings", func() -> void: show_screen(&"settings"))
-	btn_quit = _menu_button(box, "menu_quit", func() -> void: get_tree().quit())
+	btn_quit = _menu_button(box, "menu_quit", func() -> void: Audio.quit())
 	return p
 
 func _menu_button(parent: Control, key: String, on_press: Callable) -> Button:
@@ -204,7 +204,7 @@ func _build_settings() -> Control:
 	box.custom_minimum_size.x = COLUMN_W - 16
 	p.add_child(box)
 	var head: Label = UiKit.label("settings_title")
-	head.add_theme_color_override(&"font_color", UiKit.BRONZE_LIGHT)
+	head.add_theme_color_override(&"font_color", PartyScreen.INK_RED)
 	box.add_child(head)
 	var grid := GridContainer.new()
 	grid.columns = 3

@@ -60,6 +60,8 @@ var _moves: Dictionary = {}      # Vector2i -> Array[Vector2i]
 var _buttons: Array[Dictionary] = []   # {kind: "ability"|"item", id, def, targets: {cell: true}}
 var _can_flee: bool = false
 var _ap_max: Dictionary = {}     # uid -> AP at turn start
+var _round_seen: Dictionary = {}
+var _round_shown: int = 1
 var _fast: bool = false
 var _hover: Vector2i = NO_CELL
 var _drag_from: Vector2 = Vector2.ZERO
@@ -152,6 +154,15 @@ func _build_hud() -> void:
 	hud.set_timer(int(_rules().get("turn_limit", 0)))
 	hud.set_controls(false, false)
 
+## No event says a new round began (only `timer`, in timed battles): a unit's second turn
+## does. Keeps the "Round n" label moving in untimed fights; timed ones follow the timer.
+func _count_round(uid: int) -> void:
+	if _round_seen.has(uid):
+		_round_seen.clear()
+		_round_shown += 1
+		if int(_rules().get("turn_limit", 0)) <= 0: hud.set_round(_round_shown)
+	_round_seen[uid] = true
+
 func _build_player() -> void:
 	player = EventPlayer.new()
 	player.name = "EventPlayer"
@@ -160,7 +171,9 @@ func _build_player() -> void:
 	player.fx_layer = fx_layer
 	player.make_unit = _make_summon
 	player.audio = audio
-	player.turn_started.connect(func(uid: int, ap: int) -> void: _ap_max[uid] = ap)
+	player.turn_started.connect(func(uid: int, ap: int) -> void:
+		_ap_max[uid] = ap
+		_count_round(uid))
 	player.round_changed.connect(func(r: int) -> void: hud.set_round(r))
 	player.timer_changed.connect(func(t: int) -> void:
 		hud.set_timer(t)

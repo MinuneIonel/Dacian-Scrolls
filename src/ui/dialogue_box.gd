@@ -24,6 +24,7 @@ var _reveal: float = 0.0
 var _closed: bool = false
 
 func _init() -> void:
+	add_to_group(NarratorCaption.BOTTOM_UI_GROUP)   # Fanfi's caption moves to the top meanwhile
 	theme = UiKit.theme()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -50,7 +51,7 @@ func _init() -> void:
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(col)
 	speaker_label = UiKit.label("")
-	speaker_label.add_theme_color_override("font_color", UiKit.BRONZE_LIGHT)
+	speaker_label.add_theme_color_override("font_color", PartyScreen.INK_RED)   # red ink on the parchment
 	col.add_child(speaker_label)
 	text_label = UiKit.label("")
 	text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -100,7 +101,9 @@ func is_revealed() -> bool:
 func reveal_all() -> void:
 	text_label.visible_characters = -1
 	choices.visible = true
-	choices.focus_first()
+	# Only a lone Continue takes focus: with real answers, the Space that skips the typewriter
+	# must not land on answer 1. Up/Down give the answers focus (see _unhandled_key_input).
+	if choices.buttons.size() == 1: choices.focus_first()
 
 func close() -> void:
 	if _closed: return
@@ -165,6 +168,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if not is_revealed():
 			reveal_all()
 			get_viewport().set_input_as_handled()
+	elif (k == KEY_UP or k == KEY_DOWN) and is_revealed() and get_viewport().gui_get_focus_owner() == null:
+		choices.focus_first()
+		get_viewport().set_input_as_handled()
 	elif k >= KEY_1 and k <= KEY_9:
 		choose_number(int(k - KEY_1) + 1)
 		get_viewport().set_input_as_handled()

@@ -35,6 +35,8 @@ static func build(map_id: StringName, defs: Defs) -> Node2D:
 				sorted.add_child(node)
 			else:
 				ground.add_child(node)
+				var top: Sprite2D = _prop_top(node, tdef)
+				if top != null: sorted.add_child(top)
 	root.set_meta("grid", Grid.from_map(map_def, tiles))
 	root.set_meta("size", size)
 	root.set_meta("map_id", map_id)
@@ -55,6 +57,23 @@ static func tile_node(tile_id: String, tdef: Dictionary) -> Node2D:
 	if tdef.get("tall", false) or not tdef.get("walkable", true):
 		return block(col, 24 if tdef.get("tall", false) else 8)
 	return diamond(col)
+
+## Props (barrels, tables, stalls...) are flat-floored tiles that stick up. Their floor stays in
+## Ground; everything above the diamond's centre line is copied into Sorted so a unit standing
+## behind the prop is hidden by it instead of drawn over it. Null for flat tiles.
+static func _prop_top(node: Node2D, tdef: Dictionary) -> Sprite2D:
+	if tdef.get("walkable", true) or not (node is Sprite2D): return null
+	var src: Sprite2D = node
+	var h: int = src.texture.get_height()
+	if h <= Iso.TILE_H: return null
+	var top := Sprite2D.new()
+	top.texture = src.texture
+	top.centered = false
+	top.offset = src.offset
+	top.region_enabled = true
+	top.region_rect = Rect2(0, 0, src.texture.get_width(), h - Iso.TILE_H / 2)
+	top.position = src.position
+	return top
 
 ## A flat diamond polygon centred on the origin.
 static func diamond(col: Color) -> Polygon2D:

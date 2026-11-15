@@ -9,11 +9,20 @@ extends Node2D
 
 const STEP_TIME: float = 0.16
 const DEFAULT_MUSIC: StringName = &"sarmizegetusa"
+## Keys give a screen direction (W/Up is up the screen); see screen_to_grid().
 const KEY_DIRS: Dictionary = {
 	KEY_W: Vector2i(0, -1), KEY_UP: Vector2i(0, -1),
 	KEY_D: Vector2i(1, 0), KEY_RIGHT: Vector2i(1, 0),
 	KEY_S: Vector2i(0, 1), KEY_DOWN: Vector2i(0, 1),
 	KEY_A: Vector2i(-1, 0), KEY_LEFT: Vector2i(-1, 0)}
+## Grid steps for each screen direction on the diamond grid. A screen diagonal is one exact grid
+## step (W+D walks north-east); a straight key alternates its two neighbours, zigzagging up,
+## down, left or right on screen.
+const SCREEN_TO_GRID: Dictionary = {
+	Vector2i(0, -1): [Vector2i(0, -1), Vector2i(-1, 0)], Vector2i(0, 1): [Vector2i(1, 0), Vector2i(0, 1)],
+	Vector2i(1, 0): [Vector2i(0, -1), Vector2i(1, 0)], Vector2i(-1, 0): [Vector2i(-1, 0), Vector2i(0, 1)],
+	Vector2i(1, -1): [Vector2i(0, -1)], Vector2i(-1, -1): [Vector2i(-1, 0)],
+	Vector2i(1, 1): [Vector2i(1, 0)], Vector2i(-1, 1): [Vector2i(0, 1)]}
 const NEIGHBOURS: Array[Vector2i] = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
 	Vector2i(1, 1), Vector2i(-1, 1), Vector2i(1, -1), Vector2i(-1, -1)]
 const HILITE := Color(1.35, 1.3, 1.1)
@@ -48,6 +57,7 @@ var _to: Vector2i
 var _trail: Array[Vector2i] = []
 var _trail_from: Array[Vector2i] = []
 var _pending_interact: String = ""
+var _zig: bool = false
 var _pending_battle: StringName = &""
 var _leaving: bool = false
 var _overlay: Control
@@ -215,6 +225,20 @@ func _build_party(start: Vector2i) -> void:
 		sorted.add_child(u)
 		followers.append(u)
 		prev = c
+
+## A member who joined here walks behind the party at once, not only after the next map load.
+func _add_follower(id: StringName) -> void:
+	for m: Character in Game.state.party:
+		if m.id != id: continue
+		var used: Dictionary = {leader.cell: true}
+		for t: Vector2i in _trail: used[t] = true
+		var c: Vector2i = _free_neighbour(_trail.back() if not _trail.is_empty() else leader.cell, used)
+		_trail.append(c)
+		var u := UnitSprite.new(_member_sprite(m))
+		u.place(c)
+		map_node.get_node("Sorted").add_child(u)
+		followers.append(u)
+		return
 
 func _free_neighbour(c: Vector2i, used: Dictionary) -> Vector2i:
 	var blocked: Dictionary = blocked_cells()
@@ -454,10 +478,24 @@ func _process(delta: float) -> void:
 
 func _poll_keys() -> void:
 	if get_viewport().gui_get_focus_owner() != null: return
+	var screen := Vector2i.ZERO
 	for k: int in KEY_DIRS:
-		if Input.is_key_pressed(k as Key):
-			step(KEY_DIRS[k])
-			return
+		if Input.is_physical_key_pressed(k as Key): screen += KEY_DIRS[k]
+	screen = screen.clamp(Vector2i(-1, -1), Vector2i(1, 1))
+	if screen == Vector2i.ZERO: return
+	step(screen_to_grid(screen, _zig))
+	_zig = not _zig
+
+## The grid step for a screen direction from the keys. `alt` picks the other neighbour of a
+## zigzag; when the preferred one is blocked, the other is taken.
+func screen_to_grid(screen: Vector2i, alt: bool) -> Vector2i:
+	var opts: Array = SCREEN_TO_GRID.get(screen, [])
+	if opts.is_empty(): return Vector2i.ZERO
+	var first: Vector2i = opts[1 if alt and opts.size() > 1 else 0]
+	var other: Vector2i = opts[0 if alt and opts.size() > 1 else opts.size() - 1]
+	if grid == null or grid.is_walkable(leader.cell + first) or interactable_at(leader.cell + first) != "":
+		return first
+	return other if grid.is_walkable(leader.cell + other) else first
 
 ## One step in a grid direction (keyboard). Bumping an npc or container faces it.
 func step(dir: Vector2i) -> void:
@@ -553,6 +591,8 @@ func _handle(evts: Array[Dictionary], broadcast: bool) -> void:
 				_pending_battle = StringName(str(ev.get("encounter", "")))
 			"shop_requested":
 				_overlay = ShopScreen.show_over(self, StringName(str(ev.get("shop", ""))))
+			"recruited":
+				_add_follower(StringName(str(ev.get("unit", ""))))
 	if _pending_battle != &"" and (dialogue == null or not is_instance_valid(dialogue) or dialogue.is_closed()):
 		_start_battle(_pending_battle)
 

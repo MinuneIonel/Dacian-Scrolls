@@ -65,9 +65,9 @@
             "M..........HHHH....==.......HHHHY......M",
             "M...HHHH.......*...==.*................M",
             "M...HHHH......Y....==..Y......*.......*M",
-            "M...HHHH.....*....*==............*..Y..M",
+            "M...HHHH.....O....*==............*..Y..M",
             "M~~~~~~~~BB~~~~~~Y.==...Y..............M",
-            "M~..*........O.....==..................M",
+            "M~..*..............==..................M",
             "MMMMMMMMMMMMMMMMMMM==MMMMMMMMMMMMMMMMMMM"],
  "entities": [
               {"id": "vezina", "kind": "npc", "cell": [8, 6], "npc": "vezina"},
@@ -89,7 +89,7 @@
               {
                "id": "old_well",
                "kind": "container",
-               "cell": [14, 38],
+               "cell": [14, 36],
                "once": true,
                "if": [],
                "effects": [["page", "page_sargetia"], ["gold", 12]],

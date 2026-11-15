@@ -526,9 +526,12 @@ func choose_option(option_id: String) -> void:
 	var id: StringName = encounter_id
 	var events: Array[Dictionary] = Encounters.choose(id, option_id, Game.state, Game.rng, defs)
 	if events.is_empty() and option_id != "flee": return
-	Bus.emit_events(events)
-	_play(events)
 	var battle: Dictionary = _first(events, "battle_requested")
+	# The outcome panel prints the narration; broadcasting it too made Fanfi's caption repeat
+	# the same sentence under the panel.
+	Bus.emit_events(events if not battle.is_empty() else events.filter(
+		func(e: Dictionary) -> bool: return str(e.get("type", "")) != "narrator"))
+	_play(events)
 	if not battle.is_empty():
 		_close_modal()
 		var enc_id: StringName = StringName(str(battle.get("encounter", id)))

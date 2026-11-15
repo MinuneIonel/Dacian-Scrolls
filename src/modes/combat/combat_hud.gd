@@ -41,6 +41,7 @@ var ap_max: int = 0
 var _banner_tween: Tween
 
 func _ready() -> void:
+	add_to_group(NarratorCaption.BOTTOM_UI_GROUP)   # Fanfi talks at the top, not over the abilities
 	layer = 10
 	root = Control.new()
 	root.name = "HudRoot"
@@ -244,7 +245,7 @@ func set_fast(on: bool) -> void:
 
 ## info: {name, hp, max_hp, mana, max_mana, charge, max_charge, ap, ap_max}
 func set_active_unit(info: Dictionary) -> void:
-	name_label.text = str(info.get("name", ""))
+	name_label.text = str(info.get("name", "")).get_slice(",", 0)   # "Vezina", not his title: the AP pips sit there
 	_set_bar(hp_bar, hp_text, int(info.get("hp", 0)), int(info.get("max_hp", 0)))
 	_set_bar(mana_bar, mana_text, int(info.get("mana", 0)), int(info.get("max_mana", 0)))
 	_set_bar(charge_bar, charge_text, int(info.get("charge", 0)), int(info.get("max_charge", 0)))

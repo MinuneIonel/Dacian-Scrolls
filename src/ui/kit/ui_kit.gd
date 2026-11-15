@@ -171,7 +171,11 @@ static func panel() -> PanelContainer:
 	return p
 
 static func _sync_panel_ink(p: PanelContainer) -> void:
-	var want: Theme = panel_theme() if p.get_theme_stylebox(&"panel") is StyleBoxTexture else theme()
+	# Not p.get_theme_stylebox() alone: during theme_changed the item cache can still be stale
+	# (the menu's panels read the engine default there and lost their ink). Overrides are not cached.
+	var sb: StyleBox = p.get_theme_stylebox(&"panel") if p.has_theme_stylebox_override(&"panel") \
+		else panel_theme().get_stylebox(&"panel", &"PanelContainer")
+	var want: Theme = panel_theme() if sb is StyleBoxTexture else theme()
 	if p.theme != want: p.theme = want
 
 ## The theme of panel(): the game theme plus ink text for the parchment centre. Without the
@@ -251,6 +255,8 @@ static func _panel_style() -> StyleBox:
 		st.texture = Assets.tex(&"ui_panel")
 		st.set_texture_margin_all(12)
 		st.set_content_margin_all(12)
+		# The parchment starts 11 px in: 14 keeps the first glyph off the dark inner border.
+		st.content_margin_left = 14; st.content_margin_right = 14
 		return st
 	var s := _box(UMBER_DARK, BRONZE, 1)
 	s.set_content_margin_all(8)

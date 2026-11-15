@@ -20,7 +20,7 @@ three, a narrator who will not stop talking, and a scroll with pages missing. A 
 | Where | Do this | Keys and mouse |
 |---|---|---|
 | Menus | Move, pick, go back | Arrows and Enter, or the mouse. Esc goes back. |
-| Town and dungeons | Walk | Click a tile, or WASD / arrow keys one step at a time |
+| Town and dungeons | Walk | Click a tile, or WASD / arrow keys (W is up the screen; W+D, S+A... walk one diagonal) |
 | | Talk to someone, search a chest, use an exit | Stand next to it and press E |
 | | Pause menu | Esc |
 | Dialogue | Show the whole line / skip | Click, Space or Enter |

@@ -10,6 +10,10 @@ const FADE_S: float = 0.25
 const WIDTH: int = 448
 const PAD: Vector2i = Vector2i(14, 8)
 const BOTTOM_GAP: int = 10
+const TOP_GAP: int = 28
+## Nodes that own the bottom of the screen (dialogue box, combat bar): while one exists the
+## caption sits under the top edge instead, so it never covers answers or ability buttons.
+const BOTTOM_UI_GROUP: StringName = &"caption_goes_up"
 
 const SMOKE := Color("0e0a12")
 const SMOKE_EDGE := Color("2a2236")
@@ -84,11 +88,17 @@ func _layout() -> void:
 	var h: int = PAD.y * 2 + 12 + lines * _text.get_line_height() + 2
 	var vp: Vector2 = get_viewport_rect().size if is_inside_tree() else Vector2(640, 360)
 	size = Vector2(WIDTH, h)
-	position = Vector2(roundf((vp.x - WIDTH) / 2.0), vp.y - h - BOTTOM_GAP)
+	position = Vector2(roundf((vp.x - WIDTH) / 2.0), _y_for(h, vp))
+
+## Bottom of the screen, or under the top bar while something owns the bottom (BOTTOM_UI_GROUP).
+func _y_for(h: float, vp: Vector2) -> float:
+	if is_inside_tree() and get_tree().get_first_node_in_group(BOTTOM_UI_GROUP) != null: return TOP_GAP
+	return vp.y - h - BOTTOM_GAP
 
 func _process(delta: float) -> void:
 	if current_key == "": return
 	_t += delta
+	position.y = _y_for(size.y, get_viewport_rect().size)
 	_fade = minf(1.0, _fade + delta / FADE_S)
 	time_left -= delta
 	modulate.a = _fade if time_left > FADE_S else clampf(time_left / FADE_S, 0.0, 1.0)

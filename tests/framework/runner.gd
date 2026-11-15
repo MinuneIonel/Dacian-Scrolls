@@ -27,7 +27,7 @@ func _ready() -> void:
 	print("")
 	for line in _failed: print("FAIL ", line)
 	print("%d passed, %d failed in %.1fs" % [_passed, _failed.size(), dt])
-	get_tree().quit(0 if _failed.is_empty() and _passed > 0 else 1)
+	Audio.quit(0 if _failed.is_empty() and _passed > 0 else 1)   # stops music first: no leak warnings
 
 func _collect(dir: String, out: Array[String]) -> void:
 	var da := DirAccess.open(dir)

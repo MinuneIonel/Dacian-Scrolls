@@ -35,8 +35,11 @@ func _build(sz: Vector2) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 101
 	_stars.clear()
+	# No stars behind the title and subtitle: a 1-pixel star next to a letter reads as an accent.
+	var text_box := Rect2(0, 0, sz.x * 0.55, sz.y * 0.2)
 	for i in 70:
-		_stars.append(Vector2(rng.randi_range(0, int(sz.x) - 1), rng.randi_range(0, int(sz.y * 0.55))))
+		var star := Vector2(rng.randi_range(0, int(sz.x) - 1), rng.randi_range(0, int(sz.y * 0.55)))
+		if not text_box.has_point(star): _stars.append(star)
 	_far = _ridge(sz, sz.y * 0.60, 58.0, 0.017, 1.3)
 	_mid = _ridge(sz, sz.y * 0.72, 30.0, 0.029, 4.1)
 	_near = _ridge(sz, sz.y * 0.84, 12.0, 0.05, 7.7)
