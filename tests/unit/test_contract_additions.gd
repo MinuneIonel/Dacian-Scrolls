@@ -28,3 +28,15 @@ func test_restore_charge_caps() -> void:
 	var ev := Rules.run([["restore_charge", 100]], s, Rng.new(1), defs)
 	assert_eq(s.party[0].charge, s.party[0].max_charge)
 	assert_eq(find_event(ev, "charge_restored").get("amount"), 100)
+
+func test_win_heals_half_the_missing_hp() -> void:
+	var s := _state()
+	var m: Character = s.party[0]
+	var hp: int = 5
+	Encounters.apply_battle_result(&"fx_wolves", {"outcome": "win", "party_hp": {"hero": hp}, "loot": {}}, s, Rng.new(1), defs)
+	assert_eq(m.hp, hp + (m.max_hp - hp) / 2)
+
+func test_loss_does_not_heal() -> void:
+	var s := _state()
+	Encounters.apply_battle_result(&"fx_wolves", {"outcome": "lose", "party_hp": {"hero": 5}}, s, Rng.new(1), defs)
+	assert_eq(s.party[0].hp, 5)

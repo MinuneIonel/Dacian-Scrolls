@@ -158,8 +158,10 @@ func test_apply_win_sets_hp_loot_downed_and_xp() -> void:
 		"downed": [&"hero"], "party_hp": {&"hero": 0, &"fx_priest": 7},
 		"party_mana": {&"hero": 1, &"fx_priest": 3}, "party_charge": {&"hero": 2, &"fx_priest": 0}}
 	var ev: Array[Dictionary] = Encounters.apply_battle_result(&"fxw_bandits", res, s, rng, defs)
-	assert_eq(s.party[0].hp, 1, "downed back at 1 HP")
-	assert_eq(s.party[1].hp, 7)
+	var h: Character = s.party[0]
+	var p: Character = s.party[1]
+	assert_eq(h.hp, 1 + (h.max_hp - 1) / 2, "downed back at 1 HP, then half the missing HP")
+	assert_eq(p.hp, 7 + (p.max_hp - 7) / 2)
 	assert_eq(s.party[0].mana, 1)
 	assert_eq(s.party[1].mana, 3)
 	assert_eq(s.party[0].charge, 2)

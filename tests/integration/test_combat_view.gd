@@ -255,7 +255,7 @@ func test_battle_end_applies_result_and_returns() -> void:
 	assert_eq(died, [[2, true]], "gore hook fired")
 	assert_eq(Router.current, &"location")
 	assert_eq(Router.args, {"location_id": "fx_town"})
-	assert_eq(Game.state.party[0].hp, 12)
+	assert_eq(Game.state.party[0].hp, 12 + (Game.state.party[0].max_hp - 12) / 2)
 	assert_eq(int(Game.state.inventory.get(&"fx_bread", 0)), 2)
 	assert_eq(Game.state.flags.get("won_fx_wolves"), true)
 	assert_true(view.hud.result_panel.visible)

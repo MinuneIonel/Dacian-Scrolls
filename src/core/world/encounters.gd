@@ -41,7 +41,8 @@ static func choose(encounter_id: StringName, option_id: String, state: GameState
 
 ## Applies a finished Battle.result(): items used up (result.items_used, any outcome), party
 ## HP/mana/charge, loot, and on a win flag won_<encounter_id> = true plus the encounter XP.
-## On a win (and a successful flee) downed members return at 1 HP. On a win the UFO with this
+## On a win (and a successful flee) downed members return at 1 HP; on a win everyone then
+## gets back half their missing HP (rounded down), so a party can keep going. On a win the UFO with this
 ## encounter on the party's cell is gone; on any other outcome it goes back to patrol and
 ## flags["ufo_grace"] = Ufo.GRACE_STEPS, so it cannot spot the party again at once.
 static func apply_battle_result(encounter_id: StringName, result: Dictionary, state: GameState, rng: Rng, defs: Defs) -> Array[Dictionary]:
@@ -63,6 +64,7 @@ static func apply_battle_result(encounter_id: StringName, result: Dictionary, st
 		m.mana = clampi(int(_lookup(mana, m.id, m.mana)), 0, m.max_mana)
 		m.charge = clampi(int(_lookup(charge, m.id, m.charge)), 0, m.max_charge)
 		if (won or outcome == "fled") and m.hp <= 0: m.hp = 1
+		if won: m.hp += (m.max_hp - m.hp) / 2
 	if won:
 		var loot: Dictionary = result.get("loot", {})
 		var ids: Array = loot.keys()

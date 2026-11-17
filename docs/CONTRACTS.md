@@ -186,7 +186,8 @@ defeated UFO is `gone`.
 `Encounters.choose` runs `pass` or `fail` (after a roll when the option has one). An option that
 ends without a `battle` effect and is not `flee` resolves the encounter and grants its `xp`.
 `Encounters.apply_battle_result(encounter_id, result, state, rng, defs)` applies a finished
-battle: party HP, removes `items_used` from the inventory, loot to inventory, and on a win flag
+battle: party HP (on a win everyone also gets back half their missing HP), removes `items_used`
+from the inventory, loot to inventory, and on a win flag
 `won_<encounter_id>` = true and the XP. Data uses that flag to gate rewards that need a won fight.
 A UFO battle that is not won sets `flags.ufo_grace` so UFOs cannot spot the party for
 `Ufo.GRACE_STEPS` ticks. Defeat and abduction outcomes are applied by `Flow` (src/modes/flow.gd).
