@@ -1,0 +1,86 @@
+[
+ {
+  "id": "page_strigoi",
+  "title_key": "page_strigoi_title",
+  "body_key": "page_strigoi_body",
+  "order": 1,
+  "xp": 24
+ },
+ {
+  "id": "page_surgeon_log",
+  "title_key": "page_surgeon_log_title",
+  "body_key": "page_surgeon_log_body",
+  "order": 2,
+  "xp": 36
+ },
+ {
+  "id": "page_tavern",
+  "title_key": "page_tavern_title",
+  "body_key": "page_tavern_body",
+  "order": 3,
+  "xp": 24
+ },
+ {
+  "id": "page_calendar",
+  "title_key": "page_calendar_title",
+  "body_key": "page_calendar_body",
+  "order": 4,
+  "xp": 24
+ },
+ {
+  "id": "page_trader",
+  "title_key": "page_trader_title",
+  "body_key": "page_trader_body",
+  "order": 5,
+  "xp": 24
+ },
+ {
+  "id": "page_flight_recorder",
+  "title_key": "page_flight_recorder_title",
+  "body_key": "page_flight_recorder_body",
+  "order": 6,
+  "xp": 24
+ },
+ {
+  "id": "page_delivery",
+  "title_key": "page_delivery_title",
+  "body_key": "page_delivery_body",
+  "order": 7,
+  "xp": 24
+ },
+ {
+  "id": "page_taxes",
+  "title_key": "page_taxes_title",
+  "body_key": "page_taxes_body",
+  "order": 8,
+  "xp": 24
+ },
+ {
+  "id": "page_deserters",
+  "title_key": "page_deserters_title",
+  "body_key": "page_deserters_body",
+  "order": 9,
+  "xp": 24
+ },
+ {
+  "id": "page_parcel",
+  "title_key": "page_parcel_title",
+  "body_key": "page_parcel_body",
+  "order": 10,
+  "xp": 24
+ },
+ {
+  "id": "page_sargetia",
+  "title_key": "page_sargetia_title",
+  "body_key": "page_sargetia_body",
+  "order": 11,
+  "xp": 24
+ },
+ {
+  "id": "page_oglinda",
+  "title_key": "page_oglinda_title",
+  "body_key": "page_oglinda_body",
+  "order": 12,
+  "xp": 36
+ }
+]

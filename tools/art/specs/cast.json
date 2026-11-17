@@ -1,0 +1,14 @@
+[
+ {"id": "necromancer", "type": "frames", "gen": "necromancer", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/necromancer.png"},
+ {"id": "healer", "type": "frames", "gen": "healer", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/healer.png"},
+ {"id": "roman_deserter", "type": "frames", "gen": "roman_deserter", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/roman_deserter.png"},
+ {"id": "strigoi", "type": "frames", "gen": "strigoi", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/strigoi.png"},
+ {"id": "villager_1", "type": "frames", "gen": "villager_1", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/villager_1.png"},
+ {"id": "villager_2", "type": "frames", "gen": "villager_2", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/villager_2.png"},
+ {"id": "villager_3", "type": "frames", "gen": "villager_3", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/villager_3.png"},
+ {"id": "villager_4", "type": "frames", "gen": "villager_4", "frame_size": [32, 48], "anchor": [16, 44], "out": "assets/sprites/villager_4.png"},
+ {"id": "wolf", "type": "frames", "gen": "wolf", "frame_size": [48, 48], "anchor": [24, 44], "out": "assets/sprites/wolf.png"},
+ {"id": "probe_drone", "type": "frames", "gen": "probe_drone", "frame_size": [48, 48], "anchor": [24, 44], "out": "assets/sprites/probe_drone.png"},
+ {"id": "bancul_recruit", "type": "frames", "gen": "bancul_recruit", "frame_size": [128, 192], "anchor": [64, 160], "footprint": [2, 2], "out": "assets/sprites/bancul_recruit.png"},
+ {"id": "lobizi_surgeon", "type": "frames", "gen": "lobizi_surgeon", "frame_size": [128, 192], "anchor": [64, 160], "footprint": [2, 2], "out": "assets/sprites/lobizi_surgeon.png"}
+]

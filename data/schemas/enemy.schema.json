@@ -1,0 +1,125 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "enemy",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "name_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "size": {
+   "enum": [
+    1,
+    2
+   ]
+  },
+  "hp": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "armor": {
+   "type": "integer"
+  },
+  "stats": {
+   "type": "object",
+   "properties": {
+    "might": {
+     "type": "integer"
+    },
+    "agility": {
+     "type": "integer"
+    },
+    "wits": {
+     "type": "integer"
+    },
+    "spirit": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "might",
+    "agility",
+    "wits",
+    "spirit"
+   ],
+   "additionalProperties": false
+  },
+  "abilities": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "pattern": "^[a-z0-9_]+$"
+   },
+   "minItems": 1
+  },
+  "ai": {
+   "enum": [
+    "brute",
+    "skirmisher",
+    "caster",
+    "boss_surgeon"
+   ]
+  },
+  "raiseable": {
+   "type": "boolean"
+  },
+  "machine": {
+   "type": "boolean"
+  },
+  "gib": {
+   "type": "boolean"
+  },
+  "sprite": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "loot": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "item": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "chance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     }
+    },
+    "required": [
+     "item",
+     "chance"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "required": [
+  "id",
+  "name_key",
+  "size",
+  "hp",
+  "armor",
+  "stats",
+  "abilities",
+  "ai",
+  "raiseable",
+  "machine",
+  "gib",
+  "sprite",
+  "loot"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

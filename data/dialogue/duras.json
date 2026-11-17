@@ -1,0 +1,210 @@
+{
+ "id": "duras",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_duras",
+                     "text_key": "dlg_duras_hello",
+                     "do": [["quest", "dead_dont_pay_taxes", 30]],
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_duras_hello_c0",
+                                  "if": [["quest", "dead_dont_pay_taxes", "<", 50]],
+                                  "do": [],
+                                  "goto": "taxes"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_hello_c1",
+                                  "if": [
+                                         ["quest", "dead_dont_pay_taxes", "<", 50],
+                                         ["class", "necromancer"]
+                                        ],
+                                  "do": [],
+                                  "goto": "necro"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_hello_c2",
+                                  "if": [["quest", "dead_dont_pay_taxes", "<", 50]],
+                                  "do": [
+                                         ["set_flag", "duras_fought", true],
+                                         ["quest", "dead_dont_pay_taxes", 40],
+                                         ["battle", "cave_strigoi"]
+                                        ],
+                                  "goto": "end"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_hello_c3",
+                                  "if": [["quest", "dead_dont_pay_taxes", ">=", 50]],
+                                  "do": [],
+                                  "goto": "after"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_hello_c4",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "taxes": {
+                     "speaker": "npc_duras",
+                     "text_key": "dlg_duras_taxes",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_duras_taxes_c0",
+                                  "if": [["not", ["flag", "duras_refused", "==", true]]],
+                                  "do": [
+                                         [
+                                          "roll",
+                                          "wits",
+                                          12,
+                                          [
+                                           ["set_flag", "duras_convinced", true],
+                                           ["set_flag", "duras_talked", true],
+                                           ["give_item", "strigoi_taxes", 1],
+                                           ["page", "page_strigoi"],
+                                           ["quest", "dead_dont_pay_taxes", 50],
+                                           ["xp", 48]
+                                          ],
+                                          [["set_flag", "duras_refused", true]]
+                                         ]
+                                        ],
+                                  "goto": "taxes_result"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_taxes_c1",
+                                  "if": [["not", ["flag", "duras_refused", "==", true]]],
+                                  "do": [
+                                         [
+                                          "roll",
+                                          "spirit",
+                                          12,
+                                          [
+                                           ["set_flag", "duras_convinced", true],
+                                           ["set_flag", "duras_talked", true],
+                                           ["give_item", "strigoi_taxes", 1],
+                                           ["page", "page_strigoi"],
+                                           ["quest", "dead_dont_pay_taxes", 50],
+                                           ["xp", 48]
+                                          ],
+                                          [["set_flag", "duras_refused", true]]
+                                         ]
+                                        ],
+                                  "goto": "taxes_result"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_taxes_c2",
+                                  "if": [],
+                                  "do": [
+                                         ["set_flag", "duras_fought", true],
+                                         ["quest", "dead_dont_pay_taxes", 40],
+                                         ["battle", "cave_strigoi"]
+                                        ],
+                                  "goto": "end"
+                                 },
+                                 {
+                                  "text_key": "dlg_duras_taxes_c3",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "taxes_result": {
+                            "speaker": "npc_duras",
+                            "text_key": "dlg_duras_taxes_result",
+                            "choices": [
+                                        {
+                                         "text_key": "dlg_duras_taxes_result_c0",
+                                         "if": [["flag", "duras_convinced", "==", true]],
+                                         "do": [],
+                                         "goto": "talked"
+                                        },
+                                        {
+                                         "text_key": "dlg_duras_taxes_result_c1",
+                                         "if": [["not", ["flag", "duras_convinced", "==", true]]],
+                                         "do": [],
+                                         "goto": "refused"
+                                        },
+                                        {
+                                         "text_key": "dlg_duras_taxes_result_c2",
+                                         "if": [],
+                                         "do": [],
+                                         "goto": "end"
+                                        }
+                                       ]
+                           },
+           "talked": {
+                      "speaker": "npc_duras",
+                      "text_key": "dlg_duras_talked",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_duras_talked_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "end"
+                                  }
+                                 ]
+                     },
+           "refused": {
+                       "speaker": "npc_duras",
+                       "text_key": "dlg_duras_refused",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_duras_refused_c0",
+                                    "if": [],
+                                    "do": [
+                                           ["set_flag", "duras_fought", true],
+                                           ["quest", "dead_dont_pay_taxes", 40],
+                                           ["battle", "cave_strigoi"]
+                                          ],
+                                    "goto": "end"
+                                   },
+                                   {
+                                    "text_key": "dlg_duras_refused_c1",
+                                    "if": [["class", "necromancer"]],
+                                    "do": [],
+                                    "goto": "necro"
+                                   },
+                                   {
+                                    "text_key": "dlg_duras_refused_c2",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "end"
+                                   }
+                                  ]
+                      },
+           "necro": {
+                     "speaker": "npc_duras",
+                     "text_key": "dlg_duras_necro",
+                     "do": [
+                            ["set_flag", "strigoi_ally", true],
+                            ["set_flag", "strigoi_ally_taken", true],
+                            ["give_item", "strigoi_taxes", 1],
+                            ["page", "page_strigoi"],
+                            ["quest", "dead_dont_pay_taxes", 50],
+                            ["xp", 48]
+                           ],
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_duras_necro_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "after": {
+                     "speaker": "npc_duras",
+                     "text_key": "dlg_duras_after",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_duras_after_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    }
+          }
+}

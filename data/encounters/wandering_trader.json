@@ -1,0 +1,54 @@
+{
+ "id": "wandering_trader",
+ "intro_key": "enc_wandering_trader",
+ "map": "arena_road",
+ "xp": 24,
+ "party_spawn": [[1, 3], [1, 5], [2, 4], [2, 6]],
+ "enemies": [
+             {"enemy": "roman_deserter", "cell": [9, 4]},
+             {"enemy": "roman_deserter", "cell": [9, 6]}
+            ],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "wandering_trader"]],
+              "fail": []
+             },
+             {
+              "id": "trade",
+              "label_key": "enc_wandering_trader_opt_trade",
+              "if": [],
+              "roll": null,
+              "pass": [
+                       ["narrate", "enc_wandering_trader_trade_pass"],
+                       ["page", "page_trader"],
+                       ["shop", "trader_shop"]
+                      ],
+              "fail": []
+             },
+             {
+              "id": "talk",
+              "label_key": "enc_wandering_trader_opt_talk",
+              "if": [],
+              "roll": {"stat": "wits", "dc": 10},
+              "pass": [
+                       ["narrate", "enc_wandering_trader_talk_pass"],
+                       ["discover", "strigoi_cave"],
+                       ["discover", "crash_site"]
+                      ],
+              "fail": [["narrate", "enc_wandering_trader_talk_fail"]]
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 10},
+              "pass": [],
+              "fail": [["battle", "wandering_trader"]]
+             }
+            ]
+}

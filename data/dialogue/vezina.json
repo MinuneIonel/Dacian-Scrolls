@@ -1,0 +1,115 @@
+{
+ "id": "vezina",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_vezina",
+                     "text_key": "dlg_vezina_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_vezina_hello_c0",
+                                  "if": [],
+                                  "do": [["heal_party"]],
+                                  "goto": "healed"
+                                 },
+                                 {
+                                  "text_key": "dlg_vezina_hello_c1",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "lore"
+                                 },
+                                 {
+                                  "text_key": "dlg_vezina_hello_c2",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "lights"
+                                 },
+                                 {
+                                  "text_key": "dlg_vezina_hello_c3",
+                                  "if": [["not", ["in_party", "vezina"]]],
+                                  "do": [],
+                                  "goto": "recruit"
+                                 },
+                                 {
+                                  "text_key": "dlg_vezina_hello_c4",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "healed": {
+                      "speaker": "npc_vezina",
+                      "text_key": "dlg_vezina_healed",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_vezina_healed_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "hello"
+                                  },
+                                  {
+                                   "text_key": "dlg_vezina_healed_c1",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "end"
+                                  }
+                                 ]
+                     },
+           "lore": {
+                    "speaker": "npc_vezina",
+                    "text_key": "dlg_vezina_lore",
+                    "choices": [
+                                {
+                                 "text_key": "dlg_vezina_lore_c0",
+                                 "if": [],
+                                 "do": [],
+                                 "goto": "scrolls"
+                                },
+                                {
+                                 "text_key": "dlg_vezina_lore_c1",
+                                 "if": [],
+                                 "do": [],
+                                 "goto": "hello"
+                                }
+                               ]
+                   },
+           "scrolls": {
+                       "speaker": "npc_vezina",
+                       "text_key": "dlg_vezina_scrolls",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_vezina_scrolls_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "hello"
+                                   }
+                                  ]
+                      },
+           "lights": {
+                      "speaker": "npc_vezina",
+                      "text_key": "dlg_vezina_lights",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_vezina_lights_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "hello"
+                                  }
+                                 ]
+                     },
+           "recruit": {
+                       "speaker": "npc_vezina",
+                       "text_key": "dlg_vezina_recruit",
+                       "do": [["recruit", "vezina"]],
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_vezina_recruit_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "end"
+                                   }
+                                  ]
+                      }
+          }
+}

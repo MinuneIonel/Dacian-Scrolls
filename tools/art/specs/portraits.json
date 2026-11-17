@@ -1,0 +1,15 @@
+[
+ {"id": "portrait_knight", "type": "texture", "gen": "portrait", "who": "knight", "out": "assets/portraits/portrait_knight.png"},
+ {"id": "portrait_necromancer", "type": "texture", "gen": "portrait", "who": "necromancer", "out": "assets/portraits/portrait_necromancer.png"},
+ {"id": "portrait_healer", "type": "texture", "gen": "portrait", "who": "healer", "out": "assets/portraits/portrait_healer.png"},
+ {"id": "portrait_vezina", "type": "texture", "gen": "portrait", "who": "vezina", "out": "assets/portraits/portrait_vezina.png"},
+ {"id": "portrait_dida", "type": "texture", "gen": "portrait", "who": "dida", "out": "assets/portraits/portrait_dida.png"},
+ {"id": "portrait_zia", "type": "texture", "gen": "portrait", "who": "zia", "out": "assets/portraits/portrait_zia.png"},
+ {"id": "portrait_mucapor", "type": "texture", "gen": "portrait", "who": "mucapor", "out": "assets/portraits/portrait_mucapor.png"},
+ {"id": "portrait_tsinna", "type": "texture", "gen": "portrait", "who": "tsinna", "out": "assets/portraits/portrait_tsinna.png"},
+ {"id": "portrait_rholes", "type": "texture", "gen": "portrait", "who": "rholes", "out": "assets/portraits/portrait_rholes.png"},
+ {"id": "portrait_bitus", "type": "texture", "gen": "portrait", "who": "bitus", "out": "assets/portraits/portrait_bitus.png"},
+ {"id": "portrait_duras", "type": "texture", "gen": "portrait", "who": "duras", "out": "assets/portraits/portrait_duras.png"},
+ {"id": "portrait_ozo", "type": "texture", "gen": "portrait", "who": "ozo", "out": "assets/portraits/portrait_ozo.png"},
+ {"id": "portrait_fanfi", "type": "texture", "gen": "portrait", "who": "fanfi", "out": "assets/portraits/portrait_fanfi.png"}
+]

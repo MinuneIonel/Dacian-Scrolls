@@ -1,0 +1,18 @@
+{
+ "id": "trader_shop",
+ "name_key": "shop_trader_shop",
+ "stock": [
+           {"item": "bread", "count": 12},
+           {"item": "healing_herbs", "count": 6},
+           {"item": "power_cell", "count": 2},
+           {"item": "decoy_charm", "count": 2},
+           {"item": "sica", "count": 1},
+           {"item": "oak_staff", "count": 1},
+           {"item": "iron_falx", "count": 1},
+           {"item": "wolf_pelt", "count": 2},
+           {"item": "scale_mail", "count": 1},
+           {"item": "roman_lorica", "count": 1},
+           {"item": "draco_pennant", "count": 1},
+           {"item": "zalmoxis_amulet", "count": 1}
+          ]
+}

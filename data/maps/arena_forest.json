@@ -1,0 +1,17 @@
+{
+ "id": "arena_forest",
+ "kind": "arena",
+ "name_key": "map_arena_forest",
+ "legend": {"Y": "tree", "f": "forest_floor", "b": "bush", "u": "stump", "r": "rock"},
+ "ground": ["YYYYYYYYYYYY",
+            "YffffffrfffY",
+            "YfffbffffYfY",
+            "YffffffffffY",
+            "YfffffuffffY",
+            "YfffYffffffY",
+            "YfffffffbffY",
+            "YffffbfffffY",
+            "YffffffffffY",
+            "YYYYYYYYYYYY"],
+ "entities": [{"id": "entry", "kind": "spawn_ally", "cell": [1, 3]}]
+}

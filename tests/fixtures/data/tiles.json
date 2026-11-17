@@ -1,0 +1,5 @@
+{"grass": {"walkable": true, "cover": 0, "sprite": "tile_grass"},
+ "road": {"walkable": true, "cover": 0, "sprite": "tile_road"},
+ "wall": {"walkable": false, "cover": 40, "sprite": "tile_wall"},
+ "crate": {"walkable": false, "cover": 20, "sprite": "tile_crate"},
+ "water": {"walkable": false, "cover": 0, "sprite": "tile_water"}}

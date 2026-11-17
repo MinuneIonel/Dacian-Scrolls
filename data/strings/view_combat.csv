@@ -1,0 +1,59 @@
+keys,en
+cbt_end_turn,End turn
+cbt_flee,Flee
+cbt_round,Round %d
+cbt_ap,AP
+cbt_hp,HP
+cbt_mana,MP
+cbt_charge,CH
+cbt_miss,Miss
+cbt_crit,Crit!
+cbt_absorbed,(%d blocked)
+cbt_hit_chance,Hit %d%%
+cbt_ap_cost,%d AP
+cbt_mana_cost,"%d AP, %d MP"
+cbt_charge_cost,"%d AP, %d CH"
+cbt_range,"Range %d, area %d"
+cbt_battle_start,Fight!
+cbt_your_turn,Your move
+cbt_victory,Victory
+cbt_defeat,Defeat
+cbt_fled,Escaped
+cbt_reason_enemies_defeated,Nobody on the other side is standing. Paperwork can wait.
+cbt_reason_party_down,Everyone is lying down. Not voluntarily.
+cbt_reason_timeout,The saucer kept its promise. It always does.
+cbt_reason_stalemate,Sixty rounds. Both sides agreed to stop and pretend it never happened.
+cbt_reason_fled,Running away is a tactic. Fanfi checked.
+cbt_loot,Loot
+cbt_no_loot,No loot. They had no pockets.
+cbt_continue,Continue
+cbt_timer,Self-destruct: %d
+cbt_timer_banner,SELF-DESTRUCT IN %d ROUNDS
+cbt_flee_failed,Flee failed
+cbt_flee_ok,Got away
+cbt_downed,Down
+cbt_fast,Speed 4x
+cbt_item,%s x%d
+cbt_magic_off,No magic here
+cbt_st_slowed,Slowed
+cbt_st_stunned,Stunned
+cbt_st_bleeding,Bleeding
+cbt_st_chilled,Chilled
+cbt_st_charmed,Charmed
+cbt_st_taunted,Taunted
+cbt_st_shield,Shield
+cbt_st_regen,Regen
+cbt_sts_slowed,SLW
+cbt_sts_stunned,STN
+cbt_sts_bleeding,BLD
+cbt_sts_chilled,CHL
+cbt_sts_charmed,CHM
+cbt_sts_taunted,TNT
+cbt_sts_shield,SHD
+cbt_sts_regen,RGN
+cbt_hz_acid,Acid
+cbt_hz_gravity_zone,Gravity well
+cbt_hz_specimen_tank,Specimen tank
+cbt_summoned,Summoned
+cbt_risen,Risen
+cbt_drift,Drift

@@ -1,0 +1,13 @@
+{"id": "fxs_gate", "start": "a",
+ "nodes": {
+  "a": {"speaker": "fx_npc_priest", "text_key": "fxs_dlg_a", "do": [["narrate", "fx_line"]],
+   "choices": [
+    {"text_key": "fxs_dlg_secret", "if": [["flag", "fxs_met", "==", true]], "do": [], "goto": "c"},
+    {"text_key": "fxs_dlg_next", "if": [], "do": [["set_flag", "fxs_met", true]], "goto": "b"},
+    {"text_key": "fxs_dlg_bye", "if": [], "do": [], "goto": "end"}
+   ]},
+  "b": {"speaker": "fx_npc_priest", "text_key": "fxs_dlg_b", "do": [["gold", 12]],
+   "choices": [{"text_key": "fxs_dlg_back", "if": [], "do": [], "goto": "a"}]},
+  "c": {"speaker": "fx_npc_priest", "text_key": "fxs_dlg_c", "do": [],
+   "choices": [{"text_key": "fxs_dlg_bye", "if": [], "do": [["give_item", "fx_cell", 1]], "goto": "end"}]}
+ }}

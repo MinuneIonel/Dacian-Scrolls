@@ -1,0 +1,19 @@
+[
+ {"id": "fxa_skirm", "name_key": "fxa_enemy_skirm", "size": 1, "hp": 10, "armor": 0,
+  "stats": {"might": 2, "agility": 5, "wits": 4, "spirit": 1}, "abilities": ["fxa_spit", "fxc_poke"],
+  "ai": "skirmisher", "raiseable": true, "machine": false, "gib": true, "sprite": "skirm",
+  "loot": []},
+ {"id": "fxa_shaman", "name_key": "fxa_enemy_shaman", "size": 1, "hp": 12, "armor": 0,
+  "stats": {"might": 1, "agility": 3, "wits": 5, "spirit": 4}, "abilities": ["fxa_hex", "fxa_mend", "fxc_poke"],
+  "ai": "caster", "raiseable": true, "machine": false, "gib": true, "sprite": "shaman",
+  "loot": []},
+ {"id": "fxa_surgeon", "name_key": "fxa_enemy_surgeon", "size": 2, "hp": 40, "armor": 2,
+  "stats": {"might": 6, "agility": 3, "wits": 5, "spirit": 2},
+  "abilities": ["fx_strike", "fxc_shove", "fxc_tank", "fxc_gravity", "fxc_acid", "fxa_probe"],
+  "ai": "boss_surgeon", "raiseable": false, "machine": true, "gib": false, "sprite": "surgeon",
+  "loot": [{"item": "fx_cell", "chance": 1.0}]},
+ {"id": "fxa_probe_drone", "name_key": "fxa_enemy_probe", "size": 1, "hp": 8, "armor": 1,
+  "stats": {"might": 2, "agility": 4, "wits": 4, "spirit": 0}, "abilities": ["fxa_spit"],
+  "ai": "skirmisher", "raiseable": false, "machine": true, "gib": true, "sprite": "drone",
+  "loot": []}
+]

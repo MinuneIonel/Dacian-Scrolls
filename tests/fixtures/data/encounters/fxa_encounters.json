@@ -1,0 +1,198 @@
+[
+ {
+  "id": "fxa_pack",
+  "intro_key": "fxa_enc",
+  "map": "fxa_yard",
+  "xp": 12,
+  "party_spawn": [
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  "enemies": [
+   {
+    "enemy": "fx_wolf",
+    "cell": [
+     6,
+     1
+    ]
+   },
+   {
+    "enemy": "fxc_brute",
+    "cell": [
+     6,
+     3
+    ]
+   },
+   {
+    "enemy": "fxa_skirm",
+    "cell": [
+     7,
+     5
+    ]
+   }
+  ],
+  "rules": {
+   "magic_disabled": false,
+   "gravity": "normal",
+   "turn_limit": 0
+  },
+  "options": [
+   {
+    "id": "fight",
+    "label_key": "opt_fight",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   },
+   {
+    "id": "flee",
+    "label_key": "opt_flee",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   }
+  ]
+ },
+ {
+  "id": "fxa_coven",
+  "intro_key": "fxa_enc",
+  "map": "fxa_yard",
+  "xp": 12,
+  "party_spawn": [
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  "enemies": [
+   {
+    "enemy": "fxa_shaman",
+    "cell": [
+     7,
+     3
+    ]
+   },
+   {
+    "enemy": "fxc_brute",
+    "cell": [
+     6,
+     1
+    ]
+   },
+   {
+    "enemy": "fx_wolf",
+    "cell": [
+     6,
+     5
+    ]
+   }
+  ],
+  "rules": {
+   "magic_disabled": false,
+   "gravity": "normal",
+   "turn_limit": 0
+  },
+  "options": [
+   {
+    "id": "fight",
+    "label_key": "opt_fight",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   },
+   {
+    "id": "flee",
+    "label_key": "opt_flee",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   }
+  ]
+ },
+ {
+  "id": "fxa_saucer",
+  "intro_key": "fxa_enc",
+  "map": "fxa_yard",
+  "xp": 12,
+  "party_spawn": [
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  "enemies": [
+   {
+    "enemy": "fxa_surgeon",
+    "cell": [
+     6,
+     2
+    ]
+   }
+  ],
+  "rules": {
+   "magic_disabled": true,
+   "gravity": "normal",
+   "turn_limit": 12
+  },
+  "options": [
+   {
+    "id": "fight",
+    "label_key": "opt_fight",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   },
+   {
+    "id": "flee",
+    "label_key": "opt_flee",
+    "if": [],
+    "roll": null,
+    "pass": [],
+    "fail": []
+   }
+  ]
+ }
+]

@@ -1,0 +1,14 @@
+[
+ {"id": "fxa_spit", "name_key": "fxa_ab_spit", "desc_key": "fxa_ab_spit_desc", "source": "tech",
+  "ap": 3, "cost": 0, "range": 3, "area": 0, "target": "enemy", "icon": "icon_spit",
+  "effects": [{"kind": "damage", "base": 3, "stat": "wits", "scale": 0.5}]},
+ {"id": "fxa_hex", "name_key": "fxa_ab_hex", "desc_key": "fxa_ab_hex_desc", "source": "magic",
+  "ap": 3, "cost": 2, "range": 4, "area": 0, "target": "enemy", "icon": "icon_hex",
+  "effects": [{"kind": "damage", "base": 3, "stat": "wits", "scale": 0.5}]},
+ {"id": "fxa_mend", "name_key": "fxa_ab_mend", "desc_key": "fxa_ab_mend_desc", "source": "magic",
+  "ap": 3, "cost": 2, "range": 3, "area": 0, "target": "ally", "icon": "icon_mend",
+  "effects": [{"kind": "heal", "base": 5, "stat": "spirit", "scale": 1.0}]},
+ {"id": "fxa_probe", "name_key": "fxa_ab_probe", "desc_key": "fxa_ab_probe_desc", "source": "tech",
+  "ap": 3, "cost": 0, "range": 2, "area": 0, "target": "cell", "icon": "icon_probe",
+  "effects": [{"kind": "summon", "from": "spawn", "enemy": "fxa_probe_drone"}]}
+]

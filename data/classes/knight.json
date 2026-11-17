@@ -1,0 +1,14 @@
+{
+ "id": "knight",
+ "name_key": "class_knight",
+ "desc_key": "class_knight_desc",
+ "base_stats": {"might": 6, "agility": 4, "wits": 2, "spirit": 3},
+ "base_hp": 32,
+ "hp_per_level": 7,
+ "base_mana": 6,
+ "base_charge": 6,
+ "basic_attack": "falx_strike",
+ "abilities": ["falx_strike", "falx_sweep", "dracos_ward", "plasma_falx"],
+ "sprite": "knight",
+ "portrait": "portrait_knight"
+}

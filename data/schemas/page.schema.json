@@ -1,0 +1,38 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "page",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "title_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "body_key": {
+   "type": "string",
+   "minLength": 1
+  },
+  "order": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 12
+  },
+  "xp": {
+   "type": "integer"
+  }
+ },
+ "required": [
+  "id",
+  "title_key",
+  "body_key",
+  "order",
+  "xp"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{"id": "fx_town", "kind": "town", "name_key": "fx_map_town",
+ "legend": {".": "grass", "#": "wall", "=": "road"},
+ "ground": ["#######",
+            "#..=..#",
+            "#..=..#",
+            "#..=..#",
+            "###=###"],
+ "entities": [
+  {"id": "fx_priest", "kind": "npc", "cell": [1, 1], "npc": "fx_priest"},
+  {"id": "fx_chest", "kind": "container", "cell": [5, 1], "once": true, "if": [], "effects": [["give_item", "fx_bread", 1], ["page", "fx_page_1"]]},
+  {"id": "fx_gate", "kind": "exit", "cell": [3, 4], "to": {"mode": "worldmap"}},
+  {"id": "fx_entry", "kind": "spawn_ally", "cell": [3, 3]}
+ ]}

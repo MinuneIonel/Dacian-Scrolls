@@ -1,0 +1,120 @@
+{
+ "id": "tsinna",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_tsinna",
+                     "text_key": "dlg_tsinna_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_tsinna_hello_c0",
+                                  "if": [["quest", "delivery_in_188_hours", "==", 0]],
+                                  "do": [],
+                                  "goto": "explain"
+                                 },
+                                 {
+                                  "text_key": "dlg_tsinna_hello_c1",
+                                  "if": [
+                                         ["quest", "delivery_in_188_hours", ">=", 10],
+                                         ["quest", "delivery_in_188_hours", "<", 100],
+                                         ["not", ["has_item", "lobizi_parcel", 1]]
+                                        ],
+                                  "do": [],
+                                  "goto": "waiting"
+                                 },
+                                 {
+                                  "text_key": "dlg_tsinna_hello_c2",
+                                  "if": [["has_item", "lobizi_parcel", 1]],
+                                  "do": [
+                                         ["take_item", "lobizi_parcel", 1],
+                                         ["quest", "delivery_in_188_hours", 100],
+                                         ["gold", 48],
+                                         ["page", "page_delivery"]
+                                        ],
+                                  "goto": "delivered"
+                                 },
+                                 {
+                                  "text_key": "dlg_tsinna_hello_c3",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "box"
+                                 },
+                                 {
+                                  "text_key": "dlg_tsinna_hello_c4",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "explain": {
+                       "speaker": "npc_tsinna",
+                       "text_key": "dlg_tsinna_explain",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_tsinna_explain_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "explain2"
+                                   }
+                                  ]
+                      },
+           "explain2": {
+                        "speaker": "npc_tsinna",
+                        "text_key": "dlg_tsinna_explain2",
+                        "choices": [
+                                    {
+                                     "text_key": "dlg_tsinna_explain2_c0",
+                                     "if": [],
+                                     "do": [
+                                            ["quest", "delivery_in_188_hours", 10],
+                                            ["discover", "crash_site"]
+                                           ],
+                                     "goto": "end"
+                                    },
+                                    {
+                                     "text_key": "dlg_tsinna_explain2_c1",
+                                     "if": [],
+                                     "do": [],
+                                     "goto": "end"
+                                    }
+                                   ]
+                       },
+           "box": {
+                   "speaker": "npc_tsinna",
+                   "text_key": "dlg_tsinna_box",
+                   "choices": [
+                               {
+                                "text_key": "dlg_tsinna_box_c0",
+                                "if": [],
+                                "do": [],
+                                "goto": "hello"
+                               }
+                              ]
+                  },
+           "waiting": {
+                       "speaker": "npc_tsinna",
+                       "text_key": "dlg_tsinna_waiting",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_tsinna_waiting_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "end"
+                                   }
+                                  ]
+                      },
+           "delivered": {
+                         "speaker": "npc_tsinna",
+                         "text_key": "dlg_tsinna_delivered",
+                         "choices": [
+                                     {
+                                      "text_key": "dlg_tsinna_delivered_c0",
+                                      "if": [],
+                                      "do": [],
+                                      "goto": "end"
+                                     }
+                                    ]
+                        }
+          }
+}

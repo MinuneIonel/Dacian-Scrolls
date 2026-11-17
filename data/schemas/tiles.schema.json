@@ -1,0 +1,36 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "tiles",
+ "type": "object",
+ "additionalProperties": {
+  "type": "object",
+  "properties": {
+   "walkable": {
+    "type": "boolean"
+   },
+   "cover": {
+    "enum": [
+     0,
+     20,
+     40
+    ]
+   },
+   "sprite": {
+    "type": "string",
+    "pattern": "^[a-z0-9_]+$"
+   },
+   "tall": {
+    "type": "boolean"
+   }
+  },
+  "required": [
+   "walkable",
+   "cover",
+   "sprite"
+  ],
+  "patternProperties": {
+   "^_": {}
+  },
+  "additionalProperties": false
+ }
+}

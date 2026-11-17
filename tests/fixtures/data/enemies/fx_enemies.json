@@ -1,0 +1,10 @@
+[
+ {"id": "fx_wolf", "name_key": "fx_enemy_wolf", "size": 1, "hp": 10, "armor": 0,
+  "stats": {"might": 3, "agility": 6, "wits": 1, "spirit": 1}, "abilities": ["fx_strike"],
+  "ai": "brute", "raiseable": true, "machine": false, "gib": true, "sprite": "wolf",
+  "loot": [{"item": "fx_bread", "chance": 0.5}]},
+ {"id": "fx_giant", "name_key": "fx_enemy_giant", "size": 2, "hp": 40, "armor": 2,
+  "stats": {"might": 8, "agility": 2, "wits": 2, "spirit": 2}, "abilities": ["fx_strike"],
+  "ai": "brute", "raiseable": false, "machine": false, "gib": true, "sprite": "giant_legs",
+  "loot": [{"item": "fx_cell", "chance": 1.0}]}
+]

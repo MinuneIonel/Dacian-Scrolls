@@ -1,0 +1,8 @@
+{
+ "id": "dida",
+ "name_key": "npc_dida",
+ "sprite": "villager_1",
+ "portrait": "portrait_dida",
+ "dialogue": "dida",
+ "shop": "trader_shop"
+}

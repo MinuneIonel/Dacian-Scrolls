@@ -1,0 +1,47 @@
+keys,en
+title,Dacian Scrolls
+fx_class_knight,Knight
+fx_class_knight_desc,Hits things.
+fx_class_necro,Necromancer
+fx_class_necro_desc,Raises things.
+fx_ab_strike,Strike
+fx_ab_strike_desc,A hit.
+fx_ab_ward,Ward
+fx_ab_ward_desc,Look at me.
+fx_ab_zap,Zap
+fx_ab_zap_desc,Bzzt.
+fx_ab_raise,Raise
+fx_ab_raise_desc,Up you get.
+fx_ab_heal,Heal
+fx_ab_heal_desc,Better.
+fx_item_sword,Sword
+fx_item_sword_desc,Pointy.
+fx_item_bread,Bread
+fx_item_bread_desc,Bread.
+fx_item_cell,Power cell
+fx_item_cell_desc,Hums.
+fx_enemy_wolf,Wolf
+fx_enemy_giant,Giant
+fx_enc_wolves,Wolves.
+fx_enc_saucer,A saucer.
+fx_opt_howl,Howl back
+opt_fight,Fight
+opt_flee,Run
+fx_map_arena,Arena
+fx_map_town,Town
+fx_npc_priest,Priest
+fx_dlg_hello,Hello.
+fx_dlg_heal,Heal us.
+fx_dlg_quest,Any work?
+fx_dlg_quest_text,Yes.
+fx_dlg_join,Join us.
+fx_dlg_bye,Bye.
+fx_quest_name,Quest
+fx_quest_10,Started.
+fx_quest_done,Done.
+fx_page_1_title,Page one
+fx_page_1_body,Body one.
+fx_page_2_title,Page two
+fx_page_2_body,Body two.
+fx_shop_name,Shop
+fx_line,Communication of 25 April 1953: test.

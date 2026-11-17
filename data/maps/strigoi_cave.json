@@ -1,0 +1,88 @@
+{
+ "id": "strigoi_cave",
+ "kind": "dungeon",
+ "name_key": "map_strigoi_cave",
+ "legend": {
+            "#": "cave_wall",
+            ".": "cave_floor",
+            "x": "bones",
+            "i": "stalagmite",
+            "~": "cave_water",
+            "C": "coffin",
+            "c": "crate"
+           },
+ "ground": ["################################",
+            "#####################.....CC.i.#",
+            "#####################.i........#",
+            "#####################..x.......#",
+            "#####################.........c#",
+            "####################...........#",
+            "####################....x......#",
+            "####################.......x...#",
+            "####################..........i#",
+            "####################.###########",
+            "####################.###########",
+            "##############..........########",
+            "##############..i......i########",
+            "##############.....x....########",
+            "##############...x......########",
+            "##........####.......x..########",
+            "##.i....i.####..~~~.....########",
+            "##..............~~~.....########",
+            "##..x.....####.i......i.########",
+            "##........####..........########",
+            "##i....x..######################",
+            "##........######################",
+            "#####..#########################",
+            "#####..#########################"],
+ "entities": [
+              {
+               "id": "ambush_wolves",
+               "kind": "trigger",
+               "cell": [12, 17],
+               "once": true,
+               "if": [],
+               "effects": [["narrate", "dlg_cave_wolves_narr"], ["battle", "cave_wolves"]]
+              },
+              {
+               "id": "graves_open",
+               "kind": "trigger",
+               "cell": [20, 8],
+               "once": true,
+               "if": [],
+               "effects": [["narrate", "dlg_cave_graves_narr"], ["battle", "cave_restless"]]
+              },
+              {
+               "id": "duras",
+               "kind": "npc",
+               "cell": [26, 4],
+               "npc": "duras",
+               "if": [["flag", "won_cave_strigoi", "==", false]]
+              },
+              {
+               "id": "duras_coffin",
+               "kind": "container",
+               "cell": [26, 2],
+               "once": true,
+               "if": [["flag", "won_cave_strigoi", "==", true]],
+               "effects": [
+                           ["give_item", "strigoi_taxes", 1],
+                           ["page", "page_strigoi"],
+                           ["quest", "dead_dont_pay_taxes", 50]
+                          ],
+               "sprite": "prop_tax_purse"
+              },
+              {
+               "id": "crypt_crate",
+               "kind": "container",
+               "cell": [29, 4],
+               "once": true,
+               "if": [],
+               "effects": [["give_item", "power_cell", 1], ["give_item", "healing_herbs", 1]],
+               "sprite": "prop_chest"
+              },
+              {"id": "cave_mouth_w", "kind": "exit", "cell": [5, 23], "to": {"mode": "worldmap"}},
+              {"id": "cave_mouth_e", "kind": "exit", "cell": [6, 23], "to": {"mode": "worldmap"}},
+              {"id": "entry", "kind": "spawn_ally", "cell": [5, 21]}
+             ]
+}

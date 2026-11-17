@@ -1,0 +1,124 @@
+{
+ "id": "ozo",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_ozo",
+                     "text_key": "dlg_ozo_hello",
+                     "do": [["quest", "delivery_in_188_hours", 30]],
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_ozo_hello_c0",
+                                  "if": [["gold", ">=", 36]],
+                                  "do": [["gold", -36], ["set_flag", "ozo_gone", true], ["xp", 48]],
+                                  "goto": "bribed"
+                                 },
+                                 {
+                                  "text_key": "dlg_ozo_hello_c1",
+                                  "if": [["not", ["flag", "ozo_doubts", "==", true]]],
+                                  "do": [
+                                         [
+                                          "roll",
+                                          "wits",
+                                          13,
+                                          [
+                                           ["set_flag", "ozo_freed", true],
+                                           ["set_flag", "ozo_gone", true],
+                                           ["xp", 48]
+                                          ],
+                                          [["set_flag", "ozo_doubts", true]]
+                                         ]
+                                        ],
+                                  "goto": "freed_result"
+                                 },
+                                 {
+                                  "text_key": "dlg_ozo_hello_c2",
+                                  "if": [["flag", "strigoi_ally", "==", true]],
+                                  "do": [
+                                         ["set_flag", "strigoi_ally", false],
+                                         ["set_flag", "ozo_gone", true],
+                                         ["xp", 48]
+                                        ],
+                                  "goto": "strigoi"
+                                 },
+                                 {
+                                  "text_key": "dlg_ozo_hello_c3",
+                                  "if": [],
+                                  "do": [
+                                         ["set_flag", "ozo_fought", true],
+                                         ["battle", "crash_thrall"]
+                                        ],
+                                  "goto": "end"
+                                 },
+                                 {"text_key": "dlg_ozo_hello_c4", "if": [], "do": [], "goto": "end"}
+                                ]
+                    },
+           "freed_result": {
+                            "speaker": "npc_ozo",
+                            "text_key": "dlg_ozo_freed_result",
+                            "choices": [
+                                        {
+                                         "text_key": "dlg_ozo_freed_result_c0",
+                                         "if": [["flag", "ozo_freed", "==", true]],
+                                         "do": [],
+                                         "goto": "freed"
+                                        },
+                                        {
+                                         "text_key": "dlg_ozo_freed_result_c1",
+                                         "if": [["not", ["flag", "ozo_freed", "==", true]]],
+                                         "do": [],
+                                         "goto": "doubts"
+                                        },
+                                        {
+                                         "text_key": "dlg_ozo_freed_result_c2",
+                                         "if": [],
+                                         "do": [],
+                                         "goto": "end"
+                                        }
+                                       ]
+                           },
+           "freed": {
+                     "speaker": "npc_ozo",
+                     "text_key": "dlg_ozo_freed",
+                     "choices": [
+                                 {"text_key": "dlg_ozo_freed_c0", "if": [], "do": [], "goto": "end"}
+                                ]
+                    },
+           "doubts": {
+                      "speaker": "npc_ozo",
+                      "text_key": "dlg_ozo_doubts",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_ozo_doubts_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "hello"
+                                  }
+                                 ]
+                     },
+           "bribed": {
+                      "speaker": "npc_ozo",
+                      "text_key": "dlg_ozo_bribed",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_ozo_bribed_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "end"
+                                  }
+                                 ]
+                     },
+           "strigoi": {
+                       "speaker": "npc_ozo",
+                       "text_key": "dlg_ozo_strigoi",
+                       "choices": [
+                                   {
+                                    "text_key": "dlg_ozo_strigoi_c0",
+                                    "if": [],
+                                    "do": [],
+                                    "goto": "end"
+                                   }
+                                  ]
+                      }
+          }
+}

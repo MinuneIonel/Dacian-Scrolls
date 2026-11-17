@@ -1,0 +1,63 @@
+{
+ "id": "wolves",
+ "intro_key": "enc_wolves",
+ "map": "arena_forest",
+ "xp": 24,
+ "party_spawn": [[1, 3], [1, 5], [2, 4], [2, 6]],
+ "enemies": [
+             {"enemy": "wolf", "cell": [9, 3]},
+             {"enemy": "wolf", "cell": [9, 5]},
+             {"enemy": "wolf", "cell": [10, 7]}
+            ],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "wolves"]],
+              "fail": []
+             },
+             {
+              "id": "sneak",
+              "label_key": "enc_wolves_opt_sneak",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 12},
+              "pass": [["narrate", "enc_wolves_sneak_pass"]],
+              "fail": [["narrate", "enc_wolves_sneak_fail"], ["battle", "wolves"]]
+             },
+             {
+              "id": "talk",
+              "label_key": "enc_wolves_opt_talk",
+              "if": [["class", "necromancer"]],
+              "roll": {"stat": "spirit", "dc": 10},
+              "pass": [["narrate", "enc_wolves_talk_pass"]],
+              "fail": [["narrate", "enc_wolves_talk_fail"], ["battle", "wolves"]]
+             },
+             {
+              "id": "bribe",
+              "label_key": "enc_wolves_opt_bribe",
+              "if": [["has_item", "bread", 1]],
+              "roll": null,
+              "pass": [["narrate", "enc_wolves_bribe_pass"], ["take_item", "bread", 1]],
+              "fail": []
+             },
+             {
+              "id": "help",
+              "label_key": "enc_wolves_opt_help",
+              "if": [["flag", "strigoi_ally", "==", true]],
+              "roll": null,
+              "pass": [["narrate", "enc_wolves_help_pass"], ["set_flag", "strigoi_ally", false]],
+              "fail": []
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 10},
+              "pass": [],
+              "fail": [["battle", "wolves"]]
+             }
+            ]
+}

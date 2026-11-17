@@ -1,0 +1,7 @@
+{
+ "id": "mucapor",
+ "name_key": "npc_mucapor",
+ "sprite": "villager_3",
+ "portrait": "portrait_mucapor",
+ "dialogue": "mucapor"
+}

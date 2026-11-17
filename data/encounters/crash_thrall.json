@@ -1,0 +1,31 @@
+{
+ "id": "crash_thrall",
+ "intro_key": "enc_crash_thrall",
+ "map": "arena_forest",
+ "xp": 48,
+ "party_spawn": [[1, 3], [1, 5], [2, 4], [2, 6]],
+ "enemies": [
+             {"enemy": "grazi_thrall", "cell": [9, 4]},
+             {"enemy": "wolf", "cell": [8, 2]},
+             {"enemy": "wolf", "cell": [10, 6]}
+            ],
+ "rules": {"magic_disabled": false, "gravity": "normal", "turn_limit": 0},
+ "options": [
+             {
+              "id": "fight",
+              "label_key": "opt_fight",
+              "if": [],
+              "roll": null,
+              "pass": [["battle", "crash_thrall"]],
+              "fail": []
+             },
+             {
+              "id": "flee",
+              "label_key": "opt_flee",
+              "if": [],
+              "roll": {"stat": "agility", "dc": 10},
+              "pass": [],
+              "fail": [["battle", "crash_thrall"]]
+             }
+            ]
+}

@@ -1,0 +1,14 @@
+keys,en
+loc_dlg_hint,Click or Space: skip. 1-9: answer.
+loc_dlg_continue,(Continue)
+loc_party,Party
+loc_scroll,Scroll
+loc_paused,Paused
+loc_resume,Resume
+loc_quit_menu,Quit to Menu
+loc_save_hint,"Saving happens in the Scroll. Fanfi insists on paperwork."
+loc_hint,Click to walk. E to talk or search. Esc for the menu.
+loc_search,Search
+loc_searched,Already searched
+loc_exit,Leave
+loc_locked,"Not yet. Something here wants a reason first."

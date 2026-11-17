@@ -1,0 +1,17 @@
+{
+ "id": "arena_road",
+ "kind": "arena",
+ "name_key": "map_arena_road",
+ "legend": {"Y": "tree", ".": "grass", "=": "road", "K": "cart", "m": "milestone", "b": "bush"},
+ "ground": ["YYYYYYYYYYYY",
+            "Y..........Y",
+            "Y....KK..b.Y",
+            "Y..........Y",
+            "Y==========Y",
+            "Y==========Y",
+            "Y..........Y",
+            "Y...m...b..Y",
+            "Y..........Y",
+            "YYYYYYYYYYYY"],
+ "entities": [{"id": "entry", "kind": "spawn_ally", "cell": [1, 3]}]
+}

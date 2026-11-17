@@ -1,0 +1,111 @@
+keys,en
+fanfi_caption_name,FANFI
+screen_close,Close
+screen_gold_food,Gold %d   Food %d
+not_enough_gold,Not enough gold. Dida does not do credit. Dida has met adventurers.
+party_title,Party
+party_hint,"Click gear to take it off, tick up to four abilities, use what you carry."
+party_abilities_full,Four abilities at most. The fifth one would not fit in your head.
+party_level,Level %d
+party_xp,XP
+party_hp,Health
+party_mana,Mana
+party_charge,Charge
+party_stats,Stats
+party_gear,Gear
+party_slot_weapon,Weapon
+party_slot_armor,Armour
+party_slot_trinket,Trinket
+party_slot_empty,(nothing)
+party_click_unequip,Click to put it back in the pack.
+party_abilities,Abilities
+party_pack,Pack
+party_pack_empty,"Empty. Not even crumbs."
+party_equip,Equip
+party_use,Use
+party_battle_only,Only useful in battle.
+party_ability_cost,"(%d AP, cost %d, %s)"
+source_steel,steel
+source_magic,magic
+source_tech,tech
+stat_might,Might
+stat_agility,Agility
+stat_wits,Wits
+stat_spirit,Spirit
+stat_damage,Damage
+stat_armor,Armour
+stat_charge,Charge
+shop_title,Shop
+shop_pitch,"Everything priced in twelves. It is a sacred number, and also good for business."
+shop_for_sale,For sale
+shop_your_pack,Your pack
+shop_hint,Point at something to read about it. Selling pays half.
+shop_gold,Gold %d
+shop_left,%d left
+shop_have,x%d
+shop_sold_out_short,sold out
+shop_sold_out,Sold out. Come back after the next saucer crash.
+shop_wont_buy,Nobody here will buy that.
+shop_buy,Buy
+shop_sell,Sell
+shop_price,%dg
+scroll_title,The Dacian Scrolls
+scroll_count,"%d of %d pages recovered. Mirg is keeping count too, angrily."
+scroll_tab_pages,Pages
+scroll_tab_quests,Quests
+scroll_tab_saves,Save / Load
+scroll_back,Back
+scroll_hint,Esc to go back. Found pages can be read; missing ones are still out there.
+scroll_missing,Torn out
+scroll_fanfi_margin,"Fanfi, in the margin:"
+scroll_prev,< Prev
+scroll_next,Next >
+scroll_all_pages,All pages
+scroll_fanfi_default,No comment. The medium needed a rest.
+scroll_fanfi_page_strigoi,"An undying god who lives under a mountain. We would have hired him, but he refused to be fifteen metres tall."
+scroll_fanfi_page_surgeon_log,"Caps for nobles, hair for everyone else. We had castes too, but ours were measured with a ladder."
+scroll_fanfi_page_tavern,A king who banned wine and was still popular. Among the Lobizi he would have been made a sage. A very thirsty one.
+scroll_fanfi_page_calendar,"A calendar made of stone. Ours was made of seventy sages, which is why every year was a little late."
+scroll_fanfi_page_trader,"KOSON. Very shiny. I would like it noted that we never stole any of it. We stole the records of it, which is different."
+scroll_fanfi_page_flight_recorder,A wolf head that howls in the wind. Our engineers saw it and went very quiet. Then they built the saucer whistle.
+scroll_fanfi_page_delivery,"A legion lost its eagle. We lost a parcel for 188 hours. I feel this is the same level of embarrassment."
+scroll_fanfi_page_taxes,Rome paying Dacia. History we went to a lot of trouble to erase. Someone keep an eye on the treasurer.
+scroll_fanfi_page_deserters,"Decebalus took in deserters. We took in nobody. That is why our parties were so quiet."
+scroll_fanfi_page_parcel,"A bridge across the Danube. Impressive, for people who cannot simply step over it."
+scroll_fanfi_page_sargetia,A whole river moved to hide some gold. We moved a mountain once to hide a sandwich. Nobody wrote that down.
+scroll_fanfi_page_oglinda,"A whole war, carved round and round a column. Mirg tried that with your fate. He ran out of column."
+scroll_quests_none,"No quests yet. Talk to people. They love giving strangers chores."
+scroll_quest_done,(done)
+scroll_saves_intro,"Three copies of your fate, kept outside Mirg's book. The autosave keeps a fourth, quietly."
+scroll_slot,Slot %s
+scroll_slot_empty,Empty. A clean page.
+scroll_slot_damaged,"Damaged. Water, fire or a strigoi got to it. It cannot be read."
+scroll_slot_too_new,Written by a newer version of the game. It cannot be read here.
+scroll_slot_info,"Day %d
+%d of %d pages
+Party level %d"
+scroll_save,Save
+scroll_load,Load
+scroll_overwrite,Overwrite?
+scroll_save_failed,The save could not be written.
+ending_title,The Scroll Is Whole
+ending_subtitle,"Twelve pages, and Mirg's book of fates has a hole in it shaped exactly like you."
+ending_pages,%d pages of the Dacian Scrolls recovered.
+ending_days,It took you %d days.
+ending_level,The party reached level %d.
+ending_companions,Travelling with you: %s.
+ending_alone,You did it alone. Fanfi does not count as company.
+ending_never_abducted,Never abducted. The saucers will be filing a complaint.
+ending_abducted_once,Abducted once. The medical results are confidential.
+ending_abducted_many,Abducted %d times. At this point you have a loyalty card.
+ending_quest_done,Finished: %s.
+ending_duras_convinced,Boier Duras was talked into paying. A strigoi who respects paperwork.
+ending_duras_fought,Boier Duras was persuaded with a falx. The treasury does not ask how.
+ending_ozo_freed,Ozo the thrall walked away free. He has never been this confused.
+ending_ozo_fought,Ozo the thrall was beaten. The parcel did not care either way.
+ending_ozo_gone,Ozo the thrall was talked or paid out of the way.
+ending_strigoi_ally,A strigoi owes you a favour. Try not to collect it at night.
+ending_question,Was that a great adventure?
+ending_fanfi_signoff,"Fanfi: It was adequate. Final communication of the evening. The medium wants to go home, and so, I suspect, do you. Fanfi, signing off."
+ending_keep_playing,Keep playing
+ending_to_menu,Back to the title

@@ -1,0 +1,10 @@
+{
+ "cell": 16,
+ "textures": {
+  "marker_cave": "res://assets/worldmap/marker_cave.png",
+  "marker_crash": "res://assets/worldmap/marker_crash.png",
+  "marker_town": "res://assets/worldmap/marker_town.png",
+  "worldmap_party": "res://assets/worldmap/worldmap_party.png",
+  "worldmap_terrain": "res://assets/worldmap/worldmap_terrain.png"
+ }
+}

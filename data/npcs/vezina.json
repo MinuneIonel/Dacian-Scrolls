@@ -1,0 +1,8 @@
+{
+ "id": "vezina",
+ "name_key": "npc_vezina",
+ "sprite": "healer",
+ "portrait": "portrait_vezina",
+ "dialogue": "vezina",
+ "recruit_class": "healer"
+}

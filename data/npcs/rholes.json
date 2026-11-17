@@ -1,0 +1,7 @@
+{
+ "id": "rholes",
+ "name_key": "npc_rholes",
+ "sprite": "knight",
+ "portrait": "portrait_rholes",
+ "dialogue": "rholes"
+}

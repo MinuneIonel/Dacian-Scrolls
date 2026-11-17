@@ -1,0 +1,4 @@
+{"id": "fx_necro", "name_key": "fx_class_necro", "desc_key": "fx_class_necro_desc",
+ "base_stats": {"might": 2, "agility": 4, "wits": 6, "spirit": 4},
+ "base_hp": 20, "hp_per_level": 4, "base_mana": 10, "base_charge": 4,
+ "basic_attack": "fx_strike", "abilities": ["fx_strike", "fx_raise", "fx_heal"], "sprite": "necromancer"}

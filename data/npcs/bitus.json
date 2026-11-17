@@ -1,0 +1,7 @@
+{
+ "id": "bitus",
+ "name_key": "npc_bitus",
+ "sprite": "villager_2",
+ "portrait": "portrait_bitus",
+ "dialogue": "bitus"
+}

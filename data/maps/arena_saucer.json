@@ -1,0 +1,27 @@
+{
+ "id": "arena_saucer",
+ "kind": "arena",
+ "name_key": "map_arena_saucer",
+ "legend": {
+            "W": "saucer_wall",
+            "_": "saucer_floor",
+            "T": "operating_table",
+            "S": "specimen_tank",
+            "c": "console",
+            "g": "saucer_grate"
+           },
+ "music": "saucer",
+ "ground": ["WWWWWWWWWWWWWWWW",
+            "W_S___c__c_c_S_W",
+            "W______________W",
+            "W___TTTTTTTT___W",
+            "W_g_TTTTTTTT_g_W",
+            "WS__TTTTTTTT___W",
+            "W___TTTTTTTT__SW",
+            "W_g_TTTTTTTT___W",
+            "W___TTTTTTTT_g_W",
+            "W_______g______W",
+            "W_S____S_____S_W",
+            "WWWWWWWWWWWWWWWW"],
+ "entities": [{"id": "entry", "kind": "spawn_ally", "cell": [5, 5]}]
+}

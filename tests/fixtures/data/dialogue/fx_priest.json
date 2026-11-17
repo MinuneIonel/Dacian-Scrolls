@@ -1,0 +1,11 @@
+{"id": "fx_priest", "start": "hello",
+ "nodes": {
+  "hello": {"speaker": "fx_npc_priest", "text_key": "fx_dlg_hello", "do": [["set_flag", "fx_met", true]],
+   "choices": [
+    {"text_key": "fx_dlg_heal", "if": [], "do": [["heal_party"]], "goto": "end"},
+    {"text_key": "fx_dlg_quest", "if": [["quest", "fx_quest", "==", 0]], "do": [["quest", "fx_quest", 10]], "goto": "quest"},
+    {"text_key": "fx_dlg_join", "if": [["flag", "fx_met", "==", true]], "do": [["recruit", "fx_priest"]], "goto": "end"}
+   ]},
+  "quest": {"speaker": "fx_npc_priest", "text_key": "fx_dlg_quest_text", "do": [],
+   "choices": [{"text_key": "fx_dlg_bye", "if": [], "do": [], "goto": "end"}]}
+ }}

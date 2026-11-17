@@ -1,0 +1,7 @@
+[
+ {"id": "tile_grass", "type": "texture", "gen": "tile_grass", "seed": 1401, "out": "assets/tiles/tile_grass.png"},
+ {"id": "tile_road", "type": "texture", "gen": "tile_road", "seed": 1402, "out": "assets/tiles/tile_road.png"},
+ {"id": "tile_forest_floor", "type": "texture", "gen": "tile_forest_floor", "seed": 1403, "out": "assets/tiles/tile_forest_floor.png"},
+ {"id": "tile_stone", "type": "texture", "gen": "tile_stone", "seed": 1404, "out": "assets/tiles/tile_stone.png"},
+ {"id": "tile_wall", "type": "texture", "gen": "tile_wall", "seed": 1405, "height": 48, "out": "assets/tiles/tile_wall.png"}
+]

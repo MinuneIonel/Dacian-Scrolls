@@ -1,0 +1,32 @@
+keys,en
+menu_subtitle,"Dacia, year 101. Rome is now the second biggest problem."
+menu_new_game,New Game
+menu_continue,Continue
+menu_settings,Settings
+menu_quit,Quit
+menu_back,Back
+menu_begin,Begin
+menu_new_heading,Who goes to war?
+menu_class_knight,Knight
+menu_class_knight_desc,"Hits things with a sword. Gets hit back. Wears it well."
+menu_class_necromancer,Necromancer
+menu_class_necromancer_desc,"Raises the dead to fight for you. They have not complained. Yet."
+menu_seed,Seed
+menu_seed_hint,blank for random
+menu_hint_keys,"Arrows and Enter, or the mouse. Esc goes back."
+menu_no_save,No save yet. The past is unwritten.
+settings_title,Settings
+settings_gore,Gore
+settings_gore_off,Off
+settings_gore_normal,Normal
+settings_gore_bloody,Bloody Mess
+settings_gore_off_desc,Enemies lie down politely and think about what they did.
+settings_gore_normal_desc,Some red. Tasteful. Mostly.
+settings_gore_bloody_desc,Physics and good taste both leave the room.
+settings_music,Music
+settings_sfx,Sound
+settings_fullscreen,Fullscreen
+settings_hint,Changes are saved when you leave.
+ui_percent,%d%%
+settings_on,On
+settings_off,Off

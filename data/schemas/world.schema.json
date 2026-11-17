@@ -1,0 +1,200 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "world",
+ "type": "object",
+ "properties": {
+  "size": {
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "minItems": 2,
+   "maxItems": 2
+  },
+  "start": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]+$"
+  },
+  "legend": {
+   "type": "object",
+   "additionalProperties": {
+    "enum": [
+     "road",
+     "plains",
+     "forest",
+     "mountain",
+     "river"
+    ]
+   }
+  },
+  "terrain": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 1
+  },
+  "terrain_rules": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "properties": {
+     "hours": {
+      "type": "integer"
+     },
+     "encounter_chance": {
+      "type": "number"
+     },
+     "hides": {
+      "type": "boolean"
+     },
+     "passable": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "hours",
+     "encounter_chance",
+     "hides",
+     "passable"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  },
+  "locations": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "name_key": {
+      "type": "string",
+      "minLength": 1
+     },
+     "cell": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "map": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "entry_cell": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "hidden": {
+      "type": "boolean"
+     },
+     "marker": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     }
+    },
+    "required": [
+     "id",
+     "name_key",
+     "cell",
+     "map",
+     "entry_cell",
+     "hidden"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  },
+  "ufos": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     },
+     "route": {
+      "type": "array",
+      "items": {
+       "type": "array",
+       "items": {
+        "type": "integer"
+       },
+       "minItems": 2,
+       "maxItems": 2
+      },
+      "minItems": 2
+     },
+     "encounter": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+     }
+    },
+    "required": [
+     "id",
+     "route",
+     "encounter"
+    ],
+    "patternProperties": {
+     "^_": {}
+    },
+    "additionalProperties": false
+   }
+  },
+  "tables": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "encounter": {
+       "type": "string",
+       "pattern": "^[a-z0-9_]+$"
+      },
+      "weight": {
+       "type": "integer"
+      }
+     },
+     "required": [
+      "encounter",
+      "weight"
+     ],
+     "patternProperties": {
+      "^_": {}
+     },
+     "additionalProperties": false
+    }
+   }
+  }
+ },
+ "required": [
+  "size",
+  "start",
+  "legend",
+  "terrain",
+  "terrain_rules",
+  "locations",
+  "ufos",
+  "tables"
+ ],
+ "patternProperties": {
+  "^_": {}
+ },
+ "additionalProperties": false
+}

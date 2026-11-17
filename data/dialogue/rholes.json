@@ -1,0 +1,54 @@
+{
+ "id": "rholes",
+ "start": "hello",
+ "nodes": {
+           "hello": {
+                     "speaker": "npc_rholes",
+                     "text_key": "dlg_rholes_hello",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_rholes_hello_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "advice"
+                                 },
+                                 {
+                                  "text_key": "dlg_rholes_hello_c1",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "draco"
+                                 },
+                                 {
+                                  "text_key": "dlg_rholes_hello_c2",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "end"
+                                 }
+                                ]
+                    },
+           "advice": {
+                      "speaker": "npc_rholes",
+                      "text_key": "dlg_rholes_advice",
+                      "choices": [
+                                  {
+                                   "text_key": "dlg_rholes_advice_c0",
+                                   "if": [],
+                                   "do": [],
+                                   "goto": "hello"
+                                  }
+                                 ]
+                     },
+           "draco": {
+                     "speaker": "npc_rholes",
+                     "text_key": "dlg_rholes_draco",
+                     "choices": [
+                                 {
+                                  "text_key": "dlg_rholes_draco_c0",
+                                  "if": [],
+                                  "do": [],
+                                  "goto": "hello"
+                                 }
+                                ]
+                    }
+          }
+}

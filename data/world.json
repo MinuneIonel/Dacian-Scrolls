@@ -1,0 +1,131 @@
+{
+ "size": [48, 32],
+ "start": "sarmizegetusa",
+ "legend": {"=": "road", ".": "plains", "f": "forest", "^": "mountain", "~": "river"},
+ "terrain": ["^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~^^^^^^^^^^^^^^^^^^",
+             "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~^^^^^^^^^^^^^^^^^^",
+             "....^..^.^^^^^..^.^^..^^....^~^.^^^...^^^^^^^^^^",
+             "...^^....^^.^^^.^^...^^^^...^~...^^.^^^^^^^^^^^.",
+             "..^^^^^......................~.........^^^^^^^^^",
+             "..^^^^^........f.............~.........^^^^^^^^^",
+             ".^^^^^^^.....................~....f...^^^^^^^^^^",
+             "..^^^^^....................f.~.........^^^^^^^^^",
+             "..^^^^^.f......f.............~.........^^^^^^^^^",
+             "....^...f...fffffff..........~........f.^^^^^^^.",
+             "..........fffffffffff.fffffffffffffffffff..^....",
+             ".........ffffffffffffffffffffffffffffffff.......",
+             ".........fffffffffffffffff...~.....fffffff......",
+             "........fffffffffffffffffff..~.....fffffff......",
+             "........ffffffffffffffffff...~.....fffffff......",
+             "........ffffffffffffffffff...~.....ffffffff.....",
+             ".......fffffffffffffffff============ffffff......",
+             "........fffffffffffffff.=....~.....ffffffff.....",
+             "........fffffffffffffff.=ff..~~....fffffff......",
+             "........ffffffffffffffff=.....~.....ffffff......",
+             ".........fffffffffffff..=.....~.....fffff.......",
+             ".......^.fffffffffffff..=.....~.......f.........",
+             "..f.^^^^^^fffffffffff...=.....~.................",
+             "..^^^^^^^^^^fffffff.....=.....~.................",
+             "..^^^^^^^^^^^..f........=....~~.................",
+             ".^^^^^^^^^^^^^..........===================.....",
+             "..^^^^^^^^^^^...........=....~..............f...",
+             "..^^^^^^^^^^^...........=....~..................",
+             "....^^^^^^^.^^^^...^^.^^.^..^~.^..^.^^^^.^^^...^",
+             "^^..^.^^^.^.^^^^^^^^^........~..^....^^^.^^^^^.^",
+             "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~^^^^^^^^^^^^^^^^^^",
+             "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~^^^^^^^^^^^^^^^^^^"],
+ "terrain_rules": {
+                   "road": {"hours": 1, "encounter_chance": 0.06, "hides": false, "passable": true},
+                   "plains": {"hours": 2, "encounter_chance": 0.1, "hides": false, "passable": true},
+                   "forest": {"hours": 4, "encounter_chance": 0.12, "hides": true, "passable": true},
+                   "mountain": {
+                                "hours": 6,
+                                "encounter_chance": 0.15,
+                                "hides": false,
+                                "passable": true
+                               },
+                   "river": {"hours": 0, "encounter_chance": 0.0, "hides": false, "passable": false}
+                  },
+ "locations": [
+               {
+                "id": "sarmizegetusa",
+                "name_key": "map_sarmizegetusa",
+                "cell": [24, 16],
+                "map": "sarmizegetusa",
+                "entry_cell": [19, 36],
+                "hidden": false,
+                "marker": "marker_town"
+               },
+               {
+                "id": "strigoi_cave",
+                "name_key": "map_strigoi_cave",
+                "cell": [18, 16],
+                "map": "strigoi_cave",
+                "entry_cell": [5, 21],
+                "hidden": true,
+                "marker": "marker_cave"
+               },
+               {
+                "id": "crash_site",
+                "name_key": "map_crash_site",
+                "cell": [36, 16],
+                "map": "crash_site",
+                "entry_cell": [15, 21],
+                "hidden": true,
+                "marker": "marker_crash"
+               }
+              ],
+ "ufos": [
+          {
+           "id": "ufo_sarmizegetusa",
+           "route": [
+                     [31, 12],
+                     [32, 12],
+                     [33, 12],
+                     [34, 12],
+                     [34, 13],
+                     [34, 14],
+                     [34, 15],
+                     [34, 16],
+                     [34, 17],
+                     [34, 18],
+                     [34, 19],
+                     [34, 20],
+                     [33, 20],
+                     [32, 20],
+                     [31, 20],
+                     [31, 19],
+                     [31, 18],
+                     [31, 17],
+                     [31, 16],
+                     [31, 15],
+                     [31, 14],
+                     [31, 13]
+                    ],
+           "encounter": "saucer_surgeon"
+          }
+         ],
+ "tables": {
+            "road": [
+                     {"encounter": "roman_deserters", "weight": 3},
+                     {"encounter": "wandering_trader", "weight": 2},
+                     {"encounter": "wolves", "weight": 1}
+                    ],
+            "plains": [
+                       {"encounter": "wolves", "weight": 2},
+                       {"encounter": "wandering_trader", "weight": 1},
+                       {"encounter": "roman_deserters", "weight": 1},
+                       {"encounter": "bancul_patrol", "weight": 1}
+                      ],
+            "forest": [
+                       {"encounter": "wolves", "weight": 3},
+                       {"encounter": "bancul_patrol", "weight": 1},
+                       {"encounter": "wandering_trader", "weight": 1}
+                      ],
+            "mountain": [
+                         {"encounter": "bancul_patrol", "weight": 2},
+                         {"encounter": "wolves", "weight": 1},
+                         {"encounter": "roman_deserters", "weight": 1}
+                        ]
+           }
+}
