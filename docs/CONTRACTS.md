@@ -104,6 +104,7 @@ Used by dialogue (`do`, choice `if`/`do`), encounter options (`if`, `pass`, `fai
 | `["xp", n]` | to every party member [`xp_gained`, `level_up`] |
 | `["recruit", npc_id]` | see section 4 [`recruited` or `toast`] |
 | `["heal_party"]` | full HP, mana, charge for everyone [`healed_party`] |
+| `["heal", n]` | +n HP for everyone, capped at max HP [`party_healed{amount, total}`] |
 | `["restore_charge", n]` | +n charge for everyone, capped [`charge_restored{amount}`] |
 | `["battle", encounter_id]` / `["shop", shop_id]` | requests only; the view acts [`battle_requested`, `shop_requested`] |
 | `["discover", location]` | adds to `discovered` and reveals radius 2 around it [`discovered`, `revealed`] |
@@ -183,6 +184,9 @@ Back to `patrol` when the party enters forest or gets 8 cells away. On the party
 defeated UFO is `gone`.
 
 `Encounters.options` returns the options whose `if` passes, always keeping `fight` and `flee`.
+`Travel.camp(state)` eats 1 food per member, advances `CAMP_HOURS` (8) and heals `CAMP_HEAL_PCT` (50%)
+of max HP plus all mana [`camped{hours, healed}`]; `Travel.camp_blocker(state)` names why not
+(`camp_no_food`, `camp_ufo_near`). UFOs do not move while the party camps.
 `Encounters.choose` runs `pass` or `fail` (after a roll when the option has one). An option that
 ends without a `battle` effect and is not `flee` resolves the encounter and grants its `xp`.
 `Encounters.apply_battle_result(encounter_id, result, state, rng, defs)` applies a finished

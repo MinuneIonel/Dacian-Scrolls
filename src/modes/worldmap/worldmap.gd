@@ -52,6 +52,7 @@ var hud_food: Label
 var hud_gold: Label
 var hud_pages: Label
 var btn_party: Button
+var btn_camp: Button
 var btn_scroll: Button
 var ufo_nodes: Dictionary = {}       # ufo id -> UfoShadow
 
@@ -176,6 +177,10 @@ func _build_hud() -> void:
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(spacer)
+	btn_camp = UiKit.button("wm_camp")
+	btn_camp.tooltip_text = tr("wm_camp_tip")
+	btn_camp.pressed.connect(_on_camp)
+	row.add_child(btn_camp)
 	btn_party = UiKit.button("wm_party")
 	btn_party.pressed.connect(_on_party)
 	row.add_child(btn_party)
@@ -459,6 +464,19 @@ func refresh_hud() -> void:
 func _on_party() -> void:
 	if modal != null or traveling: return
 	PartyScreen.show_over(self)
+
+## Makes camp (Travel.camp): 1 food per member and 8 hours for half max HP and full mana.
+func _on_camp() -> void:
+	if modal != null or traveling: return
+	var why: String = Travel.camp_blocker(Game.state)
+	if why != "":
+		Bus.toast.emit(why)
+		return
+	var events: Array[Dictionary] = Travel.camp(Game.state)
+	Bus.emit_events(events)
+	Audio.sfx(&"heal")
+	refresh_hud()
+	Router.record(&"worldmap", {})
 
 func _on_scroll() -> void:
 	if modal != null or traveling: return

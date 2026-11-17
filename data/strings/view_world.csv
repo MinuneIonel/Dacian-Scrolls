@@ -24,3 +24,7 @@ wm_stat_might,Might
 wm_stat_agility,Agility
 wm_stat_wits,Wits
 wm_stat_spirit,Spirit
+wm_camp,Camp
+wm_camp_tip,"Sleep 8 hours. Costs 1 food each; heals half your HP and all mana."
+camp_no_food,Not enough food to camp: 1 per party member.
+camp_ufo_near,A saucer is hunting you. Nobody sleeps tonight.
