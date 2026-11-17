@@ -96,6 +96,7 @@
   "kind": "consumable",
   "price": 24,
   "use_ability": "herb_poultice",
+  "use_effects": [["heal", 10]],
   "icon": "icon_healing_herbs"
  },
  {

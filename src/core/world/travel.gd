@@ -8,6 +8,9 @@ const ENC_COOLDOWN: int = 3
 const DISCOVER_RADIUS: int = 1
 ## HP each party member loses per day without food (never below 1).
 const STARVE_HP: int = 2
+## Camping: hours slept, and the share of max HP each member gets back.
+const CAMP_HOURS: int = 8
+const CAMP_HEAL_PCT: int = 50
 const DIRS: Array[Vector2i] = [Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(0, -1)]
 
 ## Path from state.world_pos to `to`, excluding the start. Empty when unreachable.
@@ -146,6 +149,33 @@ static func world_size(defs: Defs) -> Vector2i:
 	var size: Variant = _world(defs).get("size", [])
 	if size is Array and size.size() == 2: return Vector2i(int(size[0]), int(size[1]))
 	return Vector2i.ZERO
+
+## Why the party cannot camp right now ("" when it can): "camp_no_food" (needs 1 food per
+## member) or "camp_ufo_near" (a UFO is chasing the party).
+static func camp_blocker(state: GameState) -> String:
+	for u in state.ufos:
+		if str(u.get("state", "")) == "chase": return "camp_ufo_near"
+	if state.food < state.party.size(): return "camp_no_food"
+	return ""
+
+## Makes camp: eats 1 food per member, sleeps CAMP_HOURS (the clock runs as usual, midnight
+## meals included), then every member gets back CAMP_HEAL_PCT% of max HP and all mana.
+## UFOs do not move while the party sleeps. Returns [] and changes nothing when blocked.
+static func camp(state: GameState) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	if camp_blocker(state) != "": return out
+	var before_food: int = state.food
+	state.food -= state.party.size()
+	out.append({"type": "food_changed", "food": state.food, "delta": state.food - before_food})
+	out.append_array(advance_time(state, CAMP_HOURS))
+	var healed: int = 0
+	for m in state.party:
+		var hp0: int = m.hp
+		m.hp = mini(m.max_hp, maxi(1, m.hp) + m.max_hp * CAMP_HEAL_PCT / 100)
+		m.mana = m.max_mana
+		healed += m.hp - hp0
+	out.append({"type": "camped", "hours": CAMP_HOURS, "healed": healed})
+	return out
 
 static func _world(defs: Defs) -> Dictionary:
 	var w: Variant = defs.json("world")

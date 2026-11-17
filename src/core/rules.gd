@@ -12,7 +12,7 @@ const CONDITIONS: Dictionary = {
 ## Effect name -> number of arguments after the name.
 const EFFECTS: Dictionary = {
 	"set_flag": 2, "give_item": 2, "take_item": 2, "gold": 1, "food": 1, "quest": 2,
-	"page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "restore_charge": 1, "battle": 1, "shop": 1,
+	"page": 1, "xp": 1, "recruit": 1, "heal_party": 0, "heal": 1, "restore_charge": 1, "battle": 1, "shop": 1,
 	"discover": 1, "teleport": 1, "narrate": 1, "roll": 4,
 }
 const OPS: Array[String] = ["==", "!=", ">=", "<=", ">", "<"]
@@ -173,6 +173,14 @@ static func _effect(e: Variant, state: GameState, rng: Rng, defs: Defs) -> Array
 			for m in state.party:
 				m.hp = m.max_hp; m.mana = m.max_mana; m.charge = m.max_charge
 			out.append({"type": "healed_party"})
+		"heal":
+			var before: int = 0
+			var after: int = 0
+			for m in state.party:
+				before += m.hp
+				m.hp = clampi(m.hp + int(e[1]), mini(m.hp, 1), m.max_hp)
+				after += m.hp
+			out.append({"type": "party_healed", "amount": int(e[1]), "total": after - before})
 		"restore_charge":
 			for m in state.party:
 				m.charge = mini(m.max_charge, m.charge + int(e[1]))

@@ -195,3 +195,23 @@ func test_reveal_all_and_night_tint() -> void:
 	assert_eq(view.canvas.drawn_cells, 48 * 32)
 	assert_eq(view.fog.alpha_at(Vector2i(0, 0)), 0.0)
 	assert_true(view.night_tint.visible)
+
+func test_camp_button_heals_and_advances_the_clock() -> void:
+	await _open()
+	var m: Character = Game.state.party[0]
+	m.hp = 1
+	view.btn_camp.pressed.emit()
+	await wait_frames(1)
+	assert_true(m.hp > 1, "camping heals")
+	assert_eq(Game.state.hour, 8 + Travel.CAMP_HOURS)
+	assert_eq(view.hud_food.text, tr("wm_food") % Game.state.food)
+	assert_not_null(find_event(emitted, "camped").get("hours"))
+
+func test_camp_without_food_is_refused() -> void:
+	await _open()
+	Game.state.food = 0
+	Game.state.party[0].hp = 1
+	view.btn_camp.pressed.emit()
+	await wait_frames(1)
+	assert_eq(Game.state.party[0].hp, 1)
+	assert_eq(Game.state.hour, 8)

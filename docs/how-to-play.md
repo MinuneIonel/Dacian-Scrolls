@@ -27,7 +27,8 @@ three, a narrator who will not stop talking, and a scroll with pages missing. A 
 | | Answer | 1 to 9, or click the answer |
 | World map | Plan a trip | Click a place: it shows the cost in hours and food. Click again to go. |
 | | Look around | WASD / arrows, move the mouse to the screen edge, or drag |
-| | Party, Scroll | The buttons at the top right |
+| | Camp | Top right. Sleep 8 hours for 1 food per member: heals half your HP and all mana. Not while a saucer is chasing you. |
+| | Party, Scroll | The buttons at the top right. Healing herbs can be used from the Party screen too. |
 | Combat | Pick an action | 1 to 8 (the buttons at the bottom), then click a target tile |
 | | Move or attack | Click a tile or an enemy |
 | | Cancel the selected action | Esc or right-click |

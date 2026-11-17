@@ -44,5 +44,9 @@
  "recruited": [
                {"if": [["in_party", "vezina"]], "once": true, "lines": ["fanfi_recruited_vezina"]},
                {"if": [], "once": false, "lines": ["fanfi_recruited_1"]}
-              ]
+              ],
+ "camped": [
+            {"if": [], "once": true, "lines": ["fanfi_camped_1"]},
+            {"if": [], "once": false, "lines": ["fanfi_camped_2"]}
+           ]
 }
